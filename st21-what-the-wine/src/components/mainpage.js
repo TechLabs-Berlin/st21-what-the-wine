@@ -8,5 +8,5 @@ return (
 )  
 };
 
-export default MainPage;
+export {MainPage as default };
 
