@@ -3,7 +3,8 @@ import React from 'react';
 const MainPage = () => {
 return (
 <div>
-<p>This is a test for the main page.</p>
+<h1>You're searching for the right wine?</h1>
+<p>Enter your choice here and get a rating!</p>
 </div>
 )  
 };

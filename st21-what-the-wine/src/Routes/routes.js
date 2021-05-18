@@ -1,12 +1,12 @@
 import React from "react";
-import {BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Header from "../components/header";
+import Footer from "../components/footer"
 import MainPage from "../components/mainpage"
 import PageNotFound from "../components/pagenotfound"
 
-const Routes() => {
-    return (
-<Router>
+const Router = () => (
+<BrowserRouter>
     <div>
     <Header />
     <Switch>
@@ -20,10 +20,11 @@ const Routes() => {
         </Route>
     
     </Switch>
+    <Footer />
     </div>
-    </Router>
-    )}
+</BrowserRouter>
+    );
 
 
-export {Routes as default};
+export {Router as default};
 
