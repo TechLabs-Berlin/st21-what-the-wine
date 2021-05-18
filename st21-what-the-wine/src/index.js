@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainPage from './components/mainpage'
+import Routes from "./Routes/routes"
 import './index.css';
 
 
 
 ReactDOM.render(
-  <MainPage/>
+  <Routes />
   ,
   document.getElementById('root')
 );

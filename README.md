@@ -7,6 +7,7 @@
 * UX Ebunoluwa Meroyi
 * UX Berenika Godlewska
 * UX Ngoc Anh Doan Thi
+* WD Johanna Reichhardt
 * WD Franziska Pendzialek
 
 ## Mentors: 
