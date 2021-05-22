@@ -53,3 +53,4 @@ Updates on Structure & Readme
 **KW20**
 Basic frontend structure with React is created: Routes, Header, Footer
 Meeting with Data Science about creating a backend
+**KW21**
