@@ -9,3 +9,6 @@ const PageNotFound = () => {
     };
     
     export {PageNotFound as default };
+
+
+    // The 404 page

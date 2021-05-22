@@ -7,3 +7,5 @@ const Footer = () => (
 );
     
     export {Footer as default };
+
+    // This is the footer with some information about the project.
