@@ -11,4 +11,4 @@ const SingleWine = () => {
 
 export {SingleWine as default };
 
-// This component is to show a page for a single wine to get more details on it
+// This component is to show a page for a single wine to get more details on it.
