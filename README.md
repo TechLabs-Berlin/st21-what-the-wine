@@ -55,3 +55,4 @@ figuring out a data backend
 - Meeting with Data Science about creating a backend
 **KW21**
 - Add a search form, a results page and a single wine page. 
+- work on the search query, the dataset and the single wine page. 
