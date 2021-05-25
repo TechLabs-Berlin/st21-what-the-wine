@@ -12,10 +12,10 @@ const Results = () => {
         <li>probably a Temperanillo</li>
         <li>in the price range of X€ to Y€</li>
         <li>to eat with "food".</li>
+        </ul>
 
         <p>Here are your wines to check out:</p>
-
-        </ul>
+        
         </div>
     )
 }

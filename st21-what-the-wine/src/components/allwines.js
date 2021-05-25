@@ -1,10 +1,16 @@
 import React from 'react';
 
-const AllWines = () => (
+const AllWines = () => {
+return (
     <div>
-    <p>This is a page with all the wines you can get.</p>
+        <h1>See all Wines</h1>
+        <p>This is a page with all the wines you can get.</p>
+        <ul>
+        <li>Wine 1</li>
+        <li>Wine 2</li>
+        </ul>
     </div>
-);
+)};
     
     export {AllWines as default };
 

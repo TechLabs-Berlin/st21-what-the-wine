@@ -6,8 +6,9 @@ const Header = () => {
     <header>
     <h1>What the Wine</h1>
     <NavLink to="/" exact={true}>Home</NavLink>
+    <NavLink to="/allwines">See all Wines</NavLink>
     </header>
-    )  
+    );
     };
     
     export {Header as default };
