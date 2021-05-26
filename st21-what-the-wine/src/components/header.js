@@ -5,7 +5,7 @@ const Header = () => {
     return (
     <header>
     <h1>What the Wine</h1>
-    <NavLink to="/" exact={true}>Home</NavLink>
+    <NavLink exact to="/">Home</NavLink>
     <NavLink to="/allwines">See all Wines</NavLink>
     </header>
     );

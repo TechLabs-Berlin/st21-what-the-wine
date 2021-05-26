@@ -6,29 +6,22 @@ import MainPage from "../components/mainpage";
 import AllWines from "../components/allwines";
 import PageNotFound from "../components/pagenotfound";
 
-const Router = () => (
+const Router = () => {
+    return (
 <BrowserRouter>
     <div>
     <Header />
     <Switch>
     
-        <Route path="/">
-        <MainPage />
-        </Route>
-
-        <Route path="/allwines" component={AllWines}>
-        <AllWines />
-        </Route>
-    
-        <Route>
-        <PageNotFound />
-        </Route>
+        <Route exact to path="/" component={MainPage} />
+        <Route path="/allwines" component={AllWines} /> 
+        <Route component={PageNotFound} />
     
     </Switch>
     <Footer />
     </div>
 </BrowserRouter>
-    );
+    )};
 
 
 export {Router as default};
