@@ -3,7 +3,6 @@
 ## Team members: 
 * DS Juliana Gomes
 * DS Marc Hendel
-* UX Matthias Heppner
 * UX Ebunoluwa Meroyi
 * UX Berenika Godlewska
 * UX Ngoc Anh Doan Thi
@@ -49,5 +48,6 @@ Vivino Data: https://bitbucket.org/fernandodefranca/ds-wines/src/master/
 ## Web Development Updates
 - Tech Stack: React, Node.js, API needed, MongoDB
 - Basic Frontend Structure 
-- Data Architecture and Data Flow
+- Data Architecture and Data Flow on Miro: https://miro.com/app/board/o9J_lBopF2o=/
 - Search Queries for form submit
+- MVP: User submits form, gets results of wines and a simple buying confirmation
