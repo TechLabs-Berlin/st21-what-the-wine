@@ -15,7 +15,7 @@ return (
         </div>
         <div>
         <h3>Web Development</h3>
-        <p>Timea & Franziska Pendzialek</p>
+        <p>Timea Varju & Franziska Pendzialek</p>
         </div>
         <div>
         <h2>About TechLabs</h2>

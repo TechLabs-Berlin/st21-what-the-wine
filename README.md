@@ -7,7 +7,7 @@
 * UX Berenika Godlewska
 * UX Ngoc Anh Doan Thi
 * WD Franziska Pendzialek
-* WD Timea
+* WD Timea Varju
 
 ## Mentors: 
 * Shane Dolley
