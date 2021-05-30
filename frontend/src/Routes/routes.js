@@ -4,6 +4,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import MainPage from "../components/mainpage";
 import AllWines from "../components/allwines";
+import AboutUs from "../components/about-us";
 import PageNotFound from "../components/pagenotfound";
 
 const Router = () => {
@@ -15,6 +16,7 @@ const Router = () => {
     
         <Route exact to path="/" component={MainPage} />
         <Route path="/allwines" component={AllWines} /> 
+        <Route path="/about-us" component={AboutUs} />
         <Route component={PageNotFound} />
     
     </Switch>
