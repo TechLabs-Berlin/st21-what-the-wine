@@ -1,5 +1,12 @@
-const express = require("express");
+require('dotenv').config();
+const express = require('express');
+const connectDB = require('./config/db');
 const app = express();
+
+// Calling the Database
+
+connectDB();
+
 // const port = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extendednpm: true }));
