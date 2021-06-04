@@ -4,6 +4,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import MainPage from "../components/mainpage";
 import AllWines from "../components/allwines";
+import SingleWine from "../components/SingleWine";
 import AboutUs from "../components/about-us";
 import PageNotFound from "../components/pagenotfound";
 import Login from "../components/login";
@@ -18,6 +19,7 @@ const Router = () => {
     
         <Route exact to path="/" component={MainPage} />
         <Route path="/allwines" component={AllWines} /> 
+        <Route path="/wine/:id" component={SingleWine} /> 
         <Route path="/about-us" component={AboutUs} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
