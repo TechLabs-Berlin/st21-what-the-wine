@@ -9,8 +9,8 @@ const Search = () => {
     let [vegan, setVegan] = useState("");
 
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
         console.log("Form submitted");
 
         // obligated fields

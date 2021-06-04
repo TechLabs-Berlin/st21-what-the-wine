@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Login = () => {
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
         console.log("Form submitted");
     }
 
