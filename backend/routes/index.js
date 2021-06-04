@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/User');
+const Wine = require('../models/Wine');
 
 router.get('/test', (req,res) => {
     console.log('test route');
@@ -7,8 +9,18 @@ router.get('/test', (req,res) => {
 })
 
 // User registration, profile update and delete APIs
-router.post("/users", (req, res) => {
-    res.send("I will register this user to the database!");
+router.post("/users", async (req, res) => {
+
+await User.create(req.body).then((userdb)=> {
+res.send('Registered User!')
+})
+.catch((error) => {
+
+res.send({error});
+
+})
+
+    // res.send("I will register this user to the database!");
 });
 
 router.put("/users/:id", (req, res) => {
@@ -37,5 +49,50 @@ router.post("/users/:id/recommendations", (req, res) => {
 "I will add these form details to this user's profile in the database!"
     );
 });
+
+// Route for a new Wine
+
+router.post("/wines/newwine", async (req,res) => {
+await Wine.create(req.body).then((winedb) => {
+console.log(winedb);
+res.send('Wine added');
+
+})
+.catch((error) => {
+
+res.send({error});
+
+})
+})
+
+// Gets information of all the wines 
+
+router.get("/wines", async (req,res) => {
+    await Wine.find().then((wineList) => {
+    console.log(wineList);
+    res.send(wineList);
+    
+    })
+    .catch((error) => {
+        
+    res.send({error});
+    
+    })
+    })
+
+// Get information of a single wine
+
+router.get("/wines/:id", async (req,res) => {
+    await Wine.findById(req.params.id).then((singleWine) => {
+    console.log(singleWine);
+    res.send(singleWine);
+    
+    })
+    .catch((error) => {
+        
+    res.send({error});
+    
+    })
+    })
 
 module.exports = router;
