@@ -7,6 +7,8 @@ const Header = () => {
     <h1>What the Wine</h1>
     <NavLink exact to="/">Home</NavLink>
     <NavLink to="/allwines">See all Wines</NavLink>
+    <NavLink to="/login">Log In</NavLink>
+    <NavLink to="/signup">Sign Up</NavLink>
     </header>
     );
     };
