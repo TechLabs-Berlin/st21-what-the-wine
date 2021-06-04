@@ -6,6 +6,8 @@ import MainPage from "../components/mainpage";
 import AllWines from "../components/allwines";
 import AboutUs from "../components/about-us";
 import PageNotFound from "../components/pagenotfound";
+import Login from "../components/login";
+import SignUp from "../components/signup";
 
 const Router = () => {
     return (
@@ -17,6 +19,8 @@ const Router = () => {
         <Route exact to path="/" component={MainPage} />
         <Route path="/allwines" component={AllWines} /> 
         <Route path="/about-us" component={AboutUs} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
         <Route component={PageNotFound} />
     
     </Switch>
