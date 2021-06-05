@@ -37,7 +37,6 @@ Wine Scanner, Thirst, Wine List and Cellar
 *Hashtag / tag functions for saved wines (e.g. occasions, foods etc).
 
 ## Data Science Updates
-**KW19**
 - 200 wines extracted from the Vivino website
 - Vegan wines were extracted from Pull The Cork: They will be in separate tables. Label color could not be extracted.
 Vivino Data: https://bitbucket.org/fernandodefranca/ds-wines/src/master/
@@ -46,8 +45,7 @@ Vivino Data: https://bitbucket.org/fernandodefranca/ds-wines/src/master/
 - figuring out a data backend
 
 ## Web Development Updates
-- Tech Stack: React, Node.js, API needed, MongoDB
-- Basic Frontend Structure 
+- Tech Stack: React, Material UI, Node.js, Express.js, API, MongoDB
 - Data Architecture and Data Flow on Miro: https://miro.com/app/board/o9J_lBopF2o=/
-- Search Queries for form submit
 - MVP: User submits form, gets results of wines and a simple buying confirmation
+- Backend is set up
