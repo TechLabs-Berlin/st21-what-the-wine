@@ -8,7 +8,9 @@ router.get('/test', (req,res) => {
     res.status(200).json({message: 'Test success'});
 })
 
-// User registration, profile update and delete APIs
+// User Routes
+
+// Sign Up User
 router.post("/users", async (req, res) => {
 
 await User.create(req.body).then((userdb)=> {
@@ -22,10 +24,14 @@ res.send({error});
 })
 });
 
+// User Profile Update
+
 router.put("/users/:id", (req, res) => {
     console.log(req.params);
     res.send("I will update this user's details in the database!");
 });
+
+// Delete User
 
 router.delete("/users/:id", (req, res) => {
     res.send("I will delete this user from the database!");
