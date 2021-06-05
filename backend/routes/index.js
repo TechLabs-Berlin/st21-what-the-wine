@@ -12,6 +12,7 @@ router.get('/test', (req,res) => {
 router.post("/users", async (req, res) => {
 
 await User.create(req.body).then((userdb)=> {
+    console.log(userdb);
 res.send('Registered User!')
 })
 .catch((error) => {
@@ -19,8 +20,6 @@ res.send('Registered User!')
 res.send({error});
 
 })
-
-    // res.send("I will register this user to the database!");
 });
 
 router.put("/users/:id", (req, res) => {
@@ -32,12 +31,6 @@ router.delete("/users/:id", (req, res) => {
     res.send("I will delete this user from the database!");
 });
 
-  // Save wines to favorites API
-router.post("/users/:id/favorites", (req, res) => {
-    res.send(
-"I will add this wine to this user's favorites list in the database!"
-    );
-});
 
   // Recommendation API
 /* 
@@ -47,6 +40,15 @@ recieve & save recommendation to user profile, send response to FE
 router.post("/users/:id/recommendations", (req, res) => {
     res.send(
 "I will add these form details to this user's profile in the database!"
+    );
+});
+
+// Wine Routes
+
+  // Save wines to favorites API
+    router.post("/users/:id/favorites", (req, res) => {
+    res.send(
+"I will add this wine to this user's favorites list in the database!"
     );
 });
 
