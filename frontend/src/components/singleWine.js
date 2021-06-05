@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router'
+import {useParams} from 'react-router';
 import { fetchSingleWines } from '../actions/wines';
 
 const SingleWine = () => {
