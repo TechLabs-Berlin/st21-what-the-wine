@@ -6,11 +6,16 @@ const SingleWine = () => {
     const {id} = useParams();
 
     const [description, setDescription] = useState("");
+    const [price, setPrice] = useState();
+    const [name, setName] = useState();
+
     useEffect(() => {
 
     fetchSingleWines(id).then((wine) => {
         console.log(wine.data);
         setDescription(wine.data.description);
+        setPrice(wine.data.price);
+        setName(wine.data.name);
         })
     }, []);
 
@@ -18,10 +23,10 @@ const SingleWine = () => {
 
     return (
         <div>
-        <h1>This is wine XYZ</h1>
+        <h1>`This is wine ${name}`</h1>
         <p>This is a description about wine XYZ.</p>
         <p>This is a description of the flavor profile.</p>
-        <p>Price</p>
+        <p>{price}</p>
         <p>Type of Wine</p>
         <p>Best Foodpairings</p>
         <p>Community Rating</p>
