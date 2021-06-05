@@ -34,6 +34,6 @@ const Wine = ({name, price, description, id}) => {
     )
 }
     
-    export {AllWines as default };
+    export {AllWines, Wine};
 
-    //This is an overview page of all the wines that exist. 
+// This is an overview page of all the wines that exist. 
