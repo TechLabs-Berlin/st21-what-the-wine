@@ -6,7 +6,7 @@
 * UX Ebunoluwa Meroyi
 * UX Berenika Godlewska
 * UX Ngoc Anh Doan Thi
-* WD Franziska Pendzialek
+* WD Stephanie Mennear
 * WD Timea Varju
 
 ## Mentors: 
