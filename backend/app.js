@@ -8,8 +8,8 @@ const logger = require("morgan");
 const cors = require("cors");
 
 // Calling the Database
-
-//connectDB();
+//port = process.env.PORT;
+connectDB();
 
 // const port = process.env.PORT || 8080;
 
