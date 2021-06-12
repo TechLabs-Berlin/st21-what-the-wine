@@ -1,28 +1,28 @@
-import axios from 'axios'
-const backendURL = process.env.REACT_APP_BACKENDURL;
+// import axios from 'axios'
+// const backendURL = process.env.REACT_APP_BACKENDURL;
 
-const fetchAllWines = async () => {
+// const fetchAllWines = async () => {
 
-try {
+// try {
 
-const response = await axios.get(`${backendURL}/api/wines`);
-return response;
+// const response = await axios.get(`${backendURL}/api/wines`);
+// return response;
 
-} catch (error) {
-return error;
-}
-}
+// } catch (error) {
+// return error;
+// }
+// }
 
-const fetchSingleWines = async (id) => {
+// const fetchSingleWines = async (id) => {
 
-    try {
-    
-    const response = await axios.get(`${backendURL}/api/wines/${id}`);
-    return response;
-    
-    } catch (error) {
-    return error;
-    }
-    }
+//     try {
 
-export {fetchAllWines, fetchSingleWines};
+//     const response = await axios.get(`${backendURL}/api/wines/${id}`);
+//     return response;
+
+//     } catch (error) {
+//     return error;
+//     }
+//     }
+
+// export {fetchAllWines, fetchSingleWines};
