@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import LandingLoggedIn from "../components/MainPage";
+import LandingLoggedIn from "../components/LandingLoggedIn";
 import UserProfile from "../components/UserProfile";
 import Wines from "../components/Wines";
 import WineDescription from "../components/WineDescription";
