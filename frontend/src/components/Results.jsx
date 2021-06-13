@@ -1,24 +1,26 @@
 import React from "react";
 
-const Results = () => {
+const RecommendationList = () => {
   return (
-    <div>
-      <h1>Wohoo! Here are your results</h1>
-      <p>Your wine should most like be</p>
-      <ul>
-        <li>a dry</li>
-        <li>red wine</li>
-        <li>from Spain</li>
-        <li>probably a Temperanillo</li>
-        <li>in the price range of X€ to Y€</li>
-        <li>to eat with "food".</li>
-      </ul>
+    <>
+      <h1>We recommend you</h1>
+      <div>
+        <span>a dry,</span>
+        <span>white wine</span>
+        <span>from France</span>
+      </div>
 
-      <p>Here are your wines to check out:</p>
-    </div>
+      <section>
+        <h2>such as</h2>
+        <div>
+          sorted by
+          <span>rating</span>
+        </div>
+      </section>
+    </>
   );
 };
 
-export { Results as default };
+export { RecommendationList as default };
 
-// This component is made to show the results of the search
+// This component shows the recommendation list
