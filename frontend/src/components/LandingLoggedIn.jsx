@@ -1,5 +1,5 @@
 import React from "react";
-import RecommendationForm from "./Search";
+import RecommendationForm from "./RecommendationForm";
 
 const LandingLoggedIn = () => {
   return (
