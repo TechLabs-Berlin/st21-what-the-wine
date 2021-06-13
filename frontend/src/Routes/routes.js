@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import MainPage from "../components/MainPage";
+import LandingLoggedIn from "../components/MainPage";
 import UserProfile from "../components/UserProfile";
 import Wines from "../components/Wines";
 import WineDescription from "../components/WineDescription";
@@ -17,7 +17,7 @@ const Router = () => {
       <>
         <Header />
         <Switch>
-          <Route exact to path="/" component={MainPage} />
+          <Route exact to path="/" component={LandingLoggedIn} />
           <Route exact to path="/" component={UserProfile} />
           <Route path="/Wines" component={Wines} />
           <Route path="/WineDescription" component={WineDescription} />

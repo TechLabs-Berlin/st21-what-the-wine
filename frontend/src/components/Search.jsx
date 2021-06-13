@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Search = () => {
+const RecommendationForm = () => {
   let [foodpairing, setFoodpairing] = useState("");
   let [price, setPrice] = useState("");
   let [vegan, setVegan] = useState("");
@@ -128,6 +128,6 @@ const Search = () => {
   );
 };
 
-export { Search as default };
+export { RecommendationForm as default };
 
-// This component includes the basic search form
+// This component includes the recommendation form with the basic filters

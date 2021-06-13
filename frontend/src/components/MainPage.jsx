@@ -1,16 +1,16 @@
 import React from "react";
-import Search from "./Search";
+import RecommendationForm from "./Search";
 
-const MainPage = () => {
+const LandingLoggedIn = () => {
   return (
-    <div>
-      <h1>You're searching for the right wine?</h1>
-      <p>Enter your choice here and get a recommendation!</p>
-      <Search />
-    </div>
+    <>
+      <h1>Hello Anna!</h1>
+      <h2>Let's find your perfect wine</h2>
+      <RecommendationForm />
+    </>
   );
 };
 
-export { MainPage as default };
+export { LandingLoggedIn as default };
 
-// The Main Paige of the Website
+// The landing page after the user has logged in
