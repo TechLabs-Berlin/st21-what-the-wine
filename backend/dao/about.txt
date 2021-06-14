@@ -1,0 +1,14 @@
+Data Access Object
+Allow code to access schemas/collections in the database
+
+http://best-practice-software-engineering.ifs.tuwien.ac.at/patterns/dao.html
+Use a Data Access Object when:
+
+you need to access a persistent storage more than one time, especially if you want to exchange the data source later.
+you want to separate a data resource's client interface from its data access mechanisms
+you want to adapt a specific data resource's access API to a generic client interface
+in a larger project, different teams work on different parts of the application: the DAO pattern allows clean separation of concerns.
+
+
+More information on what DAO layer is:
+https://en.wikipedia.org/wiki/Data_access_object
