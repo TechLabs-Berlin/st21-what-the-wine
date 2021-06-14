@@ -7,13 +7,13 @@ let users;
 //* as soon as server starts, get a reference to the users database.
 //* if it is already filled, then return, but if not already filled, then assign the variable with a reference to the db.
 module.exports = class UsersDAO {
-  static async injectDB(conn) {
+  static async injectDB(connection) {
     if (users) {
       return;
     }
     try {
-      //*connect to the db 'sample_analyrics' then access the collection 'customers'.
-      users = await conn.db(process.env.USER_NS).collection("customers");
+      //*connect to the db 'sample_analytics' then access the collection 'customers'.
+      users = await connection.db(process.env.USER_NS).collection("customers");
     } catch (e) {
       console.error(`Unable to establish connection in usersDAO: ${e}`);
     }
@@ -49,7 +49,7 @@ module.exports = class UsersDAO {
     }
     const displayCursor = cursor
       .limit(usersPerPage) //* user per page
-      .skip((usersPerPage = page)); //*get to specific page of results
+      .skip(usersPerPage * page); //*get to specific page of results
     try {
       const usersList = await displayCursor.toArray(); //convert user list into array and return array
       const totalNumUsers = await users.countDocuments(query); //get total number of users in the query
