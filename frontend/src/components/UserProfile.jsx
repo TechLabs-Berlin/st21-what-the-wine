@@ -8,6 +8,7 @@ const UserProfile = () => {
       <Header />
       <img src="" alt="profile picture"></img>
       <h1>Anna</h1>
+
       <section>
         <div>
           <div>15</div>
@@ -18,14 +19,17 @@ const UserProfile = () => {
           <div>wines rated</div>
         </div>
       </section>
+
       <section>
         <h2>
           <Link to="">Recommended for you</Link>
         </h2>
       </section>
+
       <section>
         <h2>Last filters</h2>
       </section>
+
       <section>
         <h2>
           <Link to="">Last viewed</Link>
@@ -35,6 +39,6 @@ const UserProfile = () => {
   );
 };
 
-export { UserProfile as default };
+export default UserProfile;
 
-// The Profile Page of the User
+// The profile page of the user

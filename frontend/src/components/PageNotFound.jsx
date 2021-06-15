@@ -2,12 +2,12 @@ import React from "react";
 
 const PageNotFound = () => {
   return (
-    <div>
-      <p>404 - Page couldn't be found</p>
-    </div>
+    <>
+      <div>404 - Page not found</div>
+    </>
   );
 };
 
-export { PageNotFound as default };
+export default PageNotFound;
 
 // The 404 page

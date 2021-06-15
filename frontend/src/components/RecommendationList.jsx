@@ -21,6 +21,6 @@ const RecommendationList = () => {
   );
 };
 
-export { RecommendationList as default };
+export default RecommendationList;
 
 // This component shows the recommendation list

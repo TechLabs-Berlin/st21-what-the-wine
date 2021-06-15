@@ -29,7 +29,7 @@ const RecommendationForm = () => {
 
   return (
     <>
-      <form method="post" action="" onSubmit={handleSubmit}>
+      <form method="" action="" onSubmit={handleSubmit}>
         <fieldset>
           <legend>I am having wine</legend>
           <label htmlFor="with-food">
@@ -128,6 +128,6 @@ const RecommendationForm = () => {
   );
 };
 
-export { RecommendationForm as default };
+export default RecommendationForm;
 
 // This component includes the recommendation form with the basic filters
