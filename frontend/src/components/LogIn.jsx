@@ -8,17 +8,20 @@ const LogIn = () => {
 
   return (
     <>
-      <form method="post" action="" onSubmit={handleSubmit}>
+      <form method="" action="" onSubmit={handleSubmit}>
         <fieldset>
           <legend>Log In</legend>
-          <label name="" htmlFor="email">
+
+          <label htmlFor="email">
             Email Address
             <input type="email" id="email" name="email"></input>
           </label>
-          <label name="password" htmlFor="password">
+
+          <label htmlFor="password">
             Password
             <input type="password" id="password" name="password"></input>
           </label>
+
           <button type="submit">Log In</button>
         </fieldset>
       </form>
@@ -26,6 +29,6 @@ const LogIn = () => {
   );
 };
 
-export { LogIn as default };
+export default LogIn;
 
-// This is the Login page for a User that already has credentials.
+// This is the log in page
