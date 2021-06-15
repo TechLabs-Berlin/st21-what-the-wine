@@ -25,7 +25,7 @@ const AboutUs = () => {
         technological tools to approach the challenges of our time with a
         digital and entrepreneurial mindset.
       </p>
-      <a href="https://www.techlabs.org/about" target="_blank">
+      <a href="https://www.techlabs.org/about" target="_blank" rel="noreferrer">
         More about TechLabs
       </a>
     </>
