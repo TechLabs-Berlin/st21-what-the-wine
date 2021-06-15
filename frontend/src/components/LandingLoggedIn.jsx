@@ -11,6 +11,6 @@ const LandingLoggedIn = () => {
   );
 };
 
-export { LandingLoggedIn as default };
+export default LandingLoggedIn;
 
 // The landing page after the user has logged in
