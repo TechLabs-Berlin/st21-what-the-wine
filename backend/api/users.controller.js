@@ -43,6 +43,7 @@ module.exports = class UserController {
       const username = req.body.username;
       const name = req.body.name;
       const email = req.body.email;
+      //todo: create a date variable
 
       const userResponse = await UsersDAO.addUser(
         user_id,
@@ -52,6 +53,36 @@ module.exports = class UserController {
       );
       //console.log(userResponse);
       //console.log("after userresponse");
+      res.json({ status: "success" });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
+
+  static async apiUpdateUser(req, res, next) {
+    //update what parts? for testing any..
+    try {
+      const id = req.body._id;
+      const user_id = req.body.user_id;
+      const username = req.body.username;
+      const name = req.body.name;
+      const email = req.body.email;
+      console.log(`mongodb id: ${id}, and userid: ${user_id}`);
+      console.log(username, name, email);
+      const userResponse = await UsersDAO.updateUser(
+        user_id,
+        id,
+        username,
+        name,
+        email
+      );
+      var { error } = userResponse;
+      if (error) {
+        res.status(400).json({ error });
+      }
+      if (userResponse.modifiedCount === 0) {
+        throw new Error("unable to update");
+      }
       res.json({ status: "success" });
     } catch (e) {
       res.status(500).json({ error: e.message });

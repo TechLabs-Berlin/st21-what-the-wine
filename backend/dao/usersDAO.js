@@ -1,4 +1,4 @@
-const ObjectID = require("mongoose").ObjectID;
+const ObjectID = require("mongodb").ObjectID;
 
 //This is a variable to use to store a reference to the db
 let users;
@@ -63,6 +63,7 @@ module.exports = class UsersDAO {
   }
   static async addUser(user_id, username, name, email) {
     //review takes all the parameters ^^ and creates a user document
+    //todo: add list type to json object value... list for the wines the user saves to their profile.
     try {
       const userDoc = {
         user_id: user_id,
@@ -70,11 +71,26 @@ module.exports = class UsersDAO {
         name: name,
         email: email,
       };
-
-      //console.log(userDoc);
       return await users.insertOne(userDoc);
     } catch (e) {
       console.error(`Unable to post user: ${e}`);
+    }
+  }
+  static async updateUser(user_id, username, id) {
+    try {
+      const updateResponse = await users.updateOne(
+        { user_id: user_id /* ,  _id: ObjectID(id) */ },
+        //todo: why doesny ObjectID work?
+        //filter--> match user id with oid
+
+        { $set: { username: username } } //update
+        /*         { $set: { name: name } },
+        { $set: { email: email } } */
+      );
+      return updateResponse;
+    } catch (e) {
+      console.error(`cannot update review due to: ${e}`);
+      return { error: e };
     }
   }
 };
