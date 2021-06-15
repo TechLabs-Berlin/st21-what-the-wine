@@ -61,16 +61,17 @@ module.exports = class UsersDAO {
       return { usersList: [], totalNumUsers: 0 };
     }
   }
-  static async addUser(userId, user, email, username) {
+  static async addUser(user_id, username, name, email) {
     //review takes all the parameters ^^ and creates a user document
     try {
       const userDoc = {
-        name: user.name,
-        user_id: user._id,
-        email: email,
+        user_id: user_id,
         username: username,
-        userID: ObjectID(userID),
+        name: name,
+        email: email,
       };
+
+      //console.log(userDoc);
       return await users.insertOne(userDoc);
     } catch (e) {
       console.error(`Unable to post user: ${e}`);

@@ -9,7 +9,7 @@ const users = require("./api/users.route");
 const app = express();
 
 //middleware
-//app.use(express.urlencoded({ extendednpm: true }));
+app.use(express.urlencoded({ extended: true }));
 //app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(cors());

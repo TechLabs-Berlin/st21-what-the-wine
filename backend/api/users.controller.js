@@ -36,15 +36,22 @@ module.exports = class UserController {
     res.json(response); //*send json response with all the info
   }
 
-  //*update a user
+  //*add a user
   static async apiAddUser(req, res, next) {
     try {
-      const _id = req.body.user_id;
+      const user_id = req.body.user_id;
       const username = req.body.username;
       const name = req.body.name;
       const email = req.body.email;
 
-      const userResponse = await UsersDAO.addUser(_id, username, name, email);
+      const userResponse = await UsersDAO.addUser(
+        user_id,
+        username,
+        name,
+        email
+      );
+      //console.log(userResponse);
+      //console.log("after userresponse");
       res.json({ status: "success" });
     } catch (e) {
       res.status(500).json({ error: e.message });
