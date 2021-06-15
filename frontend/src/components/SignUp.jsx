@@ -7,48 +7,38 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <form
-        method="post"
-        action="/st21-what-the-wine/public/index.html"
-        onSubmit={handleSubmit}
-      >
+    <>
+      <form method="post" action="" onSubmit={handleSubmit}>
         <fieldset>
-          <legend>Sign Up for personalized Wine Recommendations</legend>
-          <p>
-            <label name="firstname">First Name</label>
-            <input type="text" name="firstname"></input>
-          </p>
-          <p>
-            <label name="lastname">Last Name</label>
-            <input type="text" name="lastname"></input>
-          </p>
-          <p>
-            <label name="email">E-Mail Adress</label>
-            <input type="email" name="email"></input>
-          </p>
-          <p>
-            <label name="password">Create Password</label>
-            <input type="password" name="password"></input>
-          </p>
-          <p>
-            <label name="passwordcheck">Check Password</label>
-            <input type="password" name="passwordcheck"></input>
-          </p>
-          <p>
-            <input type="checkbox" name="newsletter"></input>
-            <label name="newsletter">Subscribe me to the Newsletter.</label>
-          </p>
-          <p>
-            <button type="submit">Sign me up</button>
-            <input type="reset" value="Reset the filter"></input>
-          </p>
+          <legend>Sign up for personalized wine recommendations</legend>
+
+          <label htmlFor="firstname">
+            First Name
+            <input type="text" id="firstname" name="firstname"></input>
+          </label>
+
+          <label htmlFor="lastname">
+            Last Name
+            <input type="text" id="lastname" name="lastname"></input>
+          </label>
+
+          <label htmlFor="email">
+            Email Address
+            <input type="email" id="email" name="email" required></input>
+          </label>
+
+          <label htmlFor="password">
+            Password
+            <input type="password" id="password" name="password"></input>
+          </label>
+
+          <button type="submit">Sign me up</button>
         </fieldset>
       </form>
-    </div>
+    </>
   );
 };
 
-export { SignUp as default };
+export default SignUp;
 
-// This is the Register page for a User that needs to sign up.
+// Sign up page
