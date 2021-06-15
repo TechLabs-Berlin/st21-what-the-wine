@@ -5,12 +5,24 @@ const Footer = () => {
   return (
     <>
       <footer>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        <NavLink to="/Wines">Wines</NavLink>
-        <NavLink to="/AboutUs">About Us</NavLink>
-        <div>Copyright 2021 - The greatest, rocking What the Wine Team.</div>
+        <nav>
+          <ul>
+            <li>
+              <NavLink exact to="/">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Wines">Wines</NavLink>
+            </li>
+            <li>
+              <NavLink to="/AboutUs">About Us</NavLink>
+            </li>
+            <div>
+              Copyright 2021 - The greatest, rocking What the Wine Team.
+            </div>
+          </ul>
+        </nav>
       </footer>
     </>
   );

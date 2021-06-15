@@ -1,11 +1,7 @@
 import React from "react";
 
 const Wines = () => {
-  return (
-    <>
-      <h1>See all Wines</h1>
-    </>
-  );
+  return <h1>See all Wines</h1>;
 };
 
 export default Wines;

@@ -12,14 +12,14 @@ const LogIn = () => {
         <fieldset>
           <legend>Log In</legend>
 
-          <label htmlFor="email">
+          <label>
             Email Address
-            <input type="email" id="email" name="email"></input>
+            <input type="email" name="email"></input>
           </label>
 
-          <label htmlFor="password">
+          <label>
             Password
-            <input type="password" id="password" name="password"></input>
+            <input type="password" name="password"></input>
           </label>
 
           <button type="submit">Log In</button>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 const RecommendationForm = () => {
-  let [foodpairing, setFoodpairing] = useState("");
-  let [price, setPrice] = useState("");
-  let [vegan, setVegan] = useState("");
+  // let [foodpairing, setFoodpairing] = useState("");
+  // let [price, setPrice] = useState("");
+  // let [vegan, setVegan] = useState("");
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -32,90 +32,49 @@ const RecommendationForm = () => {
       <form method="" action="" onSubmit={handleSubmit}>
         <fieldset>
           <legend>I am having wine</legend>
-          <label htmlFor="with-food">
+          <label>
             with food
-            <input
-              type="radio"
-              id="with-food"
-              name="foodpairing"
-              value="with-food"
-            ></input>
+            <input type="radio" name="foodpairing" value="with-food"></input>
           </label>
 
-          <label htmlFor="without-food">
+          <label>
             without food
-            <input
-              type="radio"
-              id="without-food"
-              name="foodpairing"
-              value="without-food"
-            ></input>
+            <input type="radio" name="foodpairing" value="without-food"></input>
           </label>
         </fieldset>
 
         <fieldset>
           <legend>Price range</legend>
-          <label htmlFor="price-low">
-            €
-            <input
-              type="checkbox"
-              id="price-low"
-              name="price"
-              value="low"
-            ></input>
+          <label>
+            €<input type="checkbox" name="price" value="low"></input>
           </label>
 
-          <label htmlFor="price-medium">
+          <label>
             €€
-            <input
-              type="checkbox"
-              id="price-medium"
-              name="price"
-              value="medium"
-            ></input>
+            <input type="checkbox" name="price" value="medium"></input>
           </label>
 
-          <label htmlFor="price-high">
+          <label>
             €€€
-            <input
-              type="checkbox"
-              id="price-high"
-              name="price"
-              value="high"
-            ></input>
+            <input type="checkbox" name="price" value="high"></input>
           </label>
 
-          <label htmlFor="price-expensive">
+          <label>
             €€€€
-            <input
-              type="checkbox"
-              id="price-expensive"
-              name="price"
-              value="expensive"
-            ></input>
+            <input type="checkbox" name="price" value="expensive"></input>
           </label>
         </fieldset>
 
         <fieldset>
           <legend>Looking for vegan options?</legend>
-          <label htmlFor="vegan-no">
+          <label>
             no
-            <input
-              type="radio"
-              id="vegan-no"
-              name="vegan"
-              value="vegan-no"
-            ></input>
+            <input type="radio" name="vegan" value="vegan-no"></input>
           </label>
 
-          <label htmlFor="vegan-yes">
+          <label>
             yes
-            <input
-              type="radio"
-              id="vegan-yes"
-              name="vegan"
-              value="vegan-yes"
-            ></input>
+            <input type="radio" name="vegan" value="vegan-yes"></input>
           </label>
         </fieldset>
 

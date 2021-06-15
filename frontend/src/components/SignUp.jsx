@@ -12,24 +12,24 @@ const SignUp = () => {
         <fieldset>
           <legend>Sign up for personalized wine recommendations</legend>
 
-          <label htmlFor="firstname">
+          <label>
             First Name
-            <input type="text" id="firstname" name="firstname"></input>
+            <input type="text" name="firstname"></input>
           </label>
 
-          <label htmlFor="lastname">
+          <label>
             Last Name
-            <input type="text" id="lastname" name="lastname"></input>
+            <input type="text" name="lastname"></input>
           </label>
 
-          <label htmlFor="email">
+          <label>
             Email Address
-            <input type="email" id="email" name="email" required></input>
+            <input type="email" name="email" required></input>
           </label>
 
-          <label htmlFor="password">
+          <label>
             Password
-            <input type="password" id="password" name="password"></input>
+            <input type="password" name="password"></input>
           </label>
 
           <button type="submit">Sign me up</button>

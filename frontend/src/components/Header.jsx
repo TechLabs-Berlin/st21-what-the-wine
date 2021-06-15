@@ -5,12 +5,24 @@ const Header = () => {
   return (
     <>
       <header>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        <NavLink to="/Wines">Wines</NavLink>
-        <NavLink to="/LogIn">Log In</NavLink>
-        <NavLink to="/SignUp">Sign Up</NavLink>
+        <nav>
+          <ul>
+            <li>
+              <NavLink exact to="/">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Wines">Wines</NavLink>
+            </li>
+            <li>
+              <NavLink to="/LogIn">Log In</NavLink>
+            </li>
+            <li>
+              <NavLink to="/SignUp">Sign Up</NavLink>
+            </li>
+          </ul>
+        </nav>
       </header>
     </>
   );

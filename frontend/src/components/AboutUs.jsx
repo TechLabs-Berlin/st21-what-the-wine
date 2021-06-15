@@ -6,18 +6,24 @@ const AboutUs = () => {
       <h1>About Us</h1>
       <h2>Learn more about the team</h2>
 
-      <h3>Data Science</h3>
-      <section>Marc Hendel</section>
-      <section>Juliana Gomes</section>
+      <section>
+        <h3>Data Science</h3>
+        <p>Marc Hendel</p>
+        <p>Juliana Gomes</p>
+      </section>
 
-      <h3>UX Design</h3>
-      <section>Ebunoluwa Meroyi</section>
-      <section>Berenika Godlewska</section>
-      <section>Ngoc Anh Doan Thi</section>
+      <section>
+        <h3>UX Design</h3>
+        <p>Ebunoluwa Meroyi</p>
+        <p>Berenika Godlewska</p>
+        <p>Ngoc Anh Doan Thi</p>
+      </section>
 
-      <h3>Web Development</h3>
-      <section>Stephanie Mennear</section>
-      <section>Timea Varju</section>
+      <section>
+        <h3>Web Development</h3>
+        <p>Stephanie Mennear</p>
+        <p>Timea Varju</p>
+      </section>
 
       <h2>About TechLabs</h2>
       <p>
