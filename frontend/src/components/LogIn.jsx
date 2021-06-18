@@ -1,30 +1,34 @@
 import React from "react";
+import { Formik, Form, Field } from "formik";
 
 const LogIn = () => {
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    console.log("Form submitted");
-  };
-
   return (
     <>
-      <form method="" action="" onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>Log In</legend>
-
-          <label>
-            Email Address
-            <input type="email" name="email"></input>
-          </label>
-
-          <label>
-            Password
-            <input type="password" name="password"></input>
-          </label>
-
-          <button type="submit">Log In</button>
-        </fieldset>
-      </form>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+        }}
+        onSubmit={async (values) => {
+          await new Promise((r) => setTimeout(r, 100));
+          alert(JSON.stringify(values, null, 2));
+        }}
+      >
+        <Form>
+          <fieldset>
+            <legend>Log In</legend>
+            <label>
+              Email Address
+              <Field type="email" name="email" />
+            </label>
+            <label>
+              Password
+              <Field type="password" name="password" />
+            </label>
+            <button type="submit">Log In</button>
+          </fieldset>
+        </Form>
+      </Formik>
     </>
   );
 };
