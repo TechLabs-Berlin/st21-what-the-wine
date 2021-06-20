@@ -1,11 +1,34 @@
+const { query } = require("express");
 const WinesDAO = require("../dao/winesDAO.js");
 
 module.exports = class WineController {
   static async apiGetWines(req, res, next) {
-    const { winesList } = await WinesDAO.getWines({
-      wineList,
+    const winesPerPage = req.query.winesPerPage
+      ? parseInt(req.query.winesPerPage, 5)
+      : 5;
+    const page = req.query.page ? parseInt(req.query.page, 5) : 0;
+
+    let filters = {};
+    if (req.query.price) {
+      filters.price = req.query.price;
+    } else if (req.query.food) {
+      filters.food = req.query.food;
+    }
+    const { winesList, totalWines } = await WinesDAO.getWines({
+      filters,
+      page,
+      winesPerPage,
     });
+    let response = {
+      wines: winesList,
+      page: page,
+      filters: filters,
+      wines_per_page: winesPerPage,
+      total_wines: totalWines,
+    };
+    res.json(response);
   }
+
   static async apiAddWine(req, res, next) {
     console.log(req.body);
     try {
@@ -16,6 +39,7 @@ module.exports = class WineController {
       const price = req.body.price;
       const type = req.body.type;
       const vegan = req.body.vegan;
+      const image_url = req.body.image_url;
       const wineProfile = {
         bitter: req.body.wineProfile.bitter,
         sweet: req.body.wineProfile.sweet,
@@ -29,6 +53,7 @@ module.exports = class WineController {
         price,
         type,
         vegan,
+        image_url,
         wineProfile
       );
       res.json({ status: "sucess" });
