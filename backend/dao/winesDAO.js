@@ -16,11 +16,10 @@ module.exports = class WinesDAO {
     }
   }
 
-  //todo: create the getWines, this is not complete and very incorrect
   static async getWines({ filters = null, page = 0, winesPerPage = 5 } = {}) {
     let query;
-    console.log("filters ", filters);
-    console.log(filters.price);
+    //!console.log("filters ", filters);
+    //!console.log(filters.price);
 
     if (filters) {
       if (filters.price == "low") {
