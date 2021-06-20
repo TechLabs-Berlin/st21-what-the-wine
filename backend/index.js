@@ -4,6 +4,7 @@ const MongoClient = require("mongodb").MongoClient;
 const app = require("./server.js");
 const UsersDAO = require("./dao/usersDAO.js");
 const WinesDAO = require("./dao/winesDAO.js");
+const SeedWines = require("./seedwines.js");
 
 require("dotenv").config();
 
@@ -27,9 +28,9 @@ MongoClient.connect(
     process.exit(1);
   })
   .then(async (client) => {
-    //get initial referenct to user collection in db and then start the webserver
-    await UsersDAO.injectDB(client); //? from the userDAO file, calling the injectdb.
+    await UsersDAO.injectDB(client);
     await WinesDAO.injectDB(client);
+    await SeedWines.injectDB(client);
     app.listen(port, () => {
       console.log(`listening on port ${port}...`);
     });

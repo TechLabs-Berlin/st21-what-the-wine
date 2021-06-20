@@ -10,7 +10,6 @@ module.exports = class WinesDAO {
 
     try {
       wines = await connection.db(process.env.USER_NS).collection("wines");
-      console.log("wine collection successfully created");
     } catch (e) {
       console.log(`Unable to establish connection in winesDAO: ${e}`);
     }
@@ -32,6 +31,7 @@ module.exports = class WinesDAO {
         //todo:figure out the price ranges!
         query = { price: { $gte: 100 } };
       } else if ("food" in filters) {
+        //*This filter is set up in the mongodb atlas interface, creating an index.
         query = { $text: { $search: filters["food"] } };
       }
       let cursor;
