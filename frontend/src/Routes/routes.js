@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Landing from "../components/Landing";
 import WineDescription from "../components/WineDescription";
 import Footer from "../components/Footer";
+import RecommendationList from "../components/RecommendationList";
 // Post-MVP version
 // import Wines from "../components/Wines";
 // import AboutUs from "../components/AboutUs";
@@ -37,6 +38,7 @@ const Router = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={Landing} />
+        <Route path="/RecommendationList" component={RecommendationList} />
         <Route path="/WineDescription" component={WineDescription} />
       </Switch>
       <Footer />
