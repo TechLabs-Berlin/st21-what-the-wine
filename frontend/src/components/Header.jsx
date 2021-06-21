@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// Post-MVP version
 // const Header = () => {
 //   return (
 //     <>
@@ -28,6 +29,7 @@ import { NavLink } from "react-router-dom";
 //   );
 // };
 
+// MVP version
 const Header = () => {
   return (
     <nav>
