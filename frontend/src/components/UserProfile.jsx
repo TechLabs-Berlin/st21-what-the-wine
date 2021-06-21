@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "./Header";
 import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   return (
-    <>
-      <Header />
-      <img src="" alt="profile picture"></img>
+    <main>
+      <figure>
+        <img src="" alt=""></img>
+      </figure>
       <h1>Anna</h1>
 
       <section>
@@ -35,7 +35,7 @@ const UserProfile = () => {
           <Link to="">Last viewed</Link>
         </h2>
       </section>
-    </>
+    </main>
   );
 };
 

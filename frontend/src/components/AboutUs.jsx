@@ -2,13 +2,12 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <>
+    <main>
       <h1>About Us</h1>
       <h2>Learn more about the team</h2>
 
       <section>
         <h3>Data Science</h3>
-        <p>Marc Hendel</p>
         <p>Juliana Gomes</p>
       </section>
 
@@ -34,7 +33,7 @@ const AboutUs = () => {
       <a href="https://www.techlabs.org/about" target="_blank" rel="noreferrer">
         More about TechLabs
       </a>
-    </>
+    </main>
   );
 };
 
