@@ -1,35 +1,57 @@
-# st21-what-the-wine
+
 
 
 
 
 <!-- PROJECT LOGO
+=======
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+***
+***
+***
+*** To avoid retyping too much info. Do a search and replace for the following:
+*** github_username, repo_name, twitter_handle, email, project_title, project_description
+-->
+
+
+
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+
+
+<!-- PROJECT LOGO -->
+
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">What the Wine</h3>
 
   <p align="center">
-    project_description
+    An app to help users choose a wine to best suit their needs
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
 </p>
 
 -->
 
 <!-- TABLE OF CONTENTS -->
-<details open="open">
+
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
@@ -60,15 +82,25 @@
 <!--
 [![Product Name Screen Shot][product-screenshot]](https://example.com)-->
 
+
 What The Wine is an educative project conceplialized, managed, and implemented by students of TechLabs Berlin.
 <br>
 
 
+
+
+
 ### Built With
+
 
 * []()Express
 * []()React
 * []()Flask
+=======
+* [Express](https://expressjs.com/)
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+* [ReactJs](https://reactjs.org/)
+
 
 
 
@@ -77,26 +109,31 @@ What The Wine is an educative project conceplialized, managed, and implemented b
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Installation
 
 1. Clone the repo
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
+   
+ #### Express app  
 2. Install NPM packages
    ```sh
    npm install
    ```
-
-
+    ```sh
+   npx nodemon app.py
+   ```
+ #### React app
+3. Install packages
+   ```sh
+   npm install
+   ```
+    ```sh
+   npm start
+   ```
+ #### Flask app
+4. 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -129,6 +166,7 @@ Contributions are what make the open source community such an amazing place to b
 What the Wine is intended soley for education purposes.
 The web app is not intended for any commercial, monetary, or data sharing use.
 
+
 <!-- CONTACT -->
 ## Members
 ### Team members:
@@ -158,7 +196,20 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 
 
 
+# st21-what-the-wine
 
+## Team members: 
+* DS Juliana Gomes
+* DS Marc Hendel
+* UX Ebunoluwa Meroyi
+* UX Berenika Godlewska
+* UX Ngoc Anh Doan Thi
+* WD Stephanie Mennear
+* WD Timea Varju
+
+## Mentors: 
+* Shane Dolley
+* Rodolfo Gobbi
 
 
 
