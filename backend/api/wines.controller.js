@@ -62,6 +62,6 @@ module.exports = class WineController {
     }
   }
   //todo: wine get/query.
-  //todo: wine update. Do we need an update function?
+  //todo: wine update. 
   //todo: wine delete
 };

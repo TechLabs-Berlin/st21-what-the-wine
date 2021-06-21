@@ -1,5 +1,6 @@
 const cleanJson = require("./functions.js");
 const axios = require("axios");
+require("dotenv").config();
 let wines;
 
 module.exports = class SeedWines {
@@ -18,22 +19,19 @@ module.exports = class SeedWines {
     console.log("hello");
 
     await axios
-      .get(
-        "https://raw.githubusercontent.com/julianagomesberlin/ds-wine-api/main/wine-detailed-data.json"
-      )
+      .get(process.env.WINE_DATA)
       .then(function (response) {
-        //res.send(response.data);
-        //console.log(response.data.length);
+        
         cleanJson(response.data);
         res.send(response.data);
         try {
-          //console.log(response.data);
+
           wines.insertMany(response.data);
         } catch (e) {
           console.error(`Could not insert wines into collection: ${e}`);
         }
 
-        //console.log(response.data[1]);
+
       })
       .catch(function (error) {
         console.log(error);
