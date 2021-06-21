@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 
 const RecommendationForm = () => {
+  const [moreFilters, setMoreFilters] = useState(false);
+  const onToggleMoreFilters = () => setMoreFilters(!moreFilters);
+
   return (
     <Formik
       initialValues={{
@@ -59,7 +62,24 @@ const RecommendationForm = () => {
         </fieldset>
 
         <div>
-          <button type="button">More filters</button>
+          <button type="button" onClick={onToggleMoreFilters}>
+            {moreFilters ? "Show less filters" : "More filters"}
+          </button>
+
+          {moreFilters && (
+            <fieldset>
+              <legend>Wine type</legend>
+              <label>
+                no
+                <Field type="radio" name="vegan" value="vegan-no" />
+              </label>
+              <label>
+                yes
+                <Field type="radio" name="vegan" value="vegan-yes" />
+              </label>
+            </fieldset>
+          )}
+
           <button type="submit">Search</button>
         </div>
       </Form>
