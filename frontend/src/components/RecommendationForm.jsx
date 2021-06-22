@@ -60,7 +60,7 @@ const RecommendationForm = () => {
 
         <div>
           <button type="button">More filters</button>
-          <button type="submit">Go</button>
+          <button type="submit">Search</button>
         </div>
       </Form>
     </Formik>
