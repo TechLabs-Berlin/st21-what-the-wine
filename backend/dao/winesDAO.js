@@ -21,15 +21,18 @@ module.exports = class WinesDAO {
     //!console.log(filters.price);
 
     if (filters) {
-      if (filters.price == "low") {
+      if (filters.price_eur == "low") {
         //todo:figure out the price ranges!
-        query = { price: { $gte: 0, $lt: 30.0 } };
-      } else if (filters.price == "med") {
+        query = { price_eur: { $gte: 0, $lt: 20.0 } };
+      } else if (filters.price_eur == "med") {
         //todo:figure out the price ranges!
-        query = { price: { $gte: 30.0, $lt: 100.0 } };
-      } else if (filters.price == "high") {
+        query = { price_eur: { $gte: 20.0, $lt: 50.0 } };
+      } else if (filters.price_eur == "high") {
         //todo:figure out the price ranges!
-        query = { price: { $gte: 100 } };
+        query = { price_eur: { $gte: 50, $lt: 100 } };
+      } else if (filters.price_eur == "exp") {
+        //todo:figure out the price ranges!
+        query = { price_eur: { $gte: 100 } };
       } else if ("food" in filters) {
         //*This filter is set up in the mongodb atlas interface, creating an index.
         query = { $text: { $search: filters["food"] } };
@@ -57,28 +60,11 @@ module.exports = class WinesDAO {
     }
   }
 
-  static async addWine(
-    name,
-    country,
-    food,
-    price,
-    type,
-    vegan,
-    image_url,
-    wineProfile
-  ) {
+  static async addWine(req, res, next) {
     try {
-      const wineDoc = {
-        name: name,
-        country: country,
-        food: food,
-        price: price,
-        type: type,
-        vegan: vegan,
-        image_url: image_url,
-        wineProfile: wineProfile,
-      };
-      console.log(wineDoc);
+      const wineDoc = req;
+      //console.log(wineDoc);
+
       return await wines.insertOne(wineDoc);
     } catch (e) {
       console.error(`Unabe to post wine: ${e}`);

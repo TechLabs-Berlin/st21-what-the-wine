@@ -9,8 +9,8 @@ module.exports = class WineController {
     const page = req.query.page ? parseInt(req.query.page, 5) : 0;
 
     let filters = {};
-    if (req.query.price) {
-      filters.price = req.query.price;
+    if (req.query.price_eur) {
+      filters.price_eur = req.query.price_eur;
     } else if (req.query.food) {
       filters.food = req.query.food;
     }
@@ -30,9 +30,7 @@ module.exports = class WineController {
   }
 
   static async apiAddWine(req, res, next) {
-    console.log(req.body);
     try {
-      //const wineID = req.body.wine_id;
       const name = req.body.name;
       const country = req.body.country;
       const food = req.body.food;
@@ -45,23 +43,13 @@ module.exports = class WineController {
         sweet: req.body.wineProfile.sweet,
         acid: req.body.wineProfile.acid,
       };
-      const WineResponse = await WinesDAO.addWine(
-        //wineID,
-        name,
-        country,
-        food,
-        price,
-        type,
-        vegan,
-        image_url,
-        wineProfile
-      );
+      const WineResponse = await WinesDAO.addWine(req.body);
       res.json({ status: "sucess" });
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
   }
   //todo: wine get/query.
-  //todo: wine update. 
+  //todo: wine update.
   //todo: wine delete
 };
