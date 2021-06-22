@@ -1,33 +1,31 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import MainPage from "../components/mainpage";
-import AllWines from "../components/allwines";
-import SingleWine from "../components/singleWine";
-import AboutUs from "../components/about-us";
-import PageNotFound from "../components/pagenotfound";
-import Login from "../components/login";
-import SignUp from "../components/signup";
+import Header from "../components/Header";
+import LandingLoggedIn from "../components/LandingLoggedIn";
+import UserProfile from "../components/UserProfile";
+import Wines from "../components/Wines";
+import WineDescription from "../components/WineDescription";
+import AboutUs from "../components/AboutUs";
+import LogIn from "../components/LogIn";
+import SignUp from "../components/SignUp";
+import Footer from "../components/Footer";
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <div>
-        <Header />
-        <Switch>
-          <Route exact to path="/" component={MainPage} />
-          <Route path="/allwines" component={AllWines} />
-          <Route path="/wine/:id" component={SingleWine} />
-          <Route path="/about-us" component={AboutUs} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={SignUp} />
-          <Route component={PageNotFound} />
-        </Switch>
-        <Footer />
-      </div>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={LandingLoggedIn} />
+        <Route exact path="/" component={UserProfile} />
+        <Route path="/Wines" component={Wines} />
+        <Route path="/WineDescription" component={WineDescription} />
+        <Route path="/AboutUs" component={AboutUs} />
+        <Route path="/LogIn" component={LogIn} />
+        <Route path="/SignUp" component={SignUp} />
+      </Switch>
+      <Footer />
     </BrowserRouter>
   );
 };
 
-export { Router as default };
+export default Router;
