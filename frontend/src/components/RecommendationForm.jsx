@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 
 const RecommendationForm = () => {
   const [moreFilters, setMoreFilters] = useState(false);
   const onToggleMoreFilters = () => setMoreFilters(!moreFilters);
+  const navigationHistory = useHistory();
 
   return (
     <Formik
@@ -15,9 +17,9 @@ const RecommendationForm = () => {
         country_name: "",
         flavor_profile: "",
       }}
-      onSubmit={async (values) => {
-        await new Promise((r) => setTimeout(r, 100));
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={(values) => {
+        // redirects to a new page, forwards the form values
+        navigationHistory.push("/RecommendationList", values);
       }}
     >
       <Form>
