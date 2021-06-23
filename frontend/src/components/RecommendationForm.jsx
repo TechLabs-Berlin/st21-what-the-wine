@@ -9,8 +9,11 @@ const RecommendationForm = () => {
     <Formik
       initialValues={{
         foodpairing: "",
-        price: "",
+        price_eur: "",
         vegan: "",
+        wine_type: "",
+        country_name: "",
+        flavor_profile: "",
       }}
       onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 100));
@@ -22,30 +25,32 @@ const RecommendationForm = () => {
           <legend>I am having wine</legend>
           <label>
             with food
-            <Field type="radio" name="foodpairing" value="with-food" />
+            <Field type="radio" name="foodpairing" value="true" />
           </label>
           <label>
             without food
-            <Field type="radio" name="foodpairing" value="without-food" />
+            <Field type="radio" name="foodpairing" value="false" />
           </label>
         </fieldset>
 
+        {/* we should leave the values written out to be more readable, e.g. "medium" */}
         <fieldset>
           <legend>Price range</legend>
           <label>
-            €<Field type="checkbox" name="price" value="low" />
+            €
+            <Field type="checkbox" name="price_eur" value="low" />
           </label>
           <label>
             €€
-            <Field type="checkbox" name="price" value="medium" />
+            <Field type="checkbox" name="price_eur" value="med" />
           </label>
           <label>
             €€€
-            <Field type="checkbox" name="price" value="high" />
+            <Field type="checkbox" name="price_eur" value="high" />
           </label>
           <label>
             €€€€
-            <Field type="checkbox" name="price" value="expensive" />
+            <Field type="checkbox" name="price_eur" value="exp" />
           </label>
         </fieldset>
 
@@ -53,11 +58,11 @@ const RecommendationForm = () => {
           <legend>Looking for vegan options?</legend>
           <label>
             no
-            <Field type="radio" name="vegan" value="vegan-no" />
+            <Field type="radio" name="vegan" value="false" />
           </label>
           <label>
             yes
-            <Field type="radio" name="vegan" value="vegan-yes" />
+            <Field type="radio" name="vegan" value="true" />
           </label>
         </fieldset>
 
@@ -67,17 +72,52 @@ const RecommendationForm = () => {
           </button>
 
           {moreFilters && (
-            <fieldset>
-              <legend>Wine type</legend>
-              <label>
-                no
-                <Field type="radio" name="vegan" value="vegan-no" />
-              </label>
-              <label>
-                yes
-                <Field type="radio" name="vegan" value="vegan-yes" />
-              </label>
-            </fieldset>
+            <>
+              <fieldset>
+                <legend>Wine type</legend>
+                <label>
+                  Please select
+                  <Field as="select" name="wine_type">
+                    <option value="red">Red</option>
+                    <option value="white">White</option>
+                    <option value="rose">Rose</option>
+                    <option value="sparkling">Sparkling</option>
+                    <option value="dessert">Dessert</option>
+                  </Field>
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Origin</legend>
+                <label>
+                  Please select
+                  <Field as="select" name="country_name">
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Other">Other</option>
+                  </Field>
+                </label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Flavour profile</legend>
+                <label>
+                  rather dry
+                  <Field type="checkbox" name="flavor_profile" value="dry" />
+                </label>
+                <label>
+                  rather sweet
+                  <Field type="checkbox" name="flavor_profile" value="sweet" />
+                </label>
+                <label>
+                  rather acidic
+                  <Field type="checkbox" name="flavor_profile" value="acidic" />
+                </label>
+              </fieldset>
+            </>
           )}
 
           <button type="submit">Search</button>
