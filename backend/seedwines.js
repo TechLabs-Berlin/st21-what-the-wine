@@ -16,22 +16,16 @@ module.exports = class SeedWines {
     }
   }
   static async addSeeds(req, res, next) {
-    console.log("hello");
-
     await axios
       .get(process.env.WINE_DATA)
       .then(function (response) {
-        
         cleanJson(response.data);
         res.send(response.data);
         try {
-
           wines.insertMany(response.data);
         } catch (e) {
           console.error(`Could not insert wines into collection: ${e}`);
         }
-
-
       })
       .catch(function (error) {
         console.log(error);

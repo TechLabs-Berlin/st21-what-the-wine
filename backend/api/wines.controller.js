@@ -4,16 +4,22 @@ const WinesDAO = require("../dao/winesDAO.js");
 module.exports = class WineController {
   static async apiGetWines(req, res, next) {
     const winesPerPage = req.query.winesPerPage
-      ? parseInt(req.query.winesPerPage, 5)
-      : 5;
-    const page = req.query.page ? parseInt(req.query.page, 5) : 0;
+      ? parseInt(req.query.winesPerPage, 10)
+      : 10;
+    const page = req.query.page ? parseInt(req.query.page, 10) : 0;
 
     let filters = {};
-    if (req.query.price_eur) {
+    console.log("red query", req.query);
+    console.log(res.body);
+    if (req.query) {
       filters.price_eur = req.query.price_eur;
-    } else if (req.query.food) {
-      filters.food = req.query.food;
+      filters.food_names = req.query.food_names;
+      filters.vegan = req.query.vegan;
+      //!not working
+      //filters.flavor_profile.sweet = req.query.sweet;
+      //filters.flavor_profile.sweet = req.query.dry;
     }
+    /*     I would say on the sweetness scale, "rather dry wine" would be 1-2, "rather sweet" 3-5. Is it also possible to reduce it to 4 scale points though? would make it easier to draw the line I guess  */
     const { winesList, totalWines } = await WinesDAO.getWines({
       filters,
       page,

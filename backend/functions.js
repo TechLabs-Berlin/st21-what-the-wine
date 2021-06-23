@@ -33,4 +33,14 @@ function randomNumber() {
   return number_;
 }
 
+function testingFunction() {
+  greet = "hwllo world";
+  let byw = "bye";
+  //console.log(greet);
+  //console.log("hello");
+  return greet;
+}
+
 module.exports = cleanJson;
+//module.exports = querySelectors;
+module.exports = testingFunction;
