@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const RecommendationList = () => {
+  const [myData, setMyData] = useState();
+  const navigationLocation = useLocation();
+  // console.log(navigationLocation);
+
+  // const getData = async () => {
+  //   const response = await axios.get("/api/wines");
+  //   setMyData(response.data);
+  // };
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
   return (
     <main>
       <h1>We recommend you</h1>
@@ -17,6 +32,16 @@ const RecommendationList = () => {
           <span>rating</span>
         </div>
       </section>
+
+      {/*
+      <ul>
+        {myData.wines.map((item) => (
+          <li key={item.wine_id}>
+            <Link to="/WineDescription">{item.wine_name}</Link>
+          </li>
+        ))}
+      </ul>
+        */}
     </main>
   );
 };
