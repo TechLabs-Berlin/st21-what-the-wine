@@ -1,27 +1,19 @@
-const ObjectID = require("mongoose").ObjectID;
+const ObjectID = require("mongodb").ObjectID;
 
-//This is a variable to use to store a reference to the db
 let users;
 
-//* injectDB method. (to initially conenct to db)
-//* as soon as server starts, get a reference to the users database.
-//* if it is already filled, then return, but if not already filled, then assign the variable with a reference to the db.
 module.exports = class UsersDAO {
   static async injectDB(connection) {
     if (users) {
       return;
     }
     try {
-      //*connect to the db 'sample_analytics' then access the collection 'customers'.
       users = await connection.db(process.env.USER_NS).collection("customers");
     } catch (e) {
       console.error(`Unable to establish connection in usersDAO: ${e}`);
     }
   }
-  //Then, run the function get
-  //?call this to get a list of all users in the db
-  //?call this method to query/sort
-  //* corresponds to the .get
+
   static async getUsers({
     //can put many queries here..
     //https://docs.mongodb.com/manual/reference/operator/
@@ -42,7 +34,7 @@ module.exports = class UsersDAO {
     }
     let cursor;
     try {
-      cursor = await users.find(query); //*find all users from db that goes along with query that was passed in.
+      cursor = await users.find(query);
     } catch (e) {
       console.error(`Unable to issue find query: ${e}`);
       return { usersList: [], totalNumUsers: 0 };
@@ -63,6 +55,7 @@ module.exports = class UsersDAO {
   }
   static async addUser(user_id, username, name, email) {
     //review takes all the parameters ^^ and creates a user document
+    //todo: add list type to json object value... list for the wines the user saves to their profile.
     try {
       const userDoc = {
         user_id: user_id,
@@ -70,11 +63,29 @@ module.exports = class UsersDAO {
         name: name,
         email: email,
       };
-
-      //console.log(userDoc);
       return await users.insertOne(userDoc);
     } catch (e) {
       console.error(`Unable to post user: ${e}`);
     }
   }
+  static async updateUser(user_id, username, id) {
+    try {
+      const updateResponse = await users.updateOne(
+        { user_id: user_id /* ,  _id: ObjectID(id) */ },
+        //todo: why doesnt ObjectID work?
+        //filter--> match user id with oid
+
+        { $set: { username: username } } //update
+        /*         { $set: { name: name } },
+        { $set: { email: email } } */
+      );
+      return updateResponse;
+    } catch (e) {
+      console.error(`cannot update review due to: ${e}`);
+      return { error: e };
+    }
+  }
 };
+
+//todo: Delete user route
+//todo: Users put on pause as MVP was redefined

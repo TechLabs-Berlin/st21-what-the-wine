@@ -9,8 +9,8 @@ const UserController = require("./users.controller.js");
 router
   .route("/")
   .get(UserController.apiGetUsers)
-  .post(UserController.apiAddUser); //create new user
-//.put(NewUserController.apiUpdateUser) //edit user
-//.delete(NewUserController.apiDeleteUser); //delete user
+  .post(UserController.apiAddUser) //create new user
+  .put(UserController.apiUpdateUser); //edit user
+//.delete(UserController.apiDeleteUser); //delete user
 //*What will be returned at this route ^^, comes from the file 'users.controller.js'
 module.exports = router;

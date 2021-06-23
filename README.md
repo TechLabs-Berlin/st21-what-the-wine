@@ -1,4 +1,10 @@
 
+
+
+
+
+<!-- PROJECT LOGO
+=======
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -24,6 +30,7 @@
 
 
 <!-- PROJECT LOGO -->
+
 <br />
 <p align="center">
   <a href="https://github.com/github_username/repo_name">
@@ -41,7 +48,7 @@
   </p>
 </p>
 
-
+-->
 
 <!-- TABLE OF CONTENTS -->
 
@@ -61,29 +68,39 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#members">Members</a></li>
+
   </ol>
 </details>
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+## About The Project
+<!--
+[![Product Name Screen Shot][product-screenshot]](https://example.com)-->
+
+
+What The Wine is an educative project conceplialized, managed, and implemented by students of TechLabs Berlin.
+<br>
+
 
 
 
 
 ### Built With
 
+
+* []()Express
+* []()React
+* []()Flask
+=======
 * [Express](https://expressjs.com/)
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 * [ReactJs](https://reactjs.org/)
+
 
 
 
@@ -129,21 +146,55 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
+
+
+<!-- CONTRIBUTING
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+-->
+
+<!-- LICENSE -->
+## License
+What the Wine is intended soley for education purposes.
+The web app is not intended for any commercial, monetary, or data sharing use.
+
+
 <!-- CONTACT -->
-## Contact
+## Members
+### Team members:
+* DS Juliana Gomes
+* UX Ebunoluwa Meroyi
+* UX Berenika Godlewska
+* UX Ngoc Anh Doan Thi
+* WD Timea Varju
+* WD Stephanie Mennear
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+### Contributers:
+* DS Marc Hendel
+* WD Franziska Pendzialek
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+### Mentors:
+* Shane Dolley
+* Rodolfo Gobbi
+
+<!--[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
 
-* []()
-* []()
-* []()
 
 # st21-what-the-wine
 
