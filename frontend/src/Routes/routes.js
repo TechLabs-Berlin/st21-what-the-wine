@@ -39,7 +39,7 @@ const Router = () => {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/RecommendationList" component={RecommendationList} />
-        <Route path="/WineDescription" component={WineDescription} />
+        <Route path="/WineDescription/:wine_id" component={WineDescription} />
       </Switch>
       <Footer />
     </BrowserRouter>
