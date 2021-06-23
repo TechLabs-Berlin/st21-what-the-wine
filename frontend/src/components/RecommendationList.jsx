@@ -3,18 +3,22 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const RecommendationList = () => {
-  const [myData, setMyData] = useState();
+  const [myData, setMyData] = useState(null);
   const navigationLocation = useLocation();
   // console.log(navigationLocation);
 
-  // const getData = async () => {
-  //   const response = await axios.get("/api/wines");
-  //   setMyData(response.data);
-  // };
+  // forward the values of the form submission and send a get request with them
+  const getData = async () => {
+    const response = await axios.get("http://localhost:8080/api/wines", {
+      params: navigationLocation.state,
+    });
+    setMyData(response.data);
+    // console.log(response.data);
+  };
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <main>
@@ -33,15 +37,16 @@ const RecommendationList = () => {
         </div>
       </section>
 
-      {/*
       <ul>
-        {myData.wines.map((item) => (
-          <li key={item.wine_id}>
-            <Link to="/WineDescription">{item.wine_name}</Link>
-          </li>
-        ))}
+        {myData &&
+          myData.wines.map((item) => (
+            <li key={item.wine_id}>
+              <Link to={`/WineDescription/${item.wine_id}`}>
+                {item.wine_name}
+              </Link>
+            </li>
+          ))}
       </ul>
-        */}
     </main>
   );
 };

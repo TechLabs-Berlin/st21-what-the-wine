@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const WineDescription = () => {
+const WineDescription = (props) => {
+  const [myData, setMyData] = useState(null);
+  // gets the wine_id through the route
+  const wineId = props.match.params.wine_id;
+
+  const getData = async () => {
+    const response = await axios.get(
+      `http://localhost:8080/api/wines/${wineId}`
+    );
+    setMyData(response.data);
+    console.log(response.data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <main>
       <h1>Sauvignon Blanc</h1>
@@ -18,10 +35,10 @@ const WineDescription = () => {
             Sweetness <span>1</span>
           </li>
           <li>
-            Bitterness <span>3</span>
+            Bitterness <span>2</span>
           </li>
           <li>
-            Acidity <span>2</span>
+            Acidity <span>3</span>
           </li>
         </ul>
       </section>
