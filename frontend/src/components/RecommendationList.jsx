@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
+// comment out the 2 console logs to get a glimpse of what's in there :)
+
 const RecommendationList = () => {
   const [myData, setMyData] = useState(null);
   const navigationLocation = useLocation();
   // console.log(navigationLocation);
 
   // forward the values of the form submission and send a get request with them
+  // localhost will be changed, just here while in development
   const getData = async () => {
     const response = await axios.get("http://localhost:8080/api/wines", {
       params: navigationLocation.state,
