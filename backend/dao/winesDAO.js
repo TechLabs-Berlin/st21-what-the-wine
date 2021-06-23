@@ -1,4 +1,4 @@
-const ObjectID = require("mongodb").ObjectID;
+//const ObjectID = require("mongodb").ObjectID;
 //const querySelectors = require("../functions.js");
 
 let wines;
@@ -38,15 +38,22 @@ function veganSelectors(filters) {
 
   return query;
 }
-//!not working
-/* function wineProfile(filters) {
-  if (filters.flavor_profile.sweet == "true") {
-    query.sweet = { $gte: 1, $lt: 4 };
+
+function profileSelectors(filters) {
+  if (filters.sweet == "true") {
+    //*from docs: to access nested object, dot notation MUST be in quotations
+    query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
   } else if (filters.sweet == "false") {
-    query.flavor_profile.sweet = { $gte: 4, $lte: 5 };
+    query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
   }
   return query;
-} */
+}
+
+function origineSelectors(filters) {
+  if (filters.origin) {
+    query.country_name = { $eq: filters.origin };
+  }
+}
 module.exports = class WinesDAO {
   static async injectDB(connection) {
     if (wines) {
@@ -60,7 +67,7 @@ module.exports = class WinesDAO {
   }
 
   static async getWines({ filters = null, page = 0, winesPerPage = 10 } = {}) {
-    console.log(filters.vegan);
+    //console.log(filters.vegan);
     if (filters) {
       if (filters.price_eur) {
         priceSelectors(filters);
@@ -70,18 +77,18 @@ module.exports = class WinesDAO {
         foodSelectors(filters);
       }
 
-      //todo: set up a filter for dry, sweet, bitter
-
       if (filters.vegan) {
         veganSelectors(filters);
       }
-      //!not working
-      if (filters.flavor_profile.sweet) {
-        wineProfile(filters);
+
+      if (filters.sweet) {
+        profileSelectors(filters);
       }
-      /*    if (filters.dry) {
-        wineProfile(filters);
-      } */
+
+      if (filters.origin) {
+        origineSelectors(filters);
+      }
+      //todo: set up filter for country, wine type
       console.log(query);
       let cursor;
       try {
@@ -109,7 +116,7 @@ module.exports = class WinesDAO {
     }
   }
 
-  static async addWine(req, res, next) {
+  static async addWine(req) {
     try {
       const wineDoc = req;
       //console.log(wineDoc);

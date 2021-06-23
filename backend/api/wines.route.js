@@ -13,6 +13,8 @@ router
 //.put(WineController.apiUpdateWine);
 //todo:  put, delete
 
+//todo: single wine route: grab id, return wine object...
+//todo: api/wines/single
 
 router.route("/seed").get(SeedWines.addSeeds);
 
