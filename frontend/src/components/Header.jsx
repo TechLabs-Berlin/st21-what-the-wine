@@ -36,6 +36,9 @@ const Header = () => {
       <NavLink exact to="/">
         What the wine
       </NavLink>
+      {/* these 2 links are only here while testing in development */}
+      <NavLink to="/RecommendationList">Result page</NavLink>
+      <NavLink to="/WineDescription">Wine details page</NavLink>
     </nav>
   );
 };
