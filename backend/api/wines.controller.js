@@ -2,11 +2,14 @@ const { query } = require("express");
 const WinesDAO = require("../dao/winesDAO.js");
 
 module.exports = class WineController {
+  //? ************************************* */
+  //* ************Get Wine **************** */
+  //* ************************************* */
   static async apiGetWines(req, res) {
     const winesPerPage = req.query.winesPerPage
-      ? parseInt(req.query.winesPerPage, 10)
-      : 10;
-    const page = req.query.page ? parseInt(req.query.page, 10) : 0;
+      ? parseInt(req.query.winesPerPage, 20)
+      : 20;
+    const page = req.query.page ? parseInt(req.query.page, 20) : 0;
 
     let filters = {};
     console.log("red query", req.query);
@@ -17,8 +20,9 @@ module.exports = class WineController {
       filters.vegan = req.query.vegan;
       filters.sweet = req.query.sweet;
       filters.origin = req.query.origin;
+      filters.type = req.query.type;
     }
-    /*     I would say on the sweetness scale, "rather dry wine" would be 1-2, "rather sweet" 3-5. Is it also possible to reduce it to 4 scale points though? would make it easier to draw the line I guess  */
+
     const { winesList, totalWines } = await WinesDAO.getWines({
       filters,
       page,
@@ -34,6 +38,42 @@ module.exports = class WineController {
     res.json(response);
   }
 
+  //? ************************************* */
+  //* ************Single  Wine************* */
+  //* ************************************* */
+  static async apiGetSingleWine(req, res) {
+    //* incase duplicate ids, show them up to 5 (most likely none)
+    const winesPerPage = req.query.winesPerPage
+      ? parseInt(req.query.winesPerPage, 5)
+      : 5;
+    const page = req.query.page ? parseInt(req.query.page, 5) : 0;
+
+    let filter = {};
+    filter.id = parseInt(req.params.id);
+
+    try {
+      const { winesList, totalWines } = await WinesDAO.getSingleWine({
+        filter,
+        page,
+        winesPerPage,
+      });
+      let response = {
+        wines: winesList,
+        page: page,
+        filter: filter,
+        wines_per_page: winesPerPage,
+        total_wines: totalWines,
+      };
+      res.json(response);
+    } catch (e) {
+      console.error(`error : ${e}`);
+    }
+  }
+
+  //? *********************************** */
+  //* ************Add Wine*************** */
+  //* *********************************** */
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   static async apiAddWine(req, res) {
     console.log(req.body);
     try {
@@ -43,6 +83,10 @@ module.exports = class WineController {
       res.status(500).json({ error: e.message });
     }
   }
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? ************************************* */
+  //* ************************************* */
+  //* ************************************* */
 
   //todo: wine update.
   //todo: wine delete
