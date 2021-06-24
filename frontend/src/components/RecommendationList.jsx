@@ -9,19 +9,18 @@ const RecommendationList = () => {
   const navigationLocation = useLocation();
   // console.log(navigationLocation);
 
-  // forward the values of the form submission and send a get request with them
-  // localhost will be changed, just here while in development
-  const getData = async () => {
-    const response = await axios.get("http://localhost:8080/api/wines", {
-      params: navigationLocation.state,
-    });
-    setMyData(response.data);
-    // console.log(response.data);
-  };
-
   useEffect(() => {
+    // forward the values of the form submission and send a get request with them
+    // localhost will be changed, just here while in development
+    const getData = async () => {
+      const response = await axios.get("http://localhost:8080/api/wines", {
+        params: navigationLocation.state,
+      });
+      setMyData(response.data);
+      // console.log(response.data);
+    };
     getData();
-  }, []);
+  }, [navigationLocation.state]);
 
   return (
     <main>
