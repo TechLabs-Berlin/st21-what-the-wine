@@ -18,8 +18,16 @@ const RecommendationForm = () => {
         flavor_profile: "",
       }}
       onSubmit={(values) => {
+        const params = new URLSearchParams();
+        for (let key in values) {
+          params.append(key, values[key]);
+        }
+
         // redirects to a new page, forwards the form values
-        navigationHistory.push("/RecommendationList", values);
+        navigationHistory.push({
+          pathname: "/RecommendationList",
+          search: params.toString(),
+        });
       }}
     >
       <Form>
@@ -131,4 +139,4 @@ const RecommendationForm = () => {
 
 export default RecommendationForm;
 
-// This component includes the recommendation form with the basic filters
+// This component includes the recommendation form
