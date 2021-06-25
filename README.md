@@ -115,7 +115,7 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-   
+
  #### Express app  
 2. Install NPM packages
    ```sh
@@ -133,7 +133,7 @@ To get a local copy up and running follow these simple steps.
    npm start
    ```
  #### Flask app
-4. 
+4.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -170,7 +170,6 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 <!-- CONTACT -->
 ## Members
 ### Team members:
-* DS Juliana Gomes
 * UX Ebunoluwa Meroyi
 * UX Berenika Godlewska
 * UX Ngoc Anh Doan Thi
@@ -179,7 +178,9 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 
 ### Contributers:
 * DS Marc Hendel
+* DS Juliana Gomes
 * WD Franziska Pendzialek
+
 
 ### Mentors:
 * Shane Dolley
@@ -194,11 +195,11 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 
 
 
-
+<!--
 
 # st21-what-the-wine
 
-## Team members: 
+## Team members:
 * DS Juliana Gomes
 * DS Marc Hendel
 * UX Ebunoluwa Meroyi
@@ -207,10 +208,10 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 * WD Stephanie Mennear
 * WD Timea Varju
 
-## Mentors: 
+## Mentors:
 * Shane Dolley
 * Rodolfo Gobbi
-
+-->
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
