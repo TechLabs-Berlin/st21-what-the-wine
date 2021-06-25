@@ -15,6 +15,7 @@ const RecommendationList = () => {
       queryString.forEach(function (value, key) {
         queryObject[key] = value;
       });
+      // console.log(queryObject);
 
       // --ask backend if it's ok with the frontend passing every value as a string
       // queryObject.price_eur = queryObject.price_eur.split(",");

@@ -23,7 +23,8 @@ const RecommendationForm = () => {
   return (
     <Formik
       initialValues={{
-        with_food: "",
+        food_pairing: "",
+        food_name: "",
         price_eur: "",
         vegan: "",
         wine_type: "",
@@ -51,7 +52,7 @@ const RecommendationForm = () => {
             with food
             <Field
               type="radio"
-              name="with_food"
+              name="food_pairing"
               value="true"
               checked={withFood}
               onClick={handleWithFood}
@@ -61,7 +62,7 @@ const RecommendationForm = () => {
             without food
             <Field
               type="radio"
-              name="without_food"
+              name="food_pairing"
               value="false"
               checked={withoutFood}
               onClick={handleWithoutFood}
@@ -72,7 +73,7 @@ const RecommendationForm = () => {
             <>
               <label>
                 Please specify...
-                <Field as="select" name="food_type">
+                <Field as="select" name="food_name">
                   <option value="pasta">Pasta</option>
                   <option value="pork">Pork</option>
                   <option value="cheese">Cheese</option>
