@@ -22,8 +22,10 @@ const WineDescription = (props) => {
     <main>
       <div>
         <div>
-          <h1>Sauvignon Blanc</h1>
-          <p>Les Jamelles</p>
+          <h1>
+            <span>Les Jamelles</span>
+            Sauvignon Blanc
+          </h1>
         </div>
         <div>price</div>
       </div>
