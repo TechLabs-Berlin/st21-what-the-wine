@@ -19,11 +19,12 @@ const RecommendationForm = () => {
       }}
       onSubmit={(values) => {
         const params = new URLSearchParams();
+        // check if there are filters selected, if yes, add it to the URLSearchParams object
         for (let key in values) {
-          params.append(key, values[key]);
+          values[key] && params.append(key, values[key]);
         }
 
-        // redirects to a new page, forwards the form values
+        // redirect to a new page, put the form values in URL query string
         navigationHistory.push({
           pathname: "/RecommendationList",
           search: params.toString(),
