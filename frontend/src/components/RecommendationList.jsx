@@ -4,6 +4,7 @@ import axios from "axios";
 
 const RecommendationList = () => {
   const [myData, setMyData] = useState(null);
+  const [filters, setFilters] = useState({});
   const navigationLocation = useLocation();
 
   useEffect(() => {
@@ -15,7 +16,6 @@ const RecommendationList = () => {
       queryString.forEach(function (value, key) {
         queryObject[key] = value;
       });
-      // console.log(queryObject);
 
       // --ask backend if it's ok with the frontend passing every value as a string
       // queryObject.price_eur = queryObject.price_eur.split(",");
@@ -27,38 +27,64 @@ const RecommendationList = () => {
         params: queryObject,
       });
       setMyData(response.data);
-      // console.log(response.data);
+      setFilters(queryObject);
     };
     getData();
   }, [navigationLocation.search]);
 
   return (
     <main>
-      <h1>We recommend you</h1>
-      <p>
-        <span>a dry,</span>
-        <span>white wine</span>
-        <span>from France</span>
-      </p>
+      <figure>
+        <p>Your search filters:</p>
 
-      <section>
-        <h2>such as</h2>
-        <div>
+        {filters.food_name && <p>{filters.food_name}</p>}
+        {filters.price_eur && filters.price_eur.includes("low") && <p>€</p>}
+        {filters.price_eur && filters.price_eur.includes("med") && <p>€€</p>}
+        {filters.price_eur && filters.price_eur.includes("high") && <p>€€€</p>}
+        {filters.price_eur && filters.price_eur.includes("exp") && <p>€€€€</p>}
+        {filters.vegan === "true" && <p>vegan</p>}
+        {filters.wine_type && <p>{filters.wine_type}</p>}
+        {filters.country_name && <p>{filters.country_name}</p>}
+        {filters.flavor_profile && filters.flavor_profile.includes("dry") && (
+          <p>rather dry</p>
+        )}
+        {filters.flavor_profile && filters.flavor_profile.includes("sweet") && (
+          <p>rather sweet</p>
+        )}
+        {filters.flavor_profile &&
+          filters.flavor_profile.includes("acidic") && <p>rather acidic</p>}
+      </figure>
+
+      <h1>We recommend</h1>
+
+      {/* considering using a UI-kit for this element */}
+      <div>
+        <label>
           sorted by
-          <span>rating</span>
-        </div>
-      </section>
+          <select name="sort">
+            <option value="price">price</option>
+            <option value="origin">origin</option>
+          </select>
+        </label>
+      </div>
 
-      <ul>
-        {myData &&
-          myData.wines.map((item) => (
+      {myData &&
+        myData.wines.map((item) => (
+          <ul>
             <li key={item.wine_id}>
-              <Link to={`/WineDescription/${item.wine_id}`}>
-                {item.wine_name}
-              </Link>
+              <img src="" alt=""></img>
+              <div>
+                <div>
+                  <p>{item.winery_name}</p>
+                  <Link to={`/WineDescription/${item.wine_id}`}>
+                    {item.wine_name}
+                  </Link>
+                </div>
+                <div>{item.price_eur}€</div>
+              </div>
             </li>
-          ))}
-      </ul>
+          </ul>
+        ))}
     </main>
   );
 };

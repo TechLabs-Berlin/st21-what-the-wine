@@ -130,6 +130,7 @@ const RecommendationForm = () => {
                 <label>
                   Please select
                   <Field as="select" name="wine_type">
+                    <option value="">Please select</option>
                     <option value="red">Red</option>
                     <option value="white">White</option>
                     <option value="rose">Rose</option>
@@ -144,6 +145,7 @@ const RecommendationForm = () => {
                 <label>
                   Please select
                   <Field as="select" name="country_name">
+                    <option value="">Please select</option>
                     <option value="France">France</option>
                     <option value="Germany">Germany</option>
                     <option value="Italy">Italy</option>
