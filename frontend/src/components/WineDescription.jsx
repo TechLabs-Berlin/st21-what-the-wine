@@ -20,48 +20,58 @@ const WineDescription = (props) => {
 
   return (
     <main>
-      <h1>Sauvignon Blanc</h1>
-      <p>Les Jamelles</p>
+      <div>
+        <div>
+          <h1>Sauvignon Blanc</h1>
+          <p>Les Jamelles</p>
+        </div>
+        <div>price</div>
+      </div>
 
       <figure>
         <img src="" alt=""></img>
-        <div>€€</div>
+        <div>vegan icon</div>
       </figure>
 
-      <section>
-        <h2>Flavour profile</h2>
-        <ul>
-          <li>
-            Sweetness <span>1</span>
-          </li>
-          <li>
-            Bitterness <span>2</span>
-          </li>
-          <li>
-            Acidity <span>3</span>
-          </li>
-        </ul>
-      </section>
+      <div>
+        <section>
+          <h2>Type</h2>
+          <p>White</p>
+        </section>
 
-      <section>
-        <h2>Type</h2>
-        <p>White</p>
-      </section>
+        <section>
+          <h2>Origin</h2>
+          <p>France</p>
+        </section>
 
-      <section>
-        <h2>Origin</h2>
-        <p>France</p>
-      </section>
+        <section>
+          <h2>Food pairings</h2>
+          <ul>
+            <li>Pasta</li>
+            <li>Poultry</li>
+            <li>Vegetarian</li>
+            <li>Fish</li>
+          </ul>
+        </section>
+      </div>
 
-      <section>
-        <h2>Food pairings</h2>
-        <ul>
-          <li>Pasta</li>
-          <li>Poultry</li>
-          <li>Vegetarian</li>
-          <li>Fish</li>
-        </ul>
-      </section>
+      <div>
+        <section>
+          <h2>Flavour profile</h2>
+          <div>
+            <div>dry</div>
+            <div>sweet</div>
+          </div>
+          <div>
+            <div>less bitter</div>
+            <div>more bitter</div>
+          </div>
+          <div>
+            <div>less acidic</div>
+            <div>more acidic</div>
+          </div>
+        </section>
+      </div>
     </main>
   );
 };
