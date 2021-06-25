@@ -3,14 +3,27 @@ import { useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 
 const RecommendationForm = () => {
+  const [withFood, setWithFood] = useState(false);
+  const [withoutFood, setWithoutFood] = useState(false);
   const [moreFilters, setMoreFilters] = useState(false);
-  const onToggleMoreFilters = () => setMoreFilters(!moreFilters);
   const navigationHistory = useHistory();
+
+  const handleWithFood = () => {
+    setWithFood(!withFood);
+    setWithoutFood(false);
+  };
+
+  const handleWithoutFood = () => {
+    setWithFood(false);
+    setWithoutFood(!withoutFood);
+  };
+
+  const onToggleMoreFilters = () => setMoreFilters(!moreFilters);
 
   return (
     <Formik
       initialValues={{
-        foodpairing: "",
+        with_food: "",
         price_eur: "",
         vegan: "",
         wine_type: "",
@@ -36,12 +49,39 @@ const RecommendationForm = () => {
           <legend>I am having wine</legend>
           <label>
             with food
-            <Field type="radio" name="foodpairing" value="true" />
+            <Field
+              type="radio"
+              name="with_food"
+              value="true"
+              checked={withFood}
+              onClick={handleWithFood}
+            />
           </label>
           <label>
             without food
-            <Field type="radio" name="foodpairing" value="false" />
+            <Field
+              type="radio"
+              name="without_food"
+              value="false"
+              checked={withoutFood}
+              onClick={handleWithoutFood}
+            />
           </label>
+
+          {withFood && (
+            <>
+              <label>
+                Please specify...
+                <Field as="select" name="food_type">
+                  <option value="pasta">Pasta</option>
+                  <option value="pork">Pork</option>
+                  <option value="cheese">Cheese</option>
+                  <option value="beef">Beef</option>
+                  <option value="fish">Fish</option>
+                </Field>
+              </label>
+            </>
+          )}
         </fieldset>
 
         {/* we should leave the values written out to be more readable, e.g. "medium" */}
