@@ -2,32 +2,35 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
+// take out the query string from the URL and create an object out of those values
+const queryParamsToObject = (params) => {
+  const queryString = new URLSearchParams(params);
+  const queryObject = {};
+  queryString.forEach(function (value, key) {
+    queryObject[key] = value;
+  });
+  return queryObject;
+};
+
 const RecommendationList = () => {
   const [myData, setMyData] = useState(null);
-  const [filters, setFilters] = useState({});
   const navigationLocation = useLocation();
 
-  useEffect(() => {
-    // localhost will be changed, just here while in development
-    const getData = async () => {
-      // take out the query string from the URL and create an object out of those values
-      const queryString = new URLSearchParams(navigationLocation.search);
-      const queryObject = {};
-      queryString.forEach(function (value, key) {
-        queryObject[key] = value;
-      });
+  const filters = queryParamsToObject(navigationLocation.search);
 
+  useEffect(() => {
+    const getData = async () => {
       // --ask backend if it's ok with the frontend passing every value as a string
       // queryObject.price_eur = queryObject.price_eur.split(",");
       // queryObject.wine_type = queryObject.wine_type.split(",");
       // queryObject.origin = queryObject.origin.split(",");
       // queryObject.flavor_profile = queryObject.flavor_profile.split(",");
 
+      // localhost will be changed, just here while in development
       const response = await axios.get("http://localhost:8080/api/wines", {
-        params: queryObject,
+        params: filters,
       });
       setMyData(response.data);
-      setFilters(queryObject);
     };
     getData();
   }, [navigationLocation.search]);
@@ -68,9 +71,9 @@ const RecommendationList = () => {
         </label>
       </div>
 
-      {myData &&
-        myData.wines.map((item) => (
-          <ul>
+      <ul>
+        {myData &&
+          myData.wines.map((item) => (
             <li key={item.wine_id}>
               <img src="" alt=""></img>
               <div>
@@ -83,8 +86,8 @@ const RecommendationList = () => {
                 <div>{item.price_eur}€</div>
               </div>
             </li>
-          </ul>
-        ))}
+          ))}
+      </ul>
     </main>
   );
 };
