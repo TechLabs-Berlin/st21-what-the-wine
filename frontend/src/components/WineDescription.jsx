@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const WineDescription = (props) => {
-  const [myData, setMyData] = useState(null);
-  const wineId = props.match.params.wine_id;
+  const [singleWineData, setSingleWineData] = useState(null);
+  const { wine_id } = useParams();
 
   useEffect(() => {
     // localhost will be changed, just here while in development
     const getData = async () => {
       const response = await axios.get(
-        `http://localhost:8080/api/wines/${wineId}`
+        `http://localhost:8080/api/wines/${wine_id}`
       );
-      setMyData(response.data);
-      // comment out the console log to get a glimpse of what's in there :)
+      setSingleWineData(response.data);
       // console.log(response.data);
     };
     getData();
-  }, [wineId]);
+  }, [wine_id]);
 
   return (
     <main>
