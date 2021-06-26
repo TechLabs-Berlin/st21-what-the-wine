@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import { WINE_QUERY_PARAMS, PRICE, VEGAN, FLAVOR_PROFILE } from "../constants";
 
 // take out the query string from the URL and create an object out of those values
 const queryParamsToObject = (params) => {
@@ -13,24 +14,17 @@ const queryParamsToObject = (params) => {
 };
 
 const RecommendationList = () => {
-  const [myData, setMyData] = useState(null);
+  const [winesData, setWinesData] = useState(null);
   const navigationLocation = useLocation();
-
   const filters = queryParamsToObject(navigationLocation.search);
 
   useEffect(() => {
     const getData = async () => {
-      // --ask backend if it's ok with the frontend passing every value as a string
-      // queryObject.price_eur = queryObject.price_eur.split(",");
-      // queryObject.wine_type = queryObject.wine_type.split(",");
-      // queryObject.origin = queryObject.origin.split(",");
-      // queryObject.flavor_profile = queryObject.flavor_profile.split(",");
-
       // localhost will be changed, just here while in development
       const response = await axios.get("http://localhost:8080/api/wines", {
         params: filters,
       });
-      setMyData(response.data);
+      setWinesData(response.data);
     };
     getData();
   }, [navigationLocation.search]);
@@ -40,22 +34,31 @@ const RecommendationList = () => {
       <figure>
         <p>Your search filters:</p>
 
-        {filters.food_name && <p>{filters.food_name}</p>}
-        {filters.price_eur && filters.price_eur.includes("low") && <p>€</p>}
-        {filters.price_eur && filters.price_eur.includes("med") && <p>€€</p>}
-        {filters.price_eur && filters.price_eur.includes("high") && <p>€€€</p>}
-        {filters.price_eur && filters.price_eur.includes("exp") && <p>€€€€</p>}
-        {filters.vegan === "true" && <p>vegan</p>}
-        {filters.wine_type && <p>{filters.wine_type}</p>}
-        {filters.country_name && <p>{filters.country_name}</p>}
-        {filters.flavor_profile && filters.flavor_profile.includes("dry") && (
-          <p>rather dry</p>
+        {filters[WINE_QUERY_PARAMS.foodName] && (
+          <p>{filters[WINE_QUERY_PARAMS.foodName]}</p>
         )}
-        {filters.flavor_profile && filters.flavor_profile.includes("sweet") && (
-          <p>rather sweet</p>
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.low) && <p>€</p>}
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.medium) && <p>€€</p>}
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.high) && <p>€€€</p>}
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.expensive) && (
+          <p>€€€€</p>
         )}
-        {filters.flavor_profile &&
-          filters.flavor_profile.includes("acidic") && <p>rather acidic</p>}
+        {filters[WINE_QUERY_PARAMS.vegan] === VEGAN.true && <p>vegan</p>}
+        {filters[WINE_QUERY_PARAMS.wineType] && (
+          <p>{filters[WINE_QUERY_PARAMS.wineType]}</p>
+        )}
+        {filters[WINE_QUERY_PARAMS.countryName] && (
+          <p>{filters[WINE_QUERY_PARAMS.countryName]}</p>
+        )}
+        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+          FLAVOR_PROFILE.dry
+        ) && <p>rather dry</p>}
+        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+          FLAVOR_PROFILE.sweet
+        ) && <p>rather sweet</p>}
+        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+          FLAVOR_PROFILE.acidic
+        ) && <p>rather acidic</p>}
       </figure>
 
       <h1>We recommend</h1>
@@ -72,8 +75,8 @@ const RecommendationList = () => {
       </div>
 
       <ul>
-        {myData &&
-          myData.wines.map((item) => (
+        {winesData &&
+          winesData.wines.map((item) => (
             <li key={item.wine_id}>
               <img src="" alt=""></img>
               <div>
