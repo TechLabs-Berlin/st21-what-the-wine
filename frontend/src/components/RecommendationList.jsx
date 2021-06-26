@@ -24,7 +24,7 @@ const RecommendationList = () => {
       const response = await axios.get(
         process.env.REACT_APP_API_ENDPOINT_GET_WINES,
         {
-          params: filters,
+          params: queryParamsToObject(navigationLocation.search),
         }
       );
       setWinesData(response.data);
