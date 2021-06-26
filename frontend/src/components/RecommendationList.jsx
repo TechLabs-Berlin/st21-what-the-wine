@@ -20,7 +20,6 @@ const RecommendationList = () => {
 
   useEffect(() => {
     const getData = async () => {
-      // localhost will be changed, just here while in development
       const response = await axios.get(
         process.env.REACT_APP_API_ENDPOINT_GET_WINES,
         {

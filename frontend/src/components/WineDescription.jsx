@@ -7,7 +7,6 @@ const WineDescription = (props) => {
   const { wine_id } = useParams();
 
   useEffect(() => {
-    // localhost will be changed, just here while in development
     const getData = async () => {
       const response = await axios.get(
         `${process.env.REACT_APP_API_ENDPOINT_GET_WINES}/single/${wine_id}`
