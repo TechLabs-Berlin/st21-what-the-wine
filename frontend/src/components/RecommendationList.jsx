@@ -1,51 +1,95 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import { WINE_QUERY_PARAMS, PRICE, VEGAN, FLAVOR_PROFILE } from "../constants";
 
-// comment out the 2 console logs to get a glimpse of what's in there :)
+// take out the query string from the URL and create an object out of those values
+const queryParamsToObject = (params) => {
+  const queryString = new URLSearchParams(params);
+  const queryObject = {};
+  queryString.forEach(function (value, key) {
+    queryObject[key] = value;
+  });
+  return queryObject;
+};
 
 const RecommendationList = () => {
-  const [myData, setMyData] = useState(null);
+  const [winesData, setWinesData] = useState(null);
   const navigationLocation = useLocation();
-  // console.log(navigationLocation);
+  const filters = queryParamsToObject(navigationLocation.search);
 
   useEffect(() => {
-    // forward the values of the form submission and send a get request with them
-    // localhost will be changed, just here while in development
     const getData = async () => {
-      const response = await axios.get("http://localhost:8080/api/wines", {
-        params: navigationLocation.state,
-      });
-      setMyData(response.data);
-      // console.log(response.data);
+      const response = await axios.get(
+        process.env.REACT_APP_API_ENDPOINT_GET_WINES,
+        {
+          params: queryParamsToObject(navigationLocation.search),
+        }
+      );
+      setWinesData(response.data);
     };
     getData();
-  }, [navigationLocation.state]);
+  }, [navigationLocation.search]);
 
   return (
     <main>
-      <h1>We recommend you</h1>
-      <p>
-        <span>a dry,</span>
-        <span>white wine</span>
-        <span>from France</span>
-      </p>
+      <figure>
+        <p>Your search filters:</p>
 
-      <section>
-        <h2>such as</h2>
-        <div>
+        {filters[WINE_QUERY_PARAMS.foodName] && (
+          <p>{filters[WINE_QUERY_PARAMS.foodName]}</p>
+        )}
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.low) && <p>€</p>}
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.medium) && <p>€€</p>}
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.high) && <p>€€€</p>}
+        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.expensive) && (
+          <p>€€€€</p>
+        )}
+        {filters[WINE_QUERY_PARAMS.vegan] === VEGAN.true && <p>vegan</p>}
+        {filters[WINE_QUERY_PARAMS.wineType] && (
+          <p>{filters[WINE_QUERY_PARAMS.wineType]}</p>
+        )}
+        {filters[WINE_QUERY_PARAMS.countryName] && (
+          <p>{filters[WINE_QUERY_PARAMS.countryName]}</p>
+        )}
+        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+          FLAVOR_PROFILE.dry
+        ) && <p>rather dry</p>}
+        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+          FLAVOR_PROFILE.sweet
+        ) && <p>rather sweet</p>}
+        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+          FLAVOR_PROFILE.acidic
+        ) && <p>rather acidic</p>}
+      </figure>
+
+      <h1>We recommend</h1>
+
+      {/* considering using a UI-kit for this element */}
+      <div>
+        <label>
           sorted by
-          <span>rating</span>
-        </div>
-      </section>
+          <select name="sort">
+            <option value="price">price</option>
+            <option value="origin">origin</option>
+          </select>
+        </label>
+      </div>
 
       <ul>
-        {myData &&
-          myData.wines.map((item) => (
+        {winesData &&
+          winesData.wines.map((item) => (
             <li key={item.wine_id}>
-              <Link to={`/WineDescription/${item.wine_id}`}>
-                {item.wine_name}
-              </Link>
+              <img src="" alt=""></img>
+              <div>
+                <div>
+                  <p>{item.winery_name}</p>
+                  <Link to={`/WineDescription/${item.wine_id}`}>
+                    {item.wine_name}
+                  </Link>
+                </div>
+                <div>{item.price_eur}€</div>
+              </div>
             </li>
           ))}
       </ul>

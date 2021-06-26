@@ -19,8 +19,10 @@ const Landing = () => {
         </p>
       </figure>
       <main>
-        <h1>Cheers!</h1>
-        <p>Let's find your perfect wine</p>
+        <h1>
+          <span>Cheers!</span>
+          Let's find your perfect wine
+        </h1>
         <RecommendationForm />
       </main>
     </>
