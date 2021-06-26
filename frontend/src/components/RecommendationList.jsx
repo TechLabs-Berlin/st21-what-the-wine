@@ -21,9 +21,12 @@ const RecommendationList = () => {
   useEffect(() => {
     const getData = async () => {
       // localhost will be changed, just here while in development
-      const response = await axios.get("http://localhost:8080/api/wines", {
-        params: filters,
-      });
+      const response = await axios.get(
+        process.env.REACT_APP_API_ENDPOINT_GET_WINES,
+        {
+          params: filters,
+        }
+      );
       setWinesData(response.data);
     };
     getData();

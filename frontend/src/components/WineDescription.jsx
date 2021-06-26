@@ -10,7 +10,7 @@ const WineDescription = (props) => {
     // localhost will be changed, just here while in development
     const getData = async () => {
       const response = await axios.get(
-        `http://localhost:8080/api/wines/${wine_id}`
+        `${process.env.REACT_APP_API_ENDPOINT_GET_WINES}/single/${wine_id}`
       );
       setSingleWineData(response.data);
       // console.log(response.data);
