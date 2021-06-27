@@ -1,6 +1,9 @@
-const ObjectID = require("mongodb").ObjectID;
+//const ObjectID = require("mongodb").ObjectID;
 //const querySelectors = require("../functions.js");
 
+//? ************************************* */
+//* ************Declarations************* */
+//* ************************************* */
 let wines;
 let query = {};
 //todo: figure out HOW to put these functions in the function.js file!
@@ -17,12 +20,11 @@ function priceSelectors(filters) {
       query.price_eur = { $gte: 75 };
     }
   }
-  //console.log("in funciton: ", query);
+
   return query;
 }
 function foodSelectors(filters) {
   if ("food_names" in filters) {
-    //! statement untrue for now with new changes: This filter is set up in the mongodb atlas interface, creating an index.
     query.food_names = { $eq: filters["food_names"] };
     return query;
   }
@@ -38,15 +40,51 @@ function veganSelectors(filters) {
 
   return query;
 }
-//!not working
-/* function wineProfile(filters) {
-  if (filters.flavor_profile.sweet == "true") {
-    query.sweet = { $gte: 1, $lt: 4 };
+
+function profileSelectors(filters) {
+  if (filters.sweet == "true") {
+    //*from docs: to access nested object, dot notation MUST be in quotations
+    query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
   } else if (filters.sweet == "false") {
-    query.flavor_profile.sweet = { $gte: 4, $lte: 5 };
+    query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
   }
   return query;
-} */
+}
+
+function origineSelectors(filters) {
+  if (filters.origin) {
+    query.country_name = { $eq: filters.origin };
+  }
+}
+
+function typeSelectors(filters) {
+  if (filters.type == "red") {
+    //*text cannot work on a specific property. Had to set up an index in atlas for it to work. $Text searches the db grape_names via the index set up in atlas
+    query = {
+      $text: {
+        $search:
+          "Aragonez|Barbera|Blaufränkisch|Cabernet|Carignan|Castelao|Corvina|Dolcetto|Grenache|Malbec|Merlot|Montepulciano|Mourvedre|Nebbiolo|Noir|Pinotage|Primitivo|Shiraz|Shiraz/Syrah|Sangiovese|Tempranillo|Touriga|Trebbiano|Zinfandel|",
+      },
+    };
+  } else if (filters.type == "white") {
+    query = {
+      $text: {
+        $search:
+          "Arneis|Aligoté|Blanc|Boal Branco|Chardonnay|Chenin|Cortese|Furmint|Gris|Malmsey|Marsanne|Muscadelle|Riesling|Roussanne|Sercial|Terrantez|Trebbiano|Verdelho|",
+      },
+    };
+  } else if (filters.type == "rose") {
+    //!
+    query = { $text: { $search: "Blanc" } };
+  } else if (filters.type == "sparkling") {
+    //!Chardonnay|Pinot Noir|Pinot Meunier
+    query = { $text: { $search: "Blanc" } };
+  }
+}
+//? ************************************* */
+//* *********End Declarations************ */
+//* ************************************* */
+
 module.exports = class WinesDAO {
   static async injectDB(connection) {
     if (wines) {
@@ -59,9 +97,15 @@ module.exports = class WinesDAO {
     }
   }
 
-  static async getWines({ filters = null, page = 0, winesPerPage = 10 } = {}) {
-    console.log(filters.vegan);
+  //? ************************************* */
+  //* ************Get Wine***************** */
+  //* ************************************* */
+  static async getWines({ filters = null, page = 0, winesPerPage = 20 } = {}) {
     if (filters) {
+      //*tblshooting, cannot add text filter to specific property, so this must be in first order, to be first entered in the empty query object
+      if (filters.type) {
+        typeSelectors(filters);
+      }
       if (filters.price_eur) {
         priceSelectors(filters);
       }
@@ -70,19 +114,21 @@ module.exports = class WinesDAO {
         foodSelectors(filters);
       }
 
-      //todo: set up a filter for dry, sweet, bitter
-
       if (filters.vegan) {
         veganSelectors(filters);
       }
-      //!not working
-      if (filters.flavor_profile.sweet) {
-        wineProfile(filters);
+
+      if (filters.sweet) {
+        profileSelectors(filters);
       }
-      /*    if (filters.dry) {
-        wineProfile(filters);
-      } */
-      console.log(query);
+
+      if (filters.origin) {
+        origineSelectors(filters);
+      }
+
+      //todo: figure out how to clear query once get is sent.
+      //? for the winetyp/text searches: https://docs.mongodb.com/manual/text-search/
+
       let cursor;
       try {
         cursor = await wines.find(query);
@@ -94,13 +140,16 @@ module.exports = class WinesDAO {
       const displayCursor = cursor
         .limit(winesPerPage)
         .skip(winesPerPage * page);
-      //console.log(displayCursor);
+
       try {
         const winesList = await displayCursor.toArray();
-        //console.log(winesList);
-        //!console.log("wine list: ", winesList);
+
         const totalWines = await wines.countDocuments(query);
         console.log("total wines:", totalWines);
+        //*tblshooting, empty the query here..
+        //todo: test more usecases for problems
+        query = {};
+
         return { winesList, totalWines };
       } catch (e) {
         console.error(`Unable to convert cursor to array: ${e}`);
@@ -108,15 +157,54 @@ module.exports = class WinesDAO {
       }
     }
   }
-
-  static async addWine(req, res, next) {
+  //? ************************************* */
+  //* ************Add Wine***************** */
+  //* ************************************* */
+  static async addWine(req) {
     try {
       const wineDoc = req;
-      //console.log(wineDoc);
 
       return await wines.insertOne(wineDoc);
     } catch (e) {
       console.error(`Unabe to post wine: ${e}`);
+    }
+  }
+  //? ************************************* */
+  //* ************Single Wine************** */
+  //* ************************************* */
+  static async getSingleWine({
+    filter = null,
+    page = 0,
+    winesPerPage = 5,
+  } = {}) {
+    console.log("filter: ", filter);
+    if (filter) {
+      query.wine_id = { $eq: filter.id };
+    }
+
+    console.log("query:", query);
+    let cursor;
+    try {
+      cursor = await wines.find(query);
+    } catch (e) {
+      console.error(`Unable to issue find query: ${e}`);
+      return { singleWine: 0 };
+    }
+    const displayCursor = cursor.limit(winesPerPage).skip(winesPerPage * page);
+
+    try {
+      const winesList = await displayCursor.toArray();
+      console.log(winesList);
+      const totalWines = await wines.countDocuments(query);
+      console.log("total wines:", totalWines);
+      //*tblshooting, empty the query here..
+      //todo: test more usecases for problems
+      query = {};
+
+      return { winesList, totalWines };
+    } catch (e) {
+      console.error(`Unable to convert cursor to array: ${e}`);
+      return { wineList: [], totalWines: 0 };
     }
   }
 };

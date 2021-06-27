@@ -2,24 +2,27 @@ const { query } = require("express");
 const WinesDAO = require("../dao/winesDAO.js");
 
 module.exports = class WineController {
-  static async apiGetWines(req, res, next) {
+  //? ************************************* */
+  //* ************Get Wine **************** */
+  //* ************************************* */
+  static async apiGetWines(req, res) {
     const winesPerPage = req.query.winesPerPage
-      ? parseInt(req.query.winesPerPage, 10)
-      : 10;
-    const page = req.query.page ? parseInt(req.query.page, 10) : 0;
+      ? parseInt(req.query.winesPerPage, 20)
+      : 20;
+    const page = req.query.page ? parseInt(req.query.page, 20) : 0;
 
     let filters = {};
     console.log("red query", req.query);
-    console.log(res.body);
+
     if (req.query) {
       filters.price_eur = req.query.price_eur;
       filters.food_names = req.query.food_names;
       filters.vegan = req.query.vegan;
-      //!not working
-      //filters.flavor_profile.sweet = req.query.sweet;
-      //filters.flavor_profile.sweet = req.query.dry;
+      filters.sweet = req.query.sweet;
+      filters.origin = req.query.origin;
+      filters.type = req.query.type;
     }
-    /*     I would say on the sweetness scale, "rather dry wine" would be 1-2, "rather sweet" 3-5. Is it also possible to reduce it to 4 scale points though? would make it easier to draw the line I guess  */
+
     const { winesList, totalWines } = await WinesDAO.getWines({
       filters,
       page,
@@ -35,27 +38,56 @@ module.exports = class WineController {
     res.json(response);
   }
 
-  static async apiAddWine(req, res, next) {
+  //? ************************************* */
+  //* ************Single  Wine************* */
+  //* ************************************* */
+  static async apiGetSingleWine(req, res) {
+    //* incase duplicate ids, show them up to 5 (most likely none)
+    const winesPerPage = req.query.winesPerPage
+      ? parseInt(req.query.winesPerPage, 5)
+      : 5;
+    const page = req.query.page ? parseInt(req.query.page, 5) : 0;
+
+    let filter = {};
+    filter.id = parseInt(req.params.id);
+
     try {
-      const name = req.body.name;
-      const country = req.body.country;
-      const food = req.body.food;
-      const price = req.body.price;
-      const type = req.body.type;
-      const vegan = req.body.vegan;
-      const image_url = req.body.image_url;
-      const wineProfile = {
-        bitter: req.body.wineProfile.bitter,
-        sweet: req.body.wineProfile.sweet,
-        acid: req.body.wineProfile.acid,
+      const { winesList, totalWines } = await WinesDAO.getSingleWine({
+        filter,
+        page,
+        winesPerPage,
+      });
+      let response = {
+        wines: winesList,
+        page: page,
+        filter: filter,
+        wines_per_page: winesPerPage,
+        total_wines: totalWines,
       };
+      res.json(response);
+    } catch (e) {
+      console.error(`error : ${e}`);
+    }
+  }
+
+  //? *********************************** */
+  //* ************Add Wine*************** */
+  //* *********************************** */
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  static async apiAddWine(req, res) {
+    console.log(req.body);
+    try {
       const WineResponse = await WinesDAO.addWine(req.body);
       res.json({ status: "sucess" });
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
   }
-  //todo: wine get/query.
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //? ************************************* */
+  //* ************************************* */
+  //* ************************************* */
+
   //todo: wine update.
   //todo: wine delete
 };

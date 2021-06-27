@@ -15,7 +15,7 @@ module.exports = class SeedWines {
       console.log(`Unable to establish connection in winesDAO: ${e}`);
     }
   }
-  static async addSeeds(req, res, next) {
+  static async addSeeds(req, res) {
     await axios
       .get(process.env.WINE_DATA)
       .then(function (response) {
