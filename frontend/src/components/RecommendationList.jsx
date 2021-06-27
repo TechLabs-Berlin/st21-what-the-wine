@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { WINE_QUERY_PARAMS, PRICE, VEGAN, FLAVOR_PROFILE } from "../constants";
+import { ReactComponent as VeganIcon } from "../assets/vegan.svg";
 
 // take out the query string from the URL and create an object out of those values
 const queryParamsToObject = (params) => {
@@ -27,6 +28,7 @@ const RecommendationList = () => {
         }
       );
       setWinesData(response.data);
+      // console.log(response.data);
     };
     getData();
   }, [navigationLocation.search]);
@@ -81,6 +83,7 @@ const RecommendationList = () => {
           winesData.wines.map((item) => (
             <li key={item.wine_id}>
               <img src="" alt=""></img>
+              {item.vegan === true && <VeganIcon />}
               <div>
                 <div>
                   <p>{item.winery_name}</p>

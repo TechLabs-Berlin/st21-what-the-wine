@@ -11,6 +11,8 @@ import {
   COUNTRY_NAME,
   FLAVOR_PROFILE,
 } from "../constants";
+import { ReactComponent as SearchIcon } from "../assets/search.svg";
+import { ReactComponent as DropdownIcon } from "../assets/dropdown.svg";
 
 const RecommendationForm = () => {
   const [withFood, setWithFood] = useState(false);
@@ -81,9 +83,11 @@ const RecommendationForm = () => {
 
           {withFood && (
             <>
+              <SearchIcon />
               <label>
                 Please specify...
                 <Field as="select" name={WINE_QUERY_PARAMS.foodName}>
+                  <option value="">Please specify...</option>
                   <option value={FOOD_NAMES.pasta}>Pasta</option>
                   <option value={FOOD_NAMES.pork}>Pork</option>
                   <option value={FOOD_NAMES.cheese}>Cheese</option>
@@ -161,6 +165,7 @@ const RecommendationForm = () => {
             <>
               <fieldset>
                 <legend>Wine type</legend>
+                <DropdownIcon />
                 <label>
                   Please select
                   <Field as="select" name={WINE_QUERY_PARAMS.wineType}>
@@ -176,6 +181,7 @@ const RecommendationForm = () => {
 
               <fieldset>
                 <legend>Origin</legend>
+                <DropdownIcon />
                 <label>
                   Please select
                   <Field as="select" name={WINE_QUERY_PARAMS.countryName}>
