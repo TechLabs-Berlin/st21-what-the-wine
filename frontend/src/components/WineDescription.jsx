@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { ReactComponent as VeganIcon } from "../assets/vegan.svg";
 
 const WineDescription = (props) => {
   const [singleWineData, setSingleWineData] = useState(null);
@@ -12,26 +13,33 @@ const WineDescription = (props) => {
         `${process.env.REACT_APP_API_ENDPOINT_GET_WINES}/single/${wine_id}`
       );
       setSingleWineData(response.data);
-      // console.log(response.data);
+      console.log(response.data);
     };
     getData();
   }, [wine_id]);
+
+  if (!singleWineData) {
+    return null;
+  }
+
+  const wineObject = singleWineData.wines[0];
+  console.log(wineObject);
 
   return (
     <main>
       <div>
         <div>
           <h1>
-            <span>Les Jamelles</span>
-            Sauvignon Blanc
+            <span>{wineObject.winery_name}</span>
+            {wineObject.wine_name}
           </h1>
         </div>
-        <div>price</div>
+        <div>{wineObject.price_eur}€</div>
       </div>
 
       <figure>
         <img src="" alt=""></img>
-        <div>vegan icon</div>
+        {wineObject.vegan === true && <VeganIcon />}
       </figure>
 
       <div>
@@ -42,16 +50,15 @@ const WineDescription = (props) => {
 
         <section>
           <h2>Origin</h2>
-          <p>France</p>
+          <p>{wineObject.country_name}</p>
         </section>
 
         <section>
           <h2>Food pairings</h2>
           <ul>
-            <li>Pasta</li>
-            <li>Poultry</li>
-            <li>Vegetarian</li>
-            <li>Fish</li>
+            {wineObject.food_names.map((food) => (
+              <li key={food}>{food}</li>
+            ))}
           </ul>
         </section>
       </div>
