@@ -1,44 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "../styles/Header.scss";
+import { ReactComponent as OptionsIcon } from "../assets/options.svg";
 
-// Post-MVP version
-// const Header = () => {
-//   return (
-//     <>
-//       <header>
-//         <nav>
-//           <ul>
-//             <li>
-//               <NavLink exact to="/">
-//                 Home
-//               </NavLink>
-//             </li>
-//             <li>
-//               <NavLink to="/Wines">Wines</NavLink>
-//             </li>
-//             <li>
-//               <NavLink to="/LogIn">Log In</NavLink>
-//             </li>
-//             <li>
-//               <NavLink to="/SignUp">Sign Up</NavLink>
-//             </li>
-//           </ul>
-//         </nav>
-//       </header>
-//     </>
-//   );
-// };
-
-// MVP version
 const Header = () => {
   return (
-    <nav>
-      <NavLink exact to="/">
-        What the wine
+    <nav className="nav-container">
+      <NavLink exact to="/" className="logo">
+        WHAT THE WINE
       </NavLink>
-      {/* these 2 links are only here while testing in development */}
+      <div className="options-icon-container">
+        <OptionsIcon />
+      </div>
+      {/* these 2 links are only here while testing in development 
       <NavLink to="/RecommendationList">Result page</NavLink>
       <NavLink to="/WineDescription">Wine details page</NavLink>
+      */}
     </nav>
   );
 };
