@@ -211,7 +211,7 @@ module.exports = class WinesDAO {
 
     try {
       const singleWine = await cursor.toArray();
-      console.log(singleWine);
+
 
       //*tblshooting, empty the query here..
       //todo: test more usecases for problems
