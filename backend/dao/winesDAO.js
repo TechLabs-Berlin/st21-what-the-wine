@@ -131,7 +131,6 @@ module.exports = class WinesDAO {
       let cursor;
       try {
         cursor = await wines.find(query);
-        //console.log(cursor);
       } catch (e) {
         console.error(`Unable to issue find query: ${e}`);
         return { wineList: [], totalWines: 0 };
@@ -189,9 +188,7 @@ module.exports = class WinesDAO {
 
     try {
       const singleWine = await cursor.toArray();
-      console.log(singleWine);
-      //const totalWines = await wines.countDocuments(query);
-      //console.log("total wines:", totalWines);
+
       //*tblshooting, empty the query here..
       //todo: test more usecases for problems
       query = {};
