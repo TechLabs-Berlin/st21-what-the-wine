@@ -205,7 +205,7 @@ module.exports = class WinesDAO {
       cursor = await wines.find(query);
     } catch (e) {
       console.error(`Unable to issue find query: ${e}`);
-      return { singleWine: 0 };
+      return { singleWine: null };
     }
 
     try {
@@ -219,7 +219,7 @@ module.exports = class WinesDAO {
       return { singleWine };
     } catch (e) {
       console.error(`Unable to convert cursor to array: ${e}`);
-      return { singleWine: 0 };
+      return { singleWine: null };
     }
   }
 };
