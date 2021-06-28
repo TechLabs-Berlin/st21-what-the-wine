@@ -1,13 +1,15 @@
 //const ObjectID = require("mongodb").ObjectID;
 //const querySelectors = require("../functions.js");
 //todo: Take out console logs for submissions (clean it up!)
-const { json } = require("express");
+//const { json } = require("express");
 
 //? ************************************* */
 //* ************Declarations************* */
 //* ************************************* */
 let wines;
 let query = {};
+let singleFilter = {};
+let filterObject = {};
 //todo: figure out HOW to put these functions in the function.js file!
 function priceSelectors(filters) {
   if (filters.price_eur) {
@@ -39,7 +41,6 @@ function priceSelectors(filters) {
         filter_.push(filterObject);
       }
       query = { $or: filter_ };
-      console.log("final query: ", query);
     }
   }
 
@@ -48,6 +49,7 @@ function priceSelectors(filters) {
 function foodSelectors(filters) {
   if ("food_names" in filters) {
     query.food_names = { $eq: filters["food_names"] };
+
     return query;
   }
 }
@@ -70,6 +72,7 @@ function profileSelectors(filters) {
   } else if (filters.sweet == "false") {
     query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
   }
+
   return query;
 }
 
@@ -82,18 +85,14 @@ function origineSelectors(filters) {
 function typeSelectors(filters) {
   if (filters.type == "red") {
     //*text cannot work on a specific property. Had to set up an index in atlas for it to work. $Text searches the db grape_names via the index set up in atlas
-    query = {
-      $text: {
-        $search:
-          "Aragonez|Barbera|Blaufränkisch|Cabernet|Carignan|Castelao|Corvina|Dolcetto|Grenache|Malbec|Merlot|Montepulciano|Mourvedre|Nebbiolo|Noir|Pinotage|Primitivo|Shiraz|Shiraz/Syrah|Sangiovese|Tempranillo|Touriga|Trebbiano|Zinfandel|",
-      },
+    query.$text = {
+      $search:
+        "Aragonez|Barbera|Blaufränkisch|Cabernet|Carignan|Castelao|Corvina|Dolcetto|Grenache|Malbec|Merlot|Montepulciano|Mourvedre|Nebbiolo|Noir|Pinotage|Primitivo|Shiraz|Shiraz/Syrah|Sangiovese|Tempranillo|Touriga|Trebbiano|Zinfandel|",
     };
   } else if (filters.type == "white") {
-    query = {
-      $text: {
-        $search:
-          "Arneis|Aligoté|Blanc|Boal Branco|Chardonnay|Chenin|Cortese|Furmint|Gris|Malmsey|Marsanne|Muscadelle|Riesling|Roussanne|Sercial|Terrantez|Trebbiano|Verdelho|",
-      },
+    query.$text = {
+      $search:
+        "Arneis|Aligoté|Blanc|Boal Branco|Chardonnay|Chenin|Cortese|Furmint|Gris|Malmsey|Marsanne|Muscadelle|Riesling|Roussanne|Sercial|Terrantez|Trebbiano|Verdelho|",
     };
   } else if (filters.type == "rose") {
     //!
@@ -102,6 +101,7 @@ function typeSelectors(filters) {
     //!Chardonnay|Pinot Noir|Pinot Meunier
     query = { $text: { $search: "Blanc" } };
   }
+  return query;
 }
 //? ************************************* */
 //* *********End Declarations************ */
@@ -124,13 +124,15 @@ module.exports = class WinesDAO {
   //* ************************************* */
   static async getWines({ filters = null, page = 0, winesPerPage = 20 } = {}) {
     if (filters) {
-      //*tblshooting, cannot add text filter to specific property, so this must be in first order, to be first entered in the empty query object
-      if (filters.type) {
-        typeSelectors(filters);
-      }
       if (filters.price_eur) {
         priceSelectors(filters);
       }
+      // console.log("after eur", query);
+
+      if (filters.type) {
+        typeSelectors(filters);
+      }
+      // console.log("after type", query);
 
       if (filters.food_names) {
         foodSelectors(filters);
@@ -139,7 +141,7 @@ module.exports = class WinesDAO {
       if (filters.vegan) {
         veganSelectors(filters);
       }
-
+      // console.log("after vegan", query);
       if (filters.sweet) {
         profileSelectors(filters);
       }
@@ -149,11 +151,10 @@ module.exports = class WinesDAO {
       }
 
       //? for the winetyp/text searches: https://docs.mongodb.com/manual/text-search/
-
+      //console.log("main query: ", query);
       let cursor;
       try {
         cursor = await wines.find(query);
-        //console.log(cursor);
       } catch (e) {
         console.error(`Unable to issue find query: ${e}`);
         return { wineList: [], totalWines: 0 };
