@@ -3,26 +3,19 @@
 .nav-container {
   width: 100vw;
   display: flex;
+  padding: 30px;
   justify-content: space-between;
+  align-items: center;
   box-sizing: border-box;
-  // padding: 30px;
-  // margin: 20px 5px 30px 5px;
-  margin-top: 3em;
-  margin-right: 1em;
-  margin-bottom: 2.5em;
-  margin-left: 1.7em;
+  // background-color: $base-background;
 
   .logo {
-    text-decoration: none;
     color: $text-color;
     border: 1px solid black;
     padding: 7px;
     font-family: "Arial";
     font-size: 24px;
     font-weight: 700;
-  }
-
-  .options-icon-container {
-    margin: auto;
+    text-decoration: none;
   }
 }

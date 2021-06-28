@@ -9,13 +9,7 @@ const Header = () => {
       <NavLink exact to="/" className="logo">
         WHAT THE WINE
       </NavLink>
-      <div className="options-icon-container">
-        <OptionsIcon />
-      </div>
-      {/* these 2 links are only here while testing in development 
-      <NavLink to="/RecommendationList">Result page</NavLink>
-      <NavLink to="/WineDescription">Wine details page</NavLink>
-      */}
+      <OptionsIcon />
     </nav>
   );
 };
