@@ -1,5 +1,7 @@
 //const ObjectID = require("mongodb").ObjectID;
 //const querySelectors = require("../functions.js");
+//todo: Take out console logs for submissions (clean it up!)
+const { json } = require("express");
 
 //? ************************************* */
 //* ************Declarations************* */
@@ -9,15 +11,35 @@ let query = {};
 //todo: figure out HOW to put these functions in the function.js file!
 function priceSelectors(filters) {
   if (filters.price_eur) {
-    //todo: if there are multiple price options, set up a for loop for the length of the query to go through all options
-    if (filters.price_eur == "low") {
-      query.price_eur = { $gte: 0, $lt: 20.0 };
-    } else if (filters.price_eur == "med") {
-      query.price_eur = { $gte: 20.0, $lt: 50.0 };
-    } else if (filters.price_eur == "high") {
-      query.price_eur = { $gte: 50, $lt: 75 };
-    } else if (filters.price_eur == "exp") {
-      query.price_eur = { $gte: 75 };
+    let filter_ = [];
+
+    if (typeof filters.price_eur === "string") {
+      if (filters.price_eur == "low") {
+        query.price_eur = { $gte: 0, $lt: 20.0 };
+      } else if (filters.price_eur == "med") {
+        query.price_eur = { $gte: 20.0, $lt: 50.0 };
+      } else if (filters.price_eur == "high") {
+        query.price_eur = { $gte: 50, $lt: 75 };
+      } else if (filters.price_eur == "exp") {
+        query.price_eur = { $gte: 75 };
+      }
+    } else {
+      for (let i = 0; i < filters.price_eur.length; i++) {
+        if (filters.price_eur[i] == "low") {
+          singleFilter = { $gte: 0, $lt: 20.0 };
+        } else if (filters.price_eur[i] == "med") {
+          singleFilter = { $gte: 20.0, $lt: 50.0 };
+        } else if (filters.price_eur[i] == "high") {
+          singleFilter = { $gte: 50, $lt: 75 };
+        } else if (filters.price_eur[i] == "exp") {
+          singleFilter = { $gte: 75 };
+        }
+        filterObject = { price_eur: singleFilter };
+        //make it a list to prepare for query structure Mongodb accepts
+        filter_.push(filterObject);
+      }
+      query = { $or: filter_ };
+      console.log("final query: ", query);
     }
   }
 
@@ -185,13 +207,11 @@ module.exports = class WinesDAO {
       console.error(`Unable to issue find query: ${e}`);
       return { singleWine: 0 };
     }
-    //const displayCursor = cursor.limit(winesPerPage).skip(winesPerPage * page);
 
     try {
       const singleWine = await cursor.toArray();
       console.log(singleWine);
-      //const totalWines = await wines.countDocuments(query);
-      //console.log("total wines:", totalWines);
+
       //*tblshooting, empty the query here..
       //todo: test more usecases for problems
       query = {};
