@@ -126,13 +126,11 @@ module.exports = class WinesDAO {
         origineSelectors(filters);
       }
 
-      //todo: figure out how to clear query once get is sent.
       //? for the winetyp/text searches: https://docs.mongodb.com/manual/text-search/
 
       let cursor;
       try {
         cursor = await wines.find(query);
-        //console.log(cursor);
       } catch (e) {
         console.error(`Unable to issue find query: ${e}`);
         return { wineList: [], totalWines: 0 };
@@ -172,11 +170,7 @@ module.exports = class WinesDAO {
   //? ************************************* */
   //* ************Single Wine************** */
   //* ************************************* */
-  static async getSingleWine({
-    filter = null,
-    page = 0,
-    winesPerPage = 5,
-  } = {}) {
+  static async getSingleWine({ filter = null } = {}) {
     console.log("filter: ", filter);
     if (filter) {
       query.wine_id = { $eq: filter.id };
@@ -190,21 +184,19 @@ module.exports = class WinesDAO {
       console.error(`Unable to issue find query: ${e}`);
       return { singleWine: 0 };
     }
-    const displayCursor = cursor.limit(winesPerPage).skip(winesPerPage * page);
+    //const displayCursor = cursor.limit(winesPerPage).skip(winesPerPage * page);
 
     try {
-      const winesList = await displayCursor.toArray();
-      console.log(winesList);
-      const totalWines = await wines.countDocuments(query);
-      console.log("total wines:", totalWines);
+      const singleWine = await cursor.toArray();
+
       //*tblshooting, empty the query here..
       //todo: test more usecases for problems
       query = {};
 
-      return { winesList, totalWines };
+      return { singleWine };
     } catch (e) {
       console.error(`Unable to convert cursor to array: ${e}`);
-      return { wineList: [], totalWines: 0 };
+      return { singleWine: 0 };
     }
   }
 };
