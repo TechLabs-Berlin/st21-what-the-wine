@@ -1,6 +1,7 @@
 import React from "react";
 import RecommendationForm from "./RecommendationForm";
 import "../styles/Landing.scss";
+import { ReactComponent as ArrowsDownIcon } from "../assets/arrows_down.svg";
 
 const Landing = () => {
   return (
@@ -24,6 +25,9 @@ const Landing = () => {
           Time.
         </p>
       </figure>
+      <div className="arrows-down-container">
+        <ArrowsDownIcon />
+      </div>
       <main>
         <h1 className="landing-title">
           <span className="landing-title-bold">Cheers!</span>
