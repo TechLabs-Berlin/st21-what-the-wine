@@ -42,27 +42,16 @@ module.exports = class WineController {
   //* ************Single  Wine************* */
   //* ************************************* */
   static async apiGetSingleWine(req, res) {
-    //* incase duplicate ids, show them up to 5 (most likely none)
-    const winesPerPage = req.query.winesPerPage
-      ? parseInt(req.query.winesPerPage, 5)
-      : 5;
-    const page = req.query.page ? parseInt(req.query.page, 5) : 0;
-
     let filter = {};
     filter.id = parseInt(req.params.id);
 
     try {
-      const { winesList, totalWines } = await WinesDAO.getSingleWine({
+      const { singleWine } = await WinesDAO.getSingleWine({
         filter,
-        page,
-        winesPerPage,
       });
       let response = {
-        wines: winesList,
-        page: page,
         filter: filter,
-        wines_per_page: winesPerPage,
-        total_wines: totalWines,
+        singleWine: singleWine,
       };
       res.json(response);
     } catch (e) {
