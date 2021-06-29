@@ -49,6 +49,7 @@ const RecommendationForm = () => {
         for (let key in values) {
           values[key] && params.append(key, values[key]);
         }
+        console.log(params);
 
         // redirect to a new page, put the form values in URL query string
         navigationHistory.push({
@@ -143,7 +144,7 @@ const RecommendationForm = () => {
             <Field
               type="radio"
               name={WINE_QUERY_PARAMS.vegan}
-              value={VEGAN.true}
+              value={VEGAN.false}
             />
           </label>
           <label>
@@ -151,7 +152,7 @@ const RecommendationForm = () => {
             <Field
               type="radio"
               name={WINE_QUERY_PARAMS.vegan}
-              value={VEGAN.false}
+              value={VEGAN.true}
             />
           </label>
         </fieldset>

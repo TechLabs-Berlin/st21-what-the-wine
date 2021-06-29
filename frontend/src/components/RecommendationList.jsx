@@ -28,7 +28,7 @@ const RecommendationList = () => {
         }
       );
       setWinesData(response.data);
-      // console.log(response.data);
+      console.log(response.data);
     };
     getData();
   }, [navigationLocation.search]);
