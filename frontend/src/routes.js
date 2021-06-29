@@ -5,8 +5,9 @@ import Landing from "./components/Landing";
 import WineDescription from "./components/WineDescription";
 import Footer from "./components/Footer";
 import RecommendationList from "./components/RecommendationList";
-// import Wines from "../components/Wines";
-// import AboutUs from "../components/AboutUs";
+import AboutUs from "./components/AboutUs";
+import Faq from "./components/Faq";
+import Support from "./components/Support";
 
 const Router = () => {
   return (
@@ -16,10 +17,9 @@ const Router = () => {
         <Route exact path="/" component={Landing} />
         <Route path="/RecommendationList" component={RecommendationList} />
         <Route path="/WineDescription/:wine_id" component={WineDescription} />
-        {/*
-        <Route path="/Wines" component={Wines} />
         <Route path="/AboutUs" component={AboutUs} />
-        */}
+        <Route path="/Faq" component={Faq} />
+        <Route path="/Support" component={Support} />
       </Switch>
       <Footer />
     </BrowserRouter>
