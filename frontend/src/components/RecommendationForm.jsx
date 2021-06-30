@@ -13,6 +13,7 @@ import {
 } from "../constants";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { ReactComponent as DropdownIcon } from "../assets/dropdown.svg";
+import "../styles/RecommendationForm.scss";
 
 const RecommendationForm = () => {
   const [withFood, setWithFood] = useState(false);
@@ -57,9 +58,9 @@ const RecommendationForm = () => {
         });
       }}
     >
-      <Form>
-        <fieldset>
-          <legend>I am having wine</legend>
+      <Form className="form-container">
+        <fieldset className="form-fieldset">
+          <legend className="form-title">I am having wine:</legend>
           <label>
             with food
             <Field
@@ -82,7 +83,7 @@ const RecommendationForm = () => {
           </label>
 
           {withFood && (
-            <>
+            <div className="form-with-food-container">
               <SearchIcon />
               <label>
                 Please specify...
@@ -95,12 +96,12 @@ const RecommendationForm = () => {
                   <option value={FOOD_NAMES.fish}>Fish</option>
                 </Field>
               </label>
-            </>
+            </div>
           )}
         </fieldset>
 
-        <fieldset>
-          <legend>Price range</legend>
+        <fieldset className="form-fieldset">
+          <legend className="form-title">Price range:</legend>
           <label>
             €
             <Field
@@ -135,8 +136,8 @@ const RecommendationForm = () => {
           </label>
         </fieldset>
 
-        <fieldset>
-          <legend>Looking for vegan options?</legend>
+        <fieldset className="form-fieldset">
+          <legend className="form-title">Looking for vegan options?</legend>
           <label>
             no
             <Field
@@ -161,9 +162,9 @@ const RecommendationForm = () => {
           </button>
 
           {moreFilters && (
-            <>
-              <fieldset>
-                <legend>Wine type</legend>
+            <div className="form-more-filters-container">
+              <fieldset className="form-fieldset">
+                <legend className="form-title">Wine type</legend>
                 <DropdownIcon />
                 <label>
                   Please select
@@ -178,8 +179,8 @@ const RecommendationForm = () => {
                 </label>
               </fieldset>
 
-              <fieldset>
-                <legend>Origin</legend>
+              <fieldset className="form-fieldset">
+                <legend className="form-title">Origin</legend>
                 <DropdownIcon />
                 <label>
                   Please select
@@ -195,8 +196,8 @@ const RecommendationForm = () => {
                 </label>
               </fieldset>
 
-              <fieldset>
-                <legend>Flavour profile</legend>
+              <fieldset className="form-fieldset">
+                <legend className="form-title">Flavour profile</legend>
                 <label>
                   rather dry
                   <Field
@@ -222,7 +223,7 @@ const RecommendationForm = () => {
                   />
                 </label>
               </fieldset>
-            </>
+            </div>
           )}
 
           <button type="submit">Search</button>
