@@ -122,6 +122,8 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 * DS Marc Hendel
 * DS Juliana Gomes
 * WD Franziska Pendzialek
+* WD Johanna Reichardt
+* UX Matthias Heppner
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
