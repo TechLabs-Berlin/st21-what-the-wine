@@ -49,7 +49,6 @@ const RecommendationForm = () => {
         for (let key in values) {
           values[key] && params.append(key, values[key]);
         }
-        console.log(params);
 
         // redirect to a new page, put the form values in URL query string
         navigationHistory.push({
@@ -100,7 +99,6 @@ const RecommendationForm = () => {
           )}
         </fieldset>
 
-        {/* we should leave the values written out to be more readable, e.g. "medium" */}
         <fieldset>
           <legend>Price range</legend>
           <label>
