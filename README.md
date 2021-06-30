@@ -38,6 +38,7 @@
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#usage">Usage</a></li>
       </ul>
     </li>
     <li>
@@ -57,7 +58,7 @@
 <!--
 [![Product Name Screen Shot][product-screenshot]](https://example.com)-->
 
-What The Wine is an educative project conceplialized, managed, and implemented by students of TechLabs Berlin.
+What The Wine is an educative project conceptualized, managed, and implemented by students of TechLabs Berlin.
 <br>
 
 ### Built With
@@ -66,6 +67,12 @@ What The Wine is an educative project conceplialized, managed, and implemented b
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/)
 * [ReactJs](https://reactjs.org/)
 
+### Usage
+<!--
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+-->
 
 <!-- GETTING STARTED -->
 ## Getting Started
