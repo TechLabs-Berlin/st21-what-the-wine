@@ -34,17 +34,6 @@ function randomNumber() {
   return number_;
 }
 
-function testingFunction(greet) {
-  console.log(greet);
-  greet = "hwllo world";
-  console.log(greet);
-  console.log("leaving fucntion....");
-  //let byw = "bye";
-  //console.log(greet);
-  //console.log("hello");
-  return greet;
-}
-
 module.exports = cleanJson;
 //module.exports = querySelectors;
-module.exports = testingFunction;
+//module.exports = testingFunction;
