@@ -7,14 +7,14 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+}
 
-  .logo {
-    color: $text-color;
-    border: 1px solid black;
-    padding: 7px;
-    font-family: "Arial";
-    font-size: 24px;
-    font-weight: 700;
-    text-decoration: none;
-  }
+.logo {
+  color: $text-color;
+  border: 1px solid black;
+  padding: 7px;
+  font-family: "Arial";
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
 }
