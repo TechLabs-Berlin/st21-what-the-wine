@@ -1,0 +1,60 @@
+// Typography
+
+$font: Montserrat, sans-serif;
+$text-color: black;
+
+@mixin font-h2-landing($weight: 400) {
+  color: white;
+  font-size: 50px;
+  font-weight: $weight;
+}
+
+@mixin font-h2($weight: 400) {
+  color: $text-color;
+  font-size: 50px;
+  font-weight: $weight;
+}
+
+@mixin font-h3($weight: 400) {
+  color: $text-color;
+  font-size: 36px;
+  font-weight: $weight;
+}
+
+@mixin font-h4($weight: 400) {
+  color: $text-color;
+  font-size: 30px;
+  font-weight: $weight;
+}
+
+@mixin font-text-desktop($weight: 400) {
+  color: $text-color;
+  font-size: 24px;
+  font-weight: $weight;
+}
+
+@mixin font-text-mobile($weight: 400) {
+  color: $text-color;
+  font-size: 18px;
+  font-weight: $weight;
+}
+
+@mixin font-subtext-mobile($weight: 400) {
+  color: $text-color;
+  font-size: 15px;
+  font-weight: $weight;
+}
+
+@mixin text-shadow {
+  text-shadow: 0px 0px 40px black;
+}
+
+// Image overlay
+
+@mixin overlay {
+  background: black;
+}
+
+// Color schema
+
+// $base-background: #ededed;
