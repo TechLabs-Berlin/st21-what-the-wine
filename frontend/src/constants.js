@@ -3,9 +3,9 @@ export const WINE_QUERY_PARAMS = {
   foodName: "food_name",
   price: "price_eur",
   vegan: "vegan",
-  wineType: "wine_type",
-  countryName: "country_name",
-  flavorProfile: "flavor_profile",
+  wineType: "type",
+  countryName: "origin",
+  flavorProfile: "sweet",
 };
 
 export const FOOD_PAIRING = {

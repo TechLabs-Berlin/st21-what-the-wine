@@ -99,7 +99,6 @@ const RecommendationForm = () => {
           )}
         </fieldset>
 
-        {/* we should leave the values written out to be more readable, e.g. "medium" */}
         <fieldset>
           <legend>Price range</legend>
           <label>
@@ -143,7 +142,7 @@ const RecommendationForm = () => {
             <Field
               type="radio"
               name={WINE_QUERY_PARAMS.vegan}
-              value={VEGAN.true}
+              value={VEGAN.false}
             />
           </label>
           <label>
@@ -151,7 +150,7 @@ const RecommendationForm = () => {
             <Field
               type="radio"
               name={WINE_QUERY_PARAMS.vegan}
-              value={VEGAN.false}
+              value={VEGAN.true}
             />
           </label>
         </fieldset>
