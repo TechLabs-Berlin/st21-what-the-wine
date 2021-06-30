@@ -11,12 +11,13 @@ router
   .route("/")
   .get(WineController.apiGetWines)
   .post(WineController.apiAddWine);
-//.put(WineController.apiUpdateWine);
+
 //todo:  put, delete
 
 //todo: single wine route: grab id, return wine object...
 //todo: api/wines/single
 router.route("/single/:id").get(WineController.apiGetSingleWine);
-router.route("/seed").get(SeedWines.addSeeds);
+
+router.route("/seed").get(SeedWines.addSeeds).put(SeedWines.apiUpdateWine);
 
 module.exports = router;
