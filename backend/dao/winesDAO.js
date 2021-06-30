@@ -18,11 +18,6 @@ let query1 = {};
 //* ************************************** */
 function priceSelectors(filters) {
   if (filters.price_eur) {
-    /*   console.log("+++++++++++++++++++++++++");
-    console.log("+++++++++++++++++++++++++");
-    console.log("inside price first++++: ", filters, query); */
-    //let filter_ = [];
-
     if (typeof filters.price_eur === "string") {
       if (filters.price_eur == "low") {
         query.price_eur = { $gte: 0, $lt: 20.0 };
@@ -57,13 +52,9 @@ function priceSelectors(filters) {
       query1 = { $or: filter_ };
       price_type.push(query1);
       query.$and = price_type;
-      /*       console.log("price_type: ", price_type);
-      console.log("after query assignment: ", query);
-      console.log("+++++++++++++++++++++++++");
-      console.log("+++++++++++++++++++++++++"); */
     }
   }
-  //filter = {};
+
   filter_ = [];
   singleFilter = {};
   return query;
@@ -98,8 +89,6 @@ function veganSelectors(filters) {
 //* *******************************
 
 function profileSelectors(filters) {
-  //let filter_ = [];
-
   if (filters.profile.includes("dry") && filters.profile.includes("sweet")) {
     do {
       for (var i = filters.profile.length - 1; i >= 0; i--) {
@@ -120,9 +109,9 @@ function profileSelectors(filters) {
   if (typeof filters.profile === "string") {
     if (filters.profile == "sweet") {
       //*from docs: to access nested object, dot notation MUST be in quotations
-      query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
-    } else if (filters.profile == "dry") {
       query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
+    } else if (filters.profile == "dry") {
+      query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
     } else if (filters.profile == "acidic") {
       query["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
     }
@@ -130,9 +119,9 @@ function profileSelectors(filters) {
     for (i = 0; i < filters.profile.length; i++) {
       if (filters.profile[i] == "sweet") {
         //*from docs: to access nested object, dot notation MUST be in quotations
-        singleFilter["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
-      } else if (filters.profile[i] == "dry") {
         singleFilter["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
+      } else if (filters.profile[i] == "dry") {
+        singleFilter["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
       } else if (filters.profile[i] == "acidic") {
         singleFilter["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
       } else {
@@ -265,6 +254,17 @@ module.exports = class WinesDAO {
       console.error(`Unabe to post wine: ${e}`);
     }
   }
+  //? ************************************* */
+  //* ************update Wine************** */
+  //* ************************************* */
+  /* static async updateWine(req){
+  try{
+    
+  }catch(e){
+    console.error('unable to update wine')
+  }
+} */
+
   //? ************************************* */
   //* ************Single Wine************** */
   //* ************************************* */
