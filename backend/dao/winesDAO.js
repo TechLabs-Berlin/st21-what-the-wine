@@ -1,7 +1,5 @@
-//const ObjectID = require("mongodb").ObjectID;
-//const querySelectors = require("../functions.js");
 //todo: Take out console logs for submissions (clean it up!)
-//const { json } = require("express");
+//todo: figure out HOW to put these functions in the function.js file!
 
 //? ************************************* */
 //* ************Declarations************* */
@@ -10,11 +8,16 @@ let wines;
 let query = {};
 let singleFilter = {};
 let filterObject = {};
-//todo: figure out HOW to put these functions in the function.js file!
+let filter_ = [];
+let price_type = [];
+let query1 = {};
+
+//* ************* price_type************* */
+//? Price_type is a list of queries that will be queried together to match the mongodb query rules: {$and: [{$or: [{field: "value"}, {field: value}]}, {$or: [{"field": "value"}, {"field": value}]}]}
+//?Specifically for price_eur and profile which both take a conditional statement if multiple parameters are selected.
+//* ************************************** */
 function priceSelectors(filters) {
   if (filters.price_eur) {
-    let filter_ = [];
-
     if (typeof filters.price_eur === "string") {
       if (filters.price_eur == "low") {
         query.price_eur = { $gte: 0, $lt: 20.0 };
@@ -39,11 +42,21 @@ function priceSelectors(filters) {
         filterObject = { price_eur: singleFilter };
         //make it a list to prepare for query structure Mongodb accepts
         filter_.push(filterObject);
+        console.log("filterObject: ", filterObject);
+        console.log("filter list: ", filter_);
       }
-      query = { $or: filter_ };
+      console.log("Before query assignment: ", query);
+      //query = { $or: filter_ };
+      //query.$and = [{ $or: filter_ }];
+
+      query1 = { $or: filter_ };
+      price_type.push(query1);
+      query.$and = price_type;
     }
   }
 
+  filter_ = [];
+  singleFilter = {};
   return query;
 }
 function foodSelectors(filters) {
@@ -64,15 +77,67 @@ function veganSelectors(filters) {
 
   return query;
 }
+//* *******************************
+//* ***Function profileSelectors***
+//* *******************************
+//? function works: to detect if both sweet and dry are provided, all wines will return (as sweet and wine are on same scale).
+//? splicing the sweet and dry from params incase bitter is also there, so that then bitter can be passed through alone.
+//? if only one param, (type is string), take the single param and query it
+//? if multiple params (type is object), create a list and return query of multiple parameters
+//* *******************************
+//* *******************************
+//* *******************************
 
 function profileSelectors(filters) {
-  if (filters.sweet == "true") {
-    //*from docs: to access nested object, dot notation MUST be in quotations
-    query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
-  } else if (filters.sweet == "false") {
-    query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
+  if (filters.profile.includes("dry") && filters.profile.includes("sweet")) {
+    do {
+      for (var i = filters.profile.length - 1; i >= 0; i--) {
+        if (filters.profile[i] === "sweet") {
+          filters.profile.splice(i, 1);
+        }
+      }
+      for (var i = filters.profile.length - 1; i >= 0; i--) {
+        if (filters.profile[i] === "dry") {
+          filters.profile.splice(i, 1);
+        }
+      }
+    } while (
+      filters.profile.includes("dry") ||
+      filters.profile.includes("sweet")
+    );
   }
+  if (typeof filters.profile === "string") {
+    if (filters.profile == "sweet") {
+      //*from docs: to access nested object, dot notation MUST be in quotations
+      query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
+    } else if (filters.profile == "dry") {
+      query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
+    } else if (filters.profile == "acidic") {
+      query["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
+    }
+  } else {
+    for (i = 0; i < filters.profile.length; i++) {
+      if (filters.profile[i] == "sweet") {
+        //*from docs: to access nested object, dot notation MUST be in quotations
+        singleFilter["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
+      } else if (filters.profile[i] == "dry") {
+        singleFilter["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
+      } else if (filters.profile[i] == "acidic") {
+        singleFilter["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
+      } else {
+      }
+      filterObject = singleFilter;
+      singleFilter = {};
+      filter_.push(filterObject);
+    }
+    //query.$and = [{ $or: filter_ }];
+    query1 = { $and: filter_ };
+    price_type.push(query1);
+    query1 = {};
 
+    filterObject = {}; //empty again for next query
+    filter_ = [];
+  }
   return query;
 }
 
@@ -124,15 +189,16 @@ module.exports = class WinesDAO {
   //* ************************************* */
   static async getWines({ filters = null, page = 0, winesPerPage = 20 } = {}) {
     if (filters) {
+      if (filters.profile) {
+        profileSelectors(filters);
+      }
       if (filters.price_eur) {
         priceSelectors(filters);
       }
-      // console.log("after eur", query);
 
       if (filters.type) {
         typeSelectors(filters);
       }
-      // console.log("after type", query);
 
       if (filters.food_names) {
         foodSelectors(filters);
@@ -141,17 +207,13 @@ module.exports = class WinesDAO {
       if (filters.vegan) {
         veganSelectors(filters);
       }
-      // console.log("after vegan", query);
-      if (filters.sweet) {
-        profileSelectors(filters);
-      }
 
       if (filters.origin) {
         origineSelectors(filters);
       }
 
       //? for the winetyp/text searches: https://docs.mongodb.com/manual/text-search/
-      //console.log("main query: ", query);
+
       let cursor;
       try {
         cursor = await wines.find(query);
@@ -170,6 +232,7 @@ module.exports = class WinesDAO {
         console.log("total wines:", totalWines);
         //*tblshooting, empty the query here..
         //todo: test more usecases for problems
+
         query = {};
 
         return { winesList, totalWines };
@@ -192,6 +255,17 @@ module.exports = class WinesDAO {
     }
   }
   //? ************************************* */
+  //* ************update Wine************** */
+  //* ************************************* */
+  /* static async updateWine(req){
+  try{
+    
+  }catch(e){
+    console.error('unable to update wine')
+  }
+} */
+
+  //? ************************************* */
   //* ************Single Wine************** */
   //* ************************************* */
   static async getSingleWine({ filter = null } = {}) {
@@ -211,7 +285,7 @@ module.exports = class WinesDAO {
 
     try {
       const singleWine = await cursor.toArray();
-
+      console.log(singleWine);
 
       //*tblshooting, empty the query here..
       //todo: test more usecases for problems

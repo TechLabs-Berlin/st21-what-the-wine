@@ -18,7 +18,7 @@ module.exports = class WineController {
       filters.price_eur = req.query.price_eur;
       filters.food_names = req.query.food_names;
       filters.vegan = req.query.vegan;
-      filters.sweet = req.query.sweet;
+      filters.profile = req.query.profile;
       filters.origin = req.query.origin;
       filters.type = req.query.type;
     }
@@ -62,7 +62,7 @@ module.exports = class WineController {
   //? *********************************** */
   //* ************Add Wine*************** */
   //* *********************************** */
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
   static async apiAddWine(req, res) {
     console.log(req.body);
     try {
@@ -72,9 +72,10 @@ module.exports = class WineController {
       res.status(500).json({ error: e.message });
     }
   }
+
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //? ************************************* */
-  //* ************************************* */
+  //* ************Update Wine************** */
   //* ************************************* */
 
   //todo: wine update.
