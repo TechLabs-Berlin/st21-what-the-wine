@@ -10,16 +10,23 @@ const Header = () => {
 
   return (
     <nav className="nav-container">
-      <NavLink exact to="/" className="logo">
+      <NavLink exact to="/" className="nav-home">
         WHAT THE WINE
       </NavLink>
-      <OptionsIcon onClick={onToggleOptions} />
+      <OptionsIcon onClick={onToggleOptions} className="nav-options" />
       {options && (
-        <>
-          <NavLink to="/AboutUs">About us</NavLink>
-          <NavLink to="/Faq">FAQ</NavLink>
-          <NavLink to="/Support">Support</NavLink>
-        </>
+        <div className="nav-container-sidebar">
+          <p className="nav-text">Hello!</p>
+          <NavLink to="/AboutUs" className="nav-item">
+            About us
+          </NavLink>
+          <NavLink to="/Faq" className="nav-item">
+            FAQ
+          </NavLink>
+          <NavLink to="/Support" className="nav-item">
+            Support
+          </NavLink>
+        </div>
       )}
     </nav>
   );
