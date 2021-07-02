@@ -14,19 +14,13 @@
 }
 
 .nav-logo {
-  color: $text-color;
-  border: 1px solid black;
-  padding: 7px;
   margin-left: 30px;
-  font-family: "Arial";
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: none;
   cursor: pointer;
+  width: 203px;
+  height: 48px;
 }
 
 .nav-container-desktop {
-  margin-right: 30px;
   display: flex;
 }
 
@@ -38,7 +32,7 @@
   margin-right: 40px;
 }
 
-.nav-options {
+.icon-container {
   display: none;
 }
 
@@ -46,7 +40,7 @@
 // 1. Show hamburger icon only, instead of navbar
 // 2. On click a "sidebar" opens up with the nav options
 @media screen and (max-width: 768px) {
-  .nav-options {
+  .icon-container {
     display: block;
     margin-right: 30px;
   }

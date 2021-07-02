@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "../styles/Header.scss";
 import { ReactComponent as OptionsIcon } from "../assets/options.svg";
 import { ReactComponent as ArrowsRightIcon } from "../assets/arrows_right.svg";
+import { ReactComponent as Logo } from "../assets/logo.svg";
 
 const Header = () => {
   const [options, setOptions] = useState(false);
@@ -12,8 +13,8 @@ const Header = () => {
 
   return (
     <nav className="header-container">
-      <NavLink exact to="/" className="nav-logo">
-        WHAT THE WINE
+      <NavLink exact to="/">
+        <Logo className="nav-logo" />
       </NavLink>
       <div className="nav-container-desktop">
         <NavLink to="/AboutUs" className="nav-desktop-item">
