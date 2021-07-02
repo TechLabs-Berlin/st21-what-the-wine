@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { WINE_QUERY_PARAMS, PRICE, VEGAN, FLAVOR_PROFILE } from "../constants";
 import { ReactComponent as VeganIcon } from "../assets/vegan.svg";
+import "../styles/RecommendationList.scss";
 
 // take out the query string from the URL and create an object out of those values
 const queryParamsToObject = (params) => {
@@ -28,6 +29,7 @@ const RecommendationList = () => {
         }
       );
       setWinesData(response.data);
+      console.log(response.data);
     };
     getData();
   }, [navigationLocation.search]);
@@ -77,20 +79,31 @@ const RecommendationList = () => {
         </label>
       </div>
 
-      <ul>
+      <ul className="list-container">
         {winesData &&
           winesData.wines.map((item) => (
-            <li key={item.wine_id}>
-              <img src="" alt=""></img>
-              {item.vegan === true && <VeganIcon />}
-              <div>
+            <li key={item.wine_id} className="list-items">
+              <div className="list-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1611571940159-425a28706d6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1001&q=80"
+                  alt=""
+                  className="list-product-img"
+                ></img>
+                <div className="vegan-icon-container">
+                  {item.vegan === true && <VeganIcon className="vegan-icon" />}
+                </div>
+              </div>
+              <div className="list-description-container">
                 <div>
-                  <p>{item.winery_name}</p>
-                  <Link to={`/WineDescription/${item.wine_id}`}>
+                  <p className="list-text">{item.winery_name}</p>
+                  <Link
+                    to={`/WineDescription/${item.wine_id}`}
+                    className="list-text-bold"
+                  >
                     {item.wine_name}
                   </Link>
                 </div>
-                <div>{item.price_eur}€</div>
+                <div className="list-price">{item.price_eur}€</div>
               </div>
             </li>
           ))}
