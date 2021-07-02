@@ -1,17 +1,19 @@
 @import "./constants";
 
-.nav-container {
+// Default view is set for bigger screens:
+// 1. Hide hamburger icon
+// 2. Show navbar
+.header-container {
   width: 100vw;
   height: 120px;
   display: flex;
-  // padding: $main-padding;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   position: relative;
 }
 
-.nav-home {
+.nav-logo {
   color: $text-color;
   border: 1px solid black;
   padding: 7px;
@@ -23,31 +25,61 @@
   cursor: pointer;
 }
 
-.nav-options {
+.nav-container-desktop {
   margin-right: 30px;
-}
-
-.nav-container-sidebar {
-  width: 100vw;
-  height: 80vh;
-  z-index: 2;
-  position: absolute;
-  top: 118px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: white;
-  padding: $main-padding;
 }
 
-.nav-text {
-  @include font-h3($weight: 700);
-}
-
-.nav-item {
-  margin-bottom: 30px;
+.nav-desktop-item {
   color: $text-color;
-  @include font-h4;
+  @include font-text-desktop($weight: 700);
   text-decoration: none;
   cursor: pointer;
+  margin-right: 40px;
+}
+
+.nav-options {
+  display: none;
+}
+
+// On tablets & mobile:
+// 1. Show hamburger icon only, instead of navbar
+// 2. On click a "sidebar" opens up with the nav options
+@media screen and (max-width: 768px) {
+  .nav-options {
+    display: block;
+    margin-right: 30px;
+  }
+
+  .icon-hidden {
+    display: none;
+  }
+
+  .nav-container-desktop {
+    display: none;
+  }
+
+  .nav-container-sidebar {
+    position: absolute;
+    z-index: 2;
+    top: 120px;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    padding: $main-padding;
+    background-color: white;
+  }
+
+  .nav-sidebar-item {
+    margin-bottom: 30px;
+    color: $text-color;
+    @include font-h4;
+    text-decoration: none;
+  }
+
+  .nav-sidebar-text {
+    @include font-h3($weight: 700);
+    margin: 0px 0px 30px 0px;
+  }
 }
