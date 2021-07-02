@@ -13,7 +13,6 @@ const WineDescription = (props) => {
         `${process.env.REACT_APP_API_ENDPOINT_GET_WINES}/single/${wine_id}`
       );
       setSingleWineData(response.data);
-      console.log(response.data);
     };
     getData();
   }, [wine_id]);
@@ -22,8 +21,7 @@ const WineDescription = (props) => {
     return null;
   }
 
-  const wineObject = singleWineData.wines[0];
-  console.log(wineObject);
+  const wineObject = singleWineData.singleWine[0];
 
   return (
     <main>

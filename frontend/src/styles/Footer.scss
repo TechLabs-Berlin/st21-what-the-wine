@@ -1,0 +1,14 @@
+@import "./constants";
+
+.footer-container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: $main-padding;
+  box-sizing: border-box;
+}
+
+.footer-copyright {
+  text-align: center;
+}

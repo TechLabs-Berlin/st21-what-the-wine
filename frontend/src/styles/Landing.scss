@@ -2,7 +2,7 @@
 
 .hero-container {
   position: relative;
-  height: 70vh;
+  height: calc(100vh - (200px));
   width: 100vw;
   margin: 0em;
   display: flex;
@@ -35,14 +35,18 @@
 }
 
 .arrows-down-container {
-  margin: 2.5em 0em;
+  // margin: 2.5em 0em;
+  height: 80px;
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .landing-title {
   @include font-h3;
+  box-sizing: border-box;
+  padding: 0px 30px;
 }
 
 .landing-title-bold {

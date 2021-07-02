@@ -1,7 +1,7 @@
 import React from "react";
 import RecommendationForm from "./RecommendationForm";
-import "../styles/Landing.scss";
 import { ReactComponent as ArrowsDownIcon } from "../assets/arrows_down.svg";
+import "../styles/Landing.scss";
 
 const Landing = () => {
   return (

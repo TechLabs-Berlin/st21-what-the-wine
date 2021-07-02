@@ -1,0 +1,23 @@
+@import "./constants";
+
+.form-container {
+  box-sizing: border-box;
+  padding: 20px 17px;
+  margin: 0px 15px;
+  background-color: #e4e4e4;
+  border-radius: 16px;
+}
+
+.form-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0px 0px 20px 0px;
+}
+
+.form-title {
+  @include font-text-mobile($weight: 700);
+}
+
+.form-more-filters-container {
+  margin-top: 20px;
+}
