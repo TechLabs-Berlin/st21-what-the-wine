@@ -79,7 +79,7 @@ const RecommendationList = () => {
       <h1 className="result-title">We recommend</h1>
 
       {/* considering using a UI-kit for this element */}
-      <div>
+      <div className="sort-container">
         <label>
           sorted by
           <select name="sort">
@@ -99,9 +99,12 @@ const RecommendationList = () => {
                   alt=""
                   className="list-product-img"
                 ></img>
-                <div className="vegan-icon-container">
-                  {item.vegan === true && <VeganIcon className="vegan-icon" />}
-                </div>
+
+                {item.vegan === true && (
+                  <div className="vegan-icon-container">
+                    <VeganIcon className="vegan-icon" />
+                  </div>
+                )}
               </div>
               <div className="list-description-container">
                 <div>

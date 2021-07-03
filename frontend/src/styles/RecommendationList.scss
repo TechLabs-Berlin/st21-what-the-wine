@@ -7,6 +7,7 @@
 
 .filter-section-title {
   margin: 0 0 10px 0;
+  color: $text-color-filters;
 }
 
 .filters-container {
@@ -16,6 +17,7 @@
 
 .filter {
   @include tag;
+  color: $text-color-filters;
   background-color: gray;
   margin: 0 10px 5px 0;
 }
@@ -31,6 +33,13 @@
   @include font-h3($weight: 700);
   margin: 0 0 28px 0;
   text-align: center;
+}
+
+.sort-container {
+  text-align: end;
+  margin-right: 30px;
+  color: #323430;
+  @include font-subtext-mobile;
 }
 
 .list-container {
