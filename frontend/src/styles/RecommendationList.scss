@@ -18,7 +18,7 @@
 .filter {
   @include tag;
   color: $text-color-filters;
-  background-color: gray;
+  background-color: white;
   margin: 0 10px 5px 0;
 }
 
@@ -56,14 +56,14 @@
   height: 263px;
   width: 158px;
   margin-bottom: 20px;
-  background-color: gray;
+  background-color: white;
   border-radius: 20px;
   @include subtext-mobile;
 }
 
 .list-img-container {
   position: relative;
-  height: 70%;
+  height: 75%;
   width: 100%;
 }
 
@@ -94,20 +94,26 @@
 
 .list-description-container {
   width: 100%;
-  height: 30%;
+  height: 25%;
   display: flex;
+  padding: 10px 5px 5px 5px;
+  box-sizing: border-box;
+  // text-overflow: ellipsis;
+}
+
+.list-text-container {
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .list-text {
-  margin: 0px;
+  margin: 0 0 5px 0;
 }
 
 .list-text-bold {
   @include subtext-mobile($weight: 700);
   margin: 0px;
+  text-decoration: none;
   text-overflow: ellipsis;
 }
 

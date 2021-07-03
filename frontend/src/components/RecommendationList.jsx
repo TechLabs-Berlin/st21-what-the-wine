@@ -107,7 +107,7 @@ const RecommendationList = () => {
                 )}
               </div>
               <div className="list-description-container">
-                <div>
+                <div className="list-text-container">
                   <p className="list-text">{item.winery_name}</p>
                   <Link
                     to={`/WineDescription/${item.wine_id}`}
