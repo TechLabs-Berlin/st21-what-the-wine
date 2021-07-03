@@ -1,14 +1,52 @@
 @import "./constants";
 
-.list-container {
-  list-style: none;
+.filter-section-container {
+  margin: 0px;
+  padding-left: 30px;
+}
+
+.filter-section-title {
+  margin: 0 0 10px 0;
+}
+
+.filters-container {
   display: flex;
   flex-wrap: wrap;
 }
 
-.list-items {
-  height: 260px;
+.filter {
+  @include tag;
+  background-color: gray;
+  margin: 0 10px 5px 0;
+}
+
+.line {
+  margin: 28px 30px;
   width: 158px;
+  height: 1px;
+  background-color: #c4c4c4;
+}
+
+.result-title {
+  @include font-h3($weight: 700);
+  margin: 0 0 28px 0;
+  text-align: center;
+}
+
+.list-container {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.list-items {
+  height: 263px;
+  width: 158px;
+  margin-bottom: 20px;
   background-color: gray;
   border-radius: 20px;
   @include font-subtext-mobile;
@@ -16,6 +54,8 @@
 
 .list-img-container {
   position: relative;
+  height: 70%;
+  width: 100%;
 }
 
 .list-product-img {
@@ -44,11 +84,12 @@
 }
 
 .list-description-container {
-  width: 158px;
-  height: 73px;
+  width: 100%;
+  height: 30%;
   display: flex;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .list-text {
@@ -64,9 +105,6 @@
 .list-price {
   background-color: #666811;
   color: white;
-  border-radius: 20px;
-  width: fit-content;
-  height: fit-content;
-  padding: 0.3em;
+  @include tag;
   align-self: flex-end;
 }

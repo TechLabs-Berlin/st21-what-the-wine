@@ -29,44 +29,54 @@ const RecommendationList = () => {
         }
       );
       setWinesData(response.data);
-      console.log(response.data);
     };
     getData();
   }, [navigationLocation.search]);
 
   return (
     <main>
-      <figure>
-        <p>Your search filters:</p>
-
-        {filters[WINE_QUERY_PARAMS.foodName] && (
-          <p>{filters[WINE_QUERY_PARAMS.foodName]}</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.low) && <p>€</p>}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.medium) && <p>€€</p>}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.high) && <p>€€€</p>}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.expensive) && (
-          <p>€€€€</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.vegan] === VEGAN.true && <p>vegan</p>}
-        {filters[WINE_QUERY_PARAMS.wineType] && (
-          <p>{filters[WINE_QUERY_PARAMS.wineType]}</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.countryName] && (
-          <p>{filters[WINE_QUERY_PARAMS.countryName]}</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
-          FLAVOR_PROFILE.dry
-        ) && <p>rather dry</p>}
-        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
-          FLAVOR_PROFILE.sweet
-        ) && <p>rather sweet</p>}
-        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
-          FLAVOR_PROFILE.acidic
-        ) && <p>rather acidic</p>}
+      <figure className="filter-section-container">
+        <p className="filter-section-title">Your search filters:</p>
+        <div className="filters-container">
+          {filters[WINE_QUERY_PARAMS.foodName] && (
+            <p className="filter">{filters[WINE_QUERY_PARAMS.foodName]}</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.low) && (
+            <p className="filter">€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.medium) && (
+            <p className="filter">€€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.high) && (
+            <p className="filter">€€€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.expensive) && (
+            <p className="filter">€€€€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.vegan] === VEGAN.true && (
+            <p className="filter">vegan</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.wineType] && (
+            <p className="filter">{filters[WINE_QUERY_PARAMS.wineType]}</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.countryName] && (
+            <p className="filter">{filters[WINE_QUERY_PARAMS.countryName]}</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+            FLAVOR_PROFILE.dry
+          ) && <p className="filter">rather dry</p>}
+          {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+            FLAVOR_PROFILE.sweet
+          ) && <p className="filter">rather sweet</p>}
+          {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+            FLAVOR_PROFILE.acidic
+          ) && <p className="filter">rather acidic</p>}
+        </div>
       </figure>
 
-      <h1>We recommend</h1>
+      <div className="line"></div>
+
+      <h1 className="result-title">We recommend</h1>
 
       {/* considering using a UI-kit for this element */}
       <div>

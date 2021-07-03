@@ -58,3 +58,10 @@ $text-color: black;
 // Placement
 
 $main-padding: 30px;
+
+@mixin tag {
+  border-radius: 20px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.4em;
+}
