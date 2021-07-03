@@ -1,8 +1,8 @@
-// Typography
-
+// Typography & colors
 $font: Montserrat, sans-serif;
 $text-color: black;
 $text-color-filters: #323430;
+$background-color: #ededed;
 
 @mixin h1($weight: 400) {
   color: #7b1f22;
@@ -63,15 +63,14 @@ $text-color-filters: #323430;
 }
 
 // Image overlay
-
 @mixin overlay {
   background: black;
 }
 
 // Placement
-
 $main-padding: 30px;
 
+// Elements
 @mixin tag {
   border-radius: 20px;
   width: fit-content;
