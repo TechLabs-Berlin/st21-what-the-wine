@@ -74,7 +74,7 @@ const RecommendationList = () => {
         </div>
       </figure>
 
-      <div className="line"></div>
+      <div className="divider"></div>
 
       <h1 className="result-title">We recommend</h1>
 
