@@ -62,7 +62,7 @@
     display: flex;
     flex-direction: column;
     padding: $main-padding;
-    background-color: white;
+    background-color: $background-color;
   }
 
   .nav-sidebar-item {
@@ -73,7 +73,7 @@
   }
 
   .nav-sidebar-text {
-    @include h3-bold;
+    @include h3-bold($color: #7b1f22);
     margin: 0px 0px 30px 0px;
   }
 }
