@@ -30,7 +30,7 @@
 }
 
 .result-title {
-  @include font-h3($weight: 700);
+  @include h3-bold($color: #7b1f22);
   margin: 0 0 28px 0;
   text-align: center;
 }
@@ -39,7 +39,7 @@
   text-align: end;
   margin-right: 30px;
   color: #323430;
-  @include font-subtext-mobile;
+  @include subtext-mobile;
 }
 
 .list-container {
@@ -58,7 +58,7 @@
   margin-bottom: 20px;
   background-color: gray;
   border-radius: 20px;
-  @include font-subtext-mobile;
+  @include subtext-mobile;
 }
 
 .list-img-container {
@@ -106,7 +106,7 @@
 }
 
 .list-text-bold {
-  @include font-subtext-mobile($weight: 700);
+  @include subtext-mobile($weight: 700);
   margin: 0px;
   text-overflow: ellipsis;
 }

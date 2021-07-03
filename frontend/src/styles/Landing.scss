@@ -23,14 +23,14 @@
 .hero-text-bold {
   margin: 0;
   z-index: 1;
-  @include font-h2-landing($weight: 700);
+  @include h2-white($weight: 700);
   @include text-shadow;
 }
 
 .hero-text-regular {
   margin: 0;
   z-index: 1;
-  @include font-h2-landing;
+  @include h2-white;
   @include text-shadow;
 }
 
@@ -44,11 +44,11 @@
 }
 
 .landing-title {
-  @include font-h3;
+  @include h3-regular;
   box-sizing: border-box;
   padding: 0px 30px;
 }
 
 .landing-title-bold {
-  @include font-h3($weight: 700);
+  @include h3-bold;
 }

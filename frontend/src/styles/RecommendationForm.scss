@@ -15,7 +15,7 @@
 }
 
 .form-title {
-  @include font-text-mobile($weight: 700);
+  @include text-mobile($weight: 700);
 }
 
 .form-more-filters-container {
