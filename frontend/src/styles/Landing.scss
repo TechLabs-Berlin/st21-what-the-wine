@@ -2,7 +2,7 @@
 
 .hero-container {
   position: relative;
-  height: calc(100vh - (120px + 80px));
+  height: calc(100vh - 120px);
   width: 100vw;
   margin: 0em;
   display: flex;
@@ -22,33 +22,53 @@
 
 .hero-text-bold {
   margin: 0;
+  position: relative;
   z-index: 1;
-  @include h2-white($weight: 700);
+  @include h2-bold($color: white);
   @include text-shadow;
 }
 
 .hero-text-regular {
   margin: 0;
+  position: relative;
   z-index: 1;
-  @include h2-white;
+  @include h2-regular($color: white);
   @include text-shadow;
 }
 
 .arrows-down-container {
-  // margin: 2.5em 0em;
-  height: 80px;
+  z-index: 1;
+  position: absolute;
+  bottom: 0.2em;
+  left: calc(50vw - 62px / 2);
+}
+
+.main-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  margin: 0em;
+  @include overlay;
+}
+
+.form-img {
+  z-index: 0;
+  position: absolute;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+  opacity: 0.8;
+  object-fit: cover;
 }
 
 .landing-title {
-  @include h3-regular;
+  @include h2-regular($color: white);
   box-sizing: border-box;
-  padding: 0px 30px;
+  margin: 0px;
+  padding: 40px 30px;
+  @include text-shadow;
 }
 
 .landing-title-bold {
-  @include h3-bold;
+  @include h2-bold($color: white);
+  @include text-shadow;
 }

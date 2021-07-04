@@ -12,23 +12,29 @@ const Landing = () => {
           alt=""
           className="hero-img"
         ></img>
-        <p className="hero-text-bold">
-          PERFECT
-          <br />
-          WINE
-        </p>
-        <p className="hero-text-regular">
-          Every.
-          <br />
-          Single.
-          <br />
-          Time.
-        </p>
+        <div className="hero-text-container">
+          <p className="hero-text-bold">
+            PERFECT
+            <br />
+            WINE
+          </p>
+          <p className="hero-text-regular">
+            Every.
+            <br />
+            Single.
+            <br />
+            Time.
+          </p>
+        </div>
+        <div className="arrows-down-container">
+          <ArrowsDownIcon />
+        </div>
       </figure>
-      <div className="arrows-down-container">
-        <ArrowsDownIcon />
-      </div>
-      <main>
+      <main className="main-container">
+        <img
+          src="https://images.unsplash.com/photo-1567072629554-20e689de2400?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1868&q=80"
+          className="form-img"
+        ></img>
         <h1 className="landing-title">
           <span className="landing-title-bold">Cheers!</span>
           <br />
