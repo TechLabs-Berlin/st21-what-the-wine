@@ -1,0 +1,117 @@
+@import "./constants";
+
+.filter-section-container {
+  margin: 0px;
+  padding: 0 30px;
+}
+
+.filter-section-title {
+  margin: 0 0 10px 0;
+  @include text1-regular($color: #323430);
+}
+
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter {
+  @include tag-filter;
+  @include text2-regular($color: #323430);
+  margin: 0 10px 5px 0;
+}
+
+.divider {
+  @include divider-horizontal;
+}
+
+.result-title {
+  @include h3-bold;
+  margin: 0 0 28px 0;
+  text-align: center;
+}
+
+.sort-container {
+  text-align: end;
+  margin-right: 30px;
+}
+
+.list-container {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.list-items {
+  height: 263px;
+  width: 158px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.list-img-container {
+  position: relative;
+  height: 75%;
+  width: 100%;
+}
+
+.list-product-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+  display: block;
+}
+
+.vegan-icon-container {
+  border-radius: 50%;
+  background-color: #b3b001;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.vegan-icon {
+  fill: white;
+}
+
+.list-description-container {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  padding: 10px 5px 5px 5px;
+  box-sizing: border-box;
+}
+
+.list-text-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.list-text {
+  margin: 0 0 5px 0;
+  @include text2-regular($color: #323430);
+}
+
+.list-text-bold {
+  @include text2-bold;
+  margin: 0px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+}
+
+.list-price {
+  @include tag-price;
+  @include text2-regular($color: white);
+  align-self: flex-end;
+}

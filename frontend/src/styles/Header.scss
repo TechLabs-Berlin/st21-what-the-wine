@@ -26,7 +26,7 @@
 
 .nav-desktop-item {
   color: $text-color;
-  @include font-text-desktop($weight: 700);
+  @include text1-bold;
   text-decoration: none;
   cursor: pointer;
   margin-right: 40px;
@@ -62,18 +62,18 @@
     display: flex;
     flex-direction: column;
     padding: $main-padding;
-    background-color: white;
+    background-color: $background-color;
   }
 
   .nav-sidebar-item {
     margin-bottom: 30px;
     color: $text-color;
-    @include font-h4;
+    @include h3-regular($color: #323430);
     text-decoration: none;
   }
 
   .nav-sidebar-text {
-    @include font-h3($weight: 700);
+    @include h2-bold($color: #7b1f22);
     margin: 0px 0px 30px 0px;
   }
 }

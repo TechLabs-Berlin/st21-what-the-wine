@@ -1,11 +1,15 @@
 @import "./constants";
 
 .form-container {
+  z-index: 2;
+  position: relative;
   box-sizing: border-box;
   padding: 20px 17px;
   margin: 0px 15px;
   background-color: #e4e4e4;
   border-radius: 16px;
+  max-height: 62vh;
+  overflow-y: scroll;
 }
 
 .form-fieldset {
@@ -15,7 +19,7 @@
 }
 
 .form-title {
-  @include font-text-mobile($weight: 700);
+  @include text-bold($color: #323430);
 }
 
 .form-more-filters-container {

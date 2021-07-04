@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { WINE_QUERY_PARAMS, PRICE, VEGAN, FLAVOR_PROFILE } from "../constants";
 import { ReactComponent as VeganIcon } from "../assets/vegan.svg";
+import "../styles/RecommendationList.scss";
 
 // take out the query string from the URL and create an object out of those values
 const queryParamsToObject = (params) => {
@@ -34,40 +35,51 @@ const RecommendationList = () => {
 
   return (
     <main>
-      <figure>
-        <p>Your search filters:</p>
-
-        {filters[WINE_QUERY_PARAMS.foodName] && (
-          <p>{filters[WINE_QUERY_PARAMS.foodName]}</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.low) && <p>€</p>}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.medium) && <p>€€</p>}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.high) && <p>€€€</p>}
-        {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.expensive) && (
-          <p>€€€€</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.vegan] === VEGAN.true && <p>vegan</p>}
-        {filters[WINE_QUERY_PARAMS.wineType] && (
-          <p>{filters[WINE_QUERY_PARAMS.wineType]}</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.countryName] && (
-          <p>{filters[WINE_QUERY_PARAMS.countryName]}</p>
-        )}
-        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
-          FLAVOR_PROFILE.dry
-        ) && <p>rather dry</p>}
-        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
-          FLAVOR_PROFILE.sweet
-        ) && <p>rather sweet</p>}
-        {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
-          FLAVOR_PROFILE.acidic
-        ) && <p>rather acidic</p>}
+      <figure className="filter-section-container">
+        <p className="filter-section-title">Your search filters:</p>
+        <div className="filters-container">
+          {filters[WINE_QUERY_PARAMS.foodName] && (
+            <p className="filter">{filters[WINE_QUERY_PARAMS.foodName]}</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.low) && (
+            <p className="filter">€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.medium) && (
+            <p className="filter">€€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.high) && (
+            <p className="filter">€€€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.price]?.includes(PRICE.expensive) && (
+            <p className="filter">€€€€</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.vegan] === VEGAN.true && (
+            <p className="filter">vegan</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.wineType] && (
+            <p className="filter">{filters[WINE_QUERY_PARAMS.wineType]}</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.countryName] && (
+            <p className="filter">{filters[WINE_QUERY_PARAMS.countryName]}</p>
+          )}
+          {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+            FLAVOR_PROFILE.dry
+          ) && <p className="filter">rather dry</p>}
+          {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+            FLAVOR_PROFILE.sweet
+          ) && <p className="filter">rather sweet</p>}
+          {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
+            FLAVOR_PROFILE.acidic
+          ) && <p className="filter">rather acidic</p>}
+        </div>
       </figure>
 
-      <h1>We recommend</h1>
+      <div className="divider"></div>
+
+      <h1 className="result-title">We recommend</h1>
 
       {/* considering using a UI-kit for this element */}
-      <div>
+      <div className="sort-container">
         <label>
           sorted by
           <select name="sort">
@@ -77,20 +89,34 @@ const RecommendationList = () => {
         </label>
       </div>
 
-      <ul>
+      <ul className="list-container">
         {winesData &&
           winesData.wines.map((item) => (
-            <li key={item.wine_id}>
-              <img src="" alt=""></img>
-              {item.vegan === true && <VeganIcon />}
-              <div>
-                <div>
-                  <p>{item.winery_name}</p>
-                  <Link to={`/WineDescription/${item.wine_id}`}>
+            <li key={item.wine_id} className="list-items">
+              <div className="list-img-container">
+                <img
+                  src="https://images.unsplash.com/photo-1611571940159-425a28706d6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1001&q=80"
+                  alt=""
+                  className="list-product-img"
+                ></img>
+
+                {item.vegan === true && (
+                  <div className="vegan-icon-container">
+                    <VeganIcon className="vegan-icon" />
+                  </div>
+                )}
+              </div>
+              <div className="list-description-container">
+                <div className="list-text-container">
+                  <p className="list-text">{item.winery_name}</p>
+                  <Link
+                    to={`/WineDescription/${item.wine_id}`}
+                    className="list-text-bold"
+                  >
                     {item.wine_name}
                   </Link>
                 </div>
-                <div>{item.price_eur}€</div>
+                <div className="list-price">{item.price_eur}€</div>
               </div>
             </li>
           ))}
