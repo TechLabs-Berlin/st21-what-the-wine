@@ -10,26 +10,26 @@ $background-color: #ededed;
   font-weight: $weight;
 }
 
-@mixin h2-white($weight: 400) {
-  color: white;
+@mixin h2-regular($color: #7b1f22) {
+  color: $color;
   font-size: 50px;
-  font-weight: $weight;
+  font-weight: 400;
 }
 
-@mixin h2($weight: 400) {
-  color: #7b1f22;
+@mixin h2-bold($color: #7b1f22) {
+  color: $color;
   font-size: 50px;
-  font-weight: $weight;
+  font-weight: 700;
 }
 
-@mixin h3-regular($color: black) {
+@mixin h3-regular($color: #323430) {
   color: $color;
   font-size: 36px;
   font-weight: 400;
 }
 
-@mixin h3-bold($color: black) {
-  color: $color;
+@mixin h3-bold {
+  color: #7b1f22;
   font-size: 36px;
   font-weight: 700;
 }
@@ -40,22 +40,34 @@ $background-color: #ededed;
   font-weight: $weight;
 }
 
-@mixin text-desktop($weight: 400) {
-  color: $text-color;
+@mixin text1-bold {
+  color: #323430;
   font-size: 24px;
-  font-weight: $weight;
+  font-weight: 700;
 }
 
-@mixin text-mobile($weight: 400) {
+@mixin text1-regular($color: #323430) {
+  color: $color;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+@mixin text-bold($color: #323430) {
   color: $text-color;
   font-size: 18px;
-  font-weight: $weight;
+  font-weight: 700;
 }
 
-@mixin subtext-mobile($weight: 400) {
-  color: $text-color;
+@mixin text2-regular($color: #323430) {
+  color: $color;
   font-size: 15px;
-  font-weight: $weight;
+  font-weight: 400;
+}
+
+@mixin text2-bold {
+  color: #323430;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 @mixin text-shadow {
@@ -71,9 +83,33 @@ $background-color: #ededed;
 $main-padding: 30px;
 
 // Elements
-@mixin tag {
+@mixin tag-filter {
+  background-color: white;
   border-radius: 20px;
   width: fit-content;
   height: fit-content;
-  padding: 0.4em;
+  padding: 0.3em 0.6em;
+}
+
+@mixin tag-price {
+  background-color: #666811;
+  border-radius: 20px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.2em;
+}
+
+@mixin divider-horizontal {
+  margin: 28px 30px;
+  width: 158px;
+  height: 1px;
+  background-color: #c4c4c4;
+}
+
+@mixin button-filter {
+  background-color: white;
+  border-radius: 20px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.3em 0.6em;
 }
