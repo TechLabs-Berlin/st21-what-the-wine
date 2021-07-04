@@ -7,7 +7,7 @@
 
 .filter-section-title {
   margin: 0 0 10px 0;
-  color: $text-color-filters;
+  @include text1-regular($color: #323430);
 }
 
 .filters-container {
@@ -16,21 +16,17 @@
 }
 
 .filter {
-  @include tag;
-  color: $text-color-filters;
-  background-color: white;
+  @include tag-filter;
+  @include text2-regular($color: #323430);
   margin: 0 10px 5px 0;
 }
 
 .divider {
-  margin: 28px 30px;
-  width: 158px;
-  height: 1px;
-  background-color: #c4c4c4;
+  @include divider-horizontal;
 }
 
 .result-title {
-  @include h3-bold($color: #7b1f22);
+  @include h3-bold;
   margin: 0 0 28px 0;
   text-align: center;
 }
@@ -38,8 +34,6 @@
 .sort-container {
   text-align: end;
   margin-right: 30px;
-  color: #323430;
-  @include subtext-mobile;
 }
 
 .list-container {
@@ -58,7 +52,6 @@
   margin-bottom: 20px;
   background-color: white;
   border-radius: 20px;
-  @include subtext-mobile;
 }
 
 .list-img-container {
@@ -98,7 +91,6 @@
   display: flex;
   padding: 10px 5px 5px 5px;
   box-sizing: border-box;
-  // text-overflow: ellipsis;
 }
 
 .list-text-container {
@@ -108,18 +100,18 @@
 
 .list-text {
   margin: 0 0 5px 0;
+  @include text2-regular($color: #323430);
 }
 
 .list-text-bold {
-  @include subtext-mobile($weight: 700);
+  @include text2-bold;
   margin: 0px;
   text-decoration: none;
   text-overflow: ellipsis;
 }
 
 .list-price {
-  background-color: #666811;
-  color: white;
-  @include tag;
+  @include tag-price;
+  @include text2-regular($color: white);
   align-self: flex-end;
 }
