@@ -94,7 +94,7 @@ const WineDescription = (props) => {
                 icon={<FiberManualRecordIcon fontSize="inherit" />}
                 readOnly
               />
-              <div>sweet</div>
+              <div className="scale-text-left-aligned">sweet</div>
             </div>
             <div className="scale-container">
               <div className="scale-text-right-aligned">less bitter</div>
@@ -104,7 +104,7 @@ const WineDescription = (props) => {
                 icon={<FiberManualRecordIcon fontSize="inherit" />}
                 readOnly
               />
-              <div>more bitter</div>
+              <div className="scale-text-left-aligned">more bitter</div>
             </div>
             <div className="scale-container">
               <div className="scale-text-right-aligned">less acidic</div>
@@ -114,7 +114,7 @@ const WineDescription = (props) => {
                 icon={<FiberManualRecordIcon fontSize="inherit" />}
                 readOnly
               />
-              <div>more acidic</div>
+              <div className="scale-text-left-aligned">more acidic</div>
             </div>
           </section>
         </div>
