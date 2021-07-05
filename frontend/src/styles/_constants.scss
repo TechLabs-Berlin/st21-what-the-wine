@@ -83,26 +83,63 @@ $background-color: #ededed;
 $main-padding: 30px;
 
 // Elements
-@mixin tag-filter {
-  background-color: white;
+@mixin tag-filter($color: #ededed) {
+  background-color: $color;
   border-radius: 20px;
   width: fit-content;
   height: fit-content;
   padding: 0.3em 0.6em;
+  box-sizing: border-box;
 }
 
-@mixin tag-price {
+@mixin tag-price-small {
   background-color: #666811;
   border-radius: 20px;
   width: fit-content;
   height: fit-content;
   padding: 0.2em;
+  box-sizing: border-box;
+}
+
+@mixin tag-price-big {
+  background-color: #666811;
+  border-radius: 20px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.7em 1em;
+  box-sizing: border-box;
+}
+
+@mixin vegan-icon-small {
+  border-radius: 50%;
+  background-color: #b3b001;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin vegan-icon-big {
+  border-radius: 50%;
+  background-color: #b3b001;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin divider-horizontal {
   margin: 28px 30px;
   width: 158px;
   height: 1px;
+  background-color: #c4c4c4;
+}
+
+@mixin divider-vertical {
+  width: 1px;
+  height: 175px;
   background-color: #c4c4c4;
 }
 

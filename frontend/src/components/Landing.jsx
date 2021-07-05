@@ -12,20 +12,19 @@ const Landing = () => {
           alt=""
           className="hero-img"
         ></img>
-        <div className="hero-text-container">
-          <p className="hero-text-bold">
-            PERFECT
-            <br />
-            WINE
-          </p>
-          <p className="hero-text-regular">
-            Every.
-            <br />
-            Single.
-            <br />
-            Time.
-          </p>
-        </div>
+
+        <p className="hero-text-bold">
+          PERFECT
+          <br />
+          WINE
+        </p>
+        <p className="hero-text-regular">
+          Every.
+          <br />
+          Single.
+          <br />
+          Time.
+        </p>
         <div className="arrows-down-container">
           <ArrowsDownIcon />
         </div>

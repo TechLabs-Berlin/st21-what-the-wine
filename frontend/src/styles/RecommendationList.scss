@@ -16,12 +16,12 @@
 }
 
 .filter {
-  @include tag-filter;
+  @include tag-filter($color: #ededed);
   @include text2-regular($color: #323430);
   margin: 0 10px 5px 0;
 }
 
-.divider {
+.divider-horizontal {
   @include divider-horizontal;
 }
 
@@ -68,22 +68,16 @@
   display: block;
 }
 
-.vegan-icon-container {
-  border-radius: 50%;
-  background-color: #b3b001;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.vegan-icon-container-rl {
+  @include vegan-icon-small;
   position: absolute;
   left: 10px;
   bottom: 10px;
 }
 
-.vegan-icon {
-  fill: white;
-}
+// .vegan-icon-small {
+//   fill: white;
+// }
 
 .list-description-container {
   width: 100%;
@@ -111,7 +105,7 @@
 }
 
 .list-price {
-  @include tag-price;
+  @include tag-price-small;
   @include text2-regular($color: white);
   align-self: flex-end;
 }

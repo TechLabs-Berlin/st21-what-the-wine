@@ -74,7 +74,7 @@ const RecommendationList = () => {
         </div>
       </figure>
 
-      <div className="divider"></div>
+      <div className="divider-horizontal"></div>
 
       <h1 className="result-title">We recommend</h1>
 
@@ -95,14 +95,14 @@ const RecommendationList = () => {
             <li key={item.wine_id} className="list-items">
               <div className="list-img-container">
                 <img
-                  src="https://images.unsplash.com/photo-1611571940159-425a28706d6f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1001&q=80"
+                  src={item.image_url}
                   alt=""
                   className="list-product-img"
                 ></img>
 
                 {item.vegan === true && (
-                  <div className="vegan-icon-container">
-                    <VeganIcon className="vegan-icon" />
+                  <div className="vegan-icon-container-rl">
+                    <VeganIcon className="vegan-icon-rl" />
                   </div>
                 )}
               </div>
