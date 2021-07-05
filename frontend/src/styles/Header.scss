@@ -25,7 +25,6 @@
 }
 
 .nav-desktop-item {
-  color: $text-color;
   @include text1-bold;
   text-decoration: none;
   cursor: pointer;
@@ -62,12 +61,11 @@
     display: flex;
     flex-direction: column;
     padding: $main-padding;
-    background-color: $background-color;
+    background-color: $light-gray;
   }
 
   .nav-sidebar-item {
     margin-bottom: 30px;
-    color: $text-color;
     @include h3-regular($color: #323430);
     text-decoration: none;
   }
