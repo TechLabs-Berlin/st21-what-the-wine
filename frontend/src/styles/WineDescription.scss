@@ -116,6 +116,7 @@
 }
 
 .wine-description-column-right {
+  width: 50%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -124,11 +125,34 @@
 
 .section-title-right-wd {
   @include text-bold($color: $black-gray);
-  margin: 0 0 26px 0;
+  margin: 0 0 10px 0;
   text-align: center;
 }
 
 .scale-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
   @include text2-regular($color: $black-gray);
+}
+
+.scale-text-right-aligned {
+  text-align: right;
+}
+
+// Customizing the Rating component from Material-UI
+
+.MuiRating-root {
+  font-size: 1.2em;
+  color: $burgundy;
+}
+
+.MuiRating-icon {
+  margin: 0 -0.15em;
+}
+
+.MuiRating-iconEmpty {
+  color: $light-gray;
 }
