@@ -113,7 +113,7 @@ function profileSelectors(filters) {
     } else if (filters.profile == "dry") {
       query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
     } else if (filters.profile == "acidic") {
-      query["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
+      query["flavor_profile.dry"] = { $gte: 3, $lte: 5 };
     }
   } else {
     for (i = 0; i < filters.profile.length; i++) {
@@ -123,7 +123,7 @@ function profileSelectors(filters) {
       } else if (filters.profile[i] == "dry") {
         singleFilter["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
       } else if (filters.profile[i] == "acidic") {
-        singleFilter["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
+        singleFilter["flavor_profile.dry"] = { $gte: 3, $lte: 5 };
       } else {
       }
       filterObject = singleFilter;
