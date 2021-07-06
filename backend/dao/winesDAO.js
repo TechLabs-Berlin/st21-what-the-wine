@@ -87,7 +87,6 @@ function profileSelectors(profileFilter) {
       profileQuery.push({ ["flavor_profile.sweet"]: { $gte: 1, $lt: 4 } });
     } else if (profile == "acidic") {
       profileQuery.push({ ["flavor_profile.bitter"]: { $gte: 3, $lte: 5 } });
-    } else {
     }
   }
 
@@ -103,6 +102,7 @@ function origineSelectors(originFilter) {
 }
 
 function typeSelectors(typeFilter) {
+  let type;
   if (typeFilter == "red") {
     //*text cannot work on a specific property. Had to set up an index in atlas for it to work. $Text searches the db grape_names via the index set up in atlas
     type = {
@@ -110,7 +110,7 @@ function typeSelectors(typeFilter) {
         "Aragonez|Barbera|Blaufränkisch|Cabernet|Carignan|Castelao|Corvina|Dolcetto|Grenache|Malbec|Merlot|Montepulciano|Mourvedre|Nebbiolo|Noir|Pinotage|Primitivo|Shiraz|Shiraz/Syrah|Sangiovese|Tempranillo|Touriga|Trebbiano|Zinfandel|",
     };
   } else if (typeFilter == "white") {
-    query.$text = {
+    type = {
       $search:
         "Arneis|Aligoté|Blanc|Boal Branco|Chardonnay|Chenin|Cortese|Furmint|Gris|Malmsey|Marsanne|Muscadelle|Riesling|Roussanne|Sercial|Terrantez|Trebbiano|Verdelho|",
     };
@@ -236,6 +236,7 @@ module.exports = class WinesDAO {
   //* ************Single Wine************** */
   //* ************************************* */
   static async getSingleWine({ filter = null } = {}) {
+    let query = {};
     if (filter) {
       query.wine_id = { $eq: filter.id };
     }
