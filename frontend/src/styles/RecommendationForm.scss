@@ -6,22 +6,150 @@
   box-sizing: border-box;
   padding: 20px 17px;
   margin: 0px 15px;
-  background-color: #e4e4e4;
+  background-color: white;
   border-radius: 16px;
   max-height: 62vh;
   overflow-y: scroll;
 }
 
 .form-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0px 0px 20px 0px;
+  @include hide-fieldset;
+}
+
+.fieldset-flex-container {
+  @include hide-fieldset;
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .form-title {
-  @include text-bold($color: #323430);
+  @include text-bold;
+  margin-bottom: 0.5em;
+}
+
+.form-title-flex {
+  @include text-bold;
+  width: 50%;
 }
 
 .form-more-filters-container {
   margin-top: 20px;
+}
+
+.checkbox-label-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkbox-price {
+  position: relative;
+  @include tag-filter;
+  padding: 0.4em 1em;
+  @include text1-regular;
+  text-align: center;
+  cursor: pointer;
+}
+
+.checkbox-price-checked {
+  position: relative;
+  @include tag-filter;
+  padding: 0.4em 1em;
+  @include text1-regular(white);
+  text-align: center;
+  cursor: pointer;
+  background-color: $grape-green;
+}
+
+.checkbox-price input[type="checkbox"],
+.checkbox-price-checked input[type="checkbox"],
+.checkbox-flavor input[type="checkbox"],
+.checkbox-flavor-checked input[type="checkbox"] {
+  @include hide-checkbox;
+}
+
+.checkbox-flavor {
+  position: relative;
+  @include tag-filter;
+  padding: 0.4em 1em;
+  width: 30%;
+  @include text1-regular;
+  text-align: center;
+  cursor: pointer;
+}
+
+.checkbox-flavor-checked {
+  position: relative;
+  @include tag-filter;
+  padding: 0.4em 1em;
+  width: 30%;
+  @include text1-regular(white);
+  text-align: center;
+  cursor: pointer;
+  background-color: $grape-green;
+}
+
+.button-more-filters {
+  @include button-form;
+  @include text-bold($burgundy);
+}
+
+.button-search {
+  @include button-form($burgundy);
+  @include text-bold(white);
+}
+
+.select {
+  @include hide-select;
+  border: none;
+  border-radius: 20px;
+  margin: 0;
+  padding: 0.4em 1em;
+  width: 50%;
+  font-family: $font;
+  @include text1-italic($black-gray);
+  background-color: $light-gray;
+}
+
+.sr-only {
+  @include sr-only;
+}
+
+.switch {
+  // @include hide-select;
+  width: 100px;
+  height: 42px;
+  border-radius: 48px;
+  background-color: $light-gray;
+  color: $light-gray;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.switch-checkbox {
+  @include hide-checkbox;
+}
+
+.switch::after {
+  content: "";
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.2s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.switch-checkbox:checked + .switch::after {
+  left: 63px;
+}
+
+.switch-checkbox:checked + .switch {
+  background-color: $grape-green;
+  color: $grape-green;
 }

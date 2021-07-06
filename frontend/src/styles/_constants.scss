@@ -97,16 +97,6 @@ $bold: 700;
 $main-padding: 30px;
 
 // Elements
-@mixin sr-only {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 @mixin tag-filter($color: #ededed) {
   background-color: $color;
   border-radius: 20px;
@@ -172,6 +162,16 @@ $main-padding: 30px;
   width: fit-content;
   height: fit-content;
   padding: 0.3em 0.6em;
+}
+
+@mixin sr-only {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 @mixin hide-fieldset {
