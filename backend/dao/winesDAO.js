@@ -16,48 +16,39 @@ let query1 = {};
 //? Price_type is a list of queries that will be queried together to match the mongodb query rules: {$and: [{$or: [{field: "value"}, {field: value}]}, {$or: [{"field": "value"}, {"field": value}]}]}
 //?Specifically for price_eur and profile which both take a conditional statement if multiple parameters are selected.
 //* ************************************** */
-function priceSelectors(filters) {
-  if (filters.price_eur) {
-    if (typeof filters.price_eur === "string") {
-      if (filters.price_eur == "low") {
-        query.price_eur = { $gte: 0, $lt: 20.0 };
-      } else if (filters.price_eur == "med") {
-        query.price_eur = { $gte: 20.0, $lt: 50.0 };
-      } else if (filters.price_eur == "high") {
-        query.price_eur = { $gte: 50, $lt: 75 };
-      } else if (filters.price_eur == "exp") {
-        query.price_eur = { $gte: 75 };
-      }
+function priceSelectors(priceFilter) {
+  let newPriceFilter = [];
+  if (priceFilter) {
+    if (typeof priceFilter === "string") {
+      newPriceFilter = [priceFilter];
     } else {
-      for (let i = 0; i < filters.price_eur.length; i++) {
-        if (filters.price_eur[i] == "low") {
-          singleFilter = { $gte: 0, $lt: 20.0 };
-        } else if (filters.price_eur[i] == "med") {
-          singleFilter = { $gte: 20.0, $lt: 50.0 };
-        } else if (filters.price_eur[i] == "high") {
-          singleFilter = { $gte: 50, $lt: 75 };
-        } else if (filters.price_eur[i] == "exp") {
-          singleFilter = { $gte: 75 };
-        }
-        filterObject = { price_eur: singleFilter };
-        //make it a list to prepare for query structure Mongodb accepts
-        filter_.push(filterObject);
-        console.log("filterObject: ", filterObject);
-        console.log("filter list: ", filter_);
-      }
-      console.log("Before query assignment: ", query);
-      //query = { $or: filter_ };
-      //query.$and = [{ $or: filter_ }];
-
-      query1 = { $or: filter_ };
-      price_type.push(query1);
-      query.$and = price_type;
+      newPriceFilter = [...priceFilter];
     }
+    const priceQuery = [];
+    for (const price of newPriceFilter) {
+      if (price == "low") {
+        priceQuery.push({ $gte: 0, $lt: 20.0 });
+      } else if (price == "med") {
+        priceQuery.push({ $gte: 20.0, $lt: 50.0 });
+      } else if (price == "high") {
+        priceQuery.push({ $gte: 50, $lt: 75 });
+      } else if (price == "exp") {
+        priceQuery.push({ $gte: 75 });
+      }
+    }
+    //console.log("Before query assignment: ", query);
+    //query = { $or: filter_ };
+    //query.$and = [{ $or: filter_ }];
+
+    /* query1 = { $or: filter_ };
+    price_type.push(query1);
+    query.$and = price_type; */
+    return priceQuery;
   }
 
-  filter_ = [];
+  /*   filter_ = [];
   singleFilter = {};
-  return query;
+  return query; */
 }
 function foodSelectors(filters) {
   if ("food_names" in filters) {
@@ -97,7 +88,6 @@ function profileSelectors(profileFilter) {
     newProfileFilter = [...profileFilter];
   }
 
-  //
   if (newProfileFilter.includes("dry") && newProfileFilter.includes("sweet")) {
     newProfileFilter = newProfileFilter.filter(
       (profile) => profile !== "sweet" || profile !== "dry"
@@ -117,6 +107,7 @@ function profileSelectors(profileFilter) {
     } else {
     }
   }
+  console.log(profileQuery);
   return profileQuery;
 }
 
@@ -176,9 +167,11 @@ module.exports = class WinesDAO {
     if (filters) {
       if (filters.profile) {
         query.profile = profileSelectors(filters.profile);
+        console.log("Profile query:", query);
       }
       if (filters.price_eur) {
-        priceSelectors(filters);
+        query.price = priceSelectors(filters.price_eur);
+        console.log("after price: ", query);
       }
 
       if (filters.type) {
