@@ -88,59 +88,43 @@ function veganSelectors(filters) {
 //* *******************************
 //* *******************************
 
-function profileSelectors(filters) {
-  if (filters.profile.includes("dry") && filters.profile.includes("sweet")) {
-    do {
-      for (var i = filters.profile.length - 1; i >= 0; i--) {
-        if (filters.profile[i] === "sweet") {
-          filters.profile.splice(i, 1);
-        }
-      }
-      for (var i = filters.profile.length - 1; i >= 0; i--) {
-        if (filters.profile[i] === "dry") {
-          filters.profile.splice(i, 1);
-        }
-      }
-    } while (
-      filters.profile.includes("dry") ||
-      filters.profile.includes("sweet")
+function profileSelectors(profileFilter) {
+  let newProfileFilter = [];
+  // if just one filter is passed, profileFilter will be a string
+  if (typeof profileFilter === "string") {
+    newProfileFilter = [profileFilter];
+  } else {
+    newProfileFilter = [...profileFilter];
+  }
+
+  //
+  if (newProfileFilter.includes("dry") && newProfileFilter.includes("sweet")) {
+    newProfileFilter = newProfileFilter.filter(
+      (profile) => profile !== "sweet" || profile !== "dry"
     );
   }
-  if (typeof filters.profile === "string") {
-    if (filters.profile == "sweet") {
-      //*from docs: to access nested object, dot notation MUST be in quotations
-      query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
-    } else if (filters.profile == "dry") {
-      query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
-    } else if (filters.profile == "acidic") {
-      query["flavor_profile.dry"] = { $gte: 3, $lte: 5 };
-    }
-  } else {
-    for (i = 0; i < filters.profile.length; i++) {
-      if (filters.profile[i] == "sweet") {
-        //*from docs: to access nested object, dot notation MUST be in quotations
-        singleFilter["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
-      } else if (filters.profile[i] == "dry") {
-        singleFilter["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
-      } else if (filters.profile[i] == "acidic") {
-        singleFilter["flavor_profile.dry"] = { $gte: 3, $lte: 5 };
-      } else {
-      }
-      filterObject = singleFilter;
-      singleFilter = {};
-      filter_.push(filterObject);
-    }
-    //query.$and = [{ $or: filter_ }];
-    query1 = { $and: filter_ };
-    price_type.push(query1);
-    query1 = {};
 
-    filterObject = {}; //empty again for next query
-    filter_ = [];
+  const profileQuery = [];
+  for (const profile of newProfileFilter) {
+    if (profile == "sweet") {
+      //*from docs: to access nested object, dot notation MUST be in quotations
+      profileQuery.push({ ["flavor_profile.sweet"]: { $gte: 4, $lte: 5 } });
+    } else if (profile == "dry") {
+      profileQuery.push({ ["flavor_profile.sweet"]: { $gte: 1, $lt: 4 } });
+    } else if (profile == "acidic") {
+      //console.log(filters.profile[i]);
+      profileQuery.push({ ["flavor_profile.bitter"]: { $gte: 3, $lte: 5 } });
+    } else {
+    }
   }
-  return query;
+  return profileQuery;
 }
 
+function origineSelectors(filters) {
+  if (filters.origin) {
+    query.country_name = { $eq: filters.origin };
+  }
+}
 function origineSelectors(filters) {
   if (filters.origin) {
     query.country_name = { $eq: filters.origin };
@@ -188,9 +172,10 @@ module.exports = class WinesDAO {
   //* ************Get Wine***************** */
   //* ************************************* */
   static async getWines({ filters = null, page = 0, winesPerPage = 20 } = {}) {
+    const query = {};
     if (filters) {
       if (filters.profile) {
-        profileSelectors(filters);
+        query.profile = profileSelectors(filters.profile);
       }
       if (filters.price_eur) {
         priceSelectors(filters);
