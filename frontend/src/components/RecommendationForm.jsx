@@ -11,6 +11,9 @@ import {
   COUNTRY_NAME,
   FLAVOR_PROFILE,
 } from "../constants";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 import { ReactComponent as SearchIcon } from "../assets/search.svg";
 import { ReactComponent as DropdownIcon } from "../assets/dropdown.svg";
 import "../styles/RecommendationForm.scss";
@@ -58,7 +61,7 @@ const RecommendationForm = () => {
         });
       }}
     >
-      {({ values }) => (
+      {({ handleChange, values }) => (
         <Form className="form-container">
           <fieldset className="form-fieldset">
             <legend className="form-title">I am having wine:</legend>
@@ -102,19 +105,31 @@ const RecommendationForm = () => {
             </div>
 
             {withFood && (
-              <div className="form-with-food-container">
-                <SearchIcon />
-                <label>
+              <div
+                className={
+                  values[WINE_QUERY_PARAMS.foodName] !== ""
+                    ? "select-checked select-food-margin"
+                    : "select-food-margin"
+                }
+              >
+                <InputLabel className="sr-only" id="select-label-food">
                   Please specify...
-                  <Field as="select" name={WINE_QUERY_PARAMS.foodName}>
-                    <option value="">Please specify...</option>
-                    <option value={FOOD_NAMES.pasta}>Pasta</option>
-                    <option value={FOOD_NAMES.pork}>Pork</option>
-                    <option value={FOOD_NAMES.cheese}>Cheese</option>
-                    <option value={FOOD_NAMES.beef}>Beef</option>
-                    <option value={FOOD_NAMES.fish}>Fish</option>
-                  </Field>
-                </label>
+                </InputLabel>
+                <Select
+                  variant="outlined"
+                  displayEmpty
+                  labelId="select-label-food"
+                  value={values[WINE_QUERY_PARAMS.foodName]}
+                  onChange={handleChange}
+                  name={WINE_QUERY_PARAMS.foodName}
+                >
+                  <MenuItem value="">Please specify...</MenuItem>
+                  <MenuItem value={FOOD_NAMES.pasta}>Pasta</MenuItem>
+                  <MenuItem value={FOOD_NAMES.pork}>Pork</MenuItem>
+                  <MenuItem value={FOOD_NAMES.cheese}>Cheese</MenuItem>
+                  <MenuItem value={FOOD_NAMES.beef}>Beef</MenuItem>
+                  <MenuItem value={FOOD_NAMES.fish}>Fish</MenuItem>
+                </Select>
               </div>
             )}
           </fieldset>
@@ -215,20 +230,37 @@ const RecommendationForm = () => {
                     <legend className="form-title-flex" id="wine-type">
                       Wine type
                     </legend>
-                    <DropdownIcon />
-                    <label className="sr-only">Please select</label>
-                    <Field
-                      as="select"
-                      name={WINE_QUERY_PARAMS.wineType}
-                      className="select"
+                    <div
+                      className={
+                        values[WINE_QUERY_PARAMS.wineType] !== ""
+                          ? "select-checked select-half-size"
+                          : "select-half-size"
+                      }
                     >
-                      <option value="">Please select</option>
-                      <option value={WINE_TYPE.red}>Red</option>
-                      <option value={WINE_TYPE.white}>White</option>
-                      <option value={WINE_TYPE.rose}>Rosé</option>
-                      <option value={WINE_TYPE.sparkling}>Sparkling</option>
-                      <option value={WINE_TYPE.dessert}>Dessert</option>
-                    </Field>
+                      <InputLabel
+                        className="sr-only"
+                        id="select-label-wine-type"
+                      >
+                        Please select
+                      </InputLabel>
+                      <Select
+                        variant="outlined"
+                        displayEmpty
+                        labelId="select-label-wine-type"
+                        value={values[WINE_QUERY_PARAMS.wineType]}
+                        onChange={handleChange}
+                        name={WINE_QUERY_PARAMS.wineType}
+                      >
+                        <MenuItem value="">Please select</MenuItem>
+                        <MenuItem value={WINE_TYPE.red}>Red</MenuItem>
+                        <MenuItem value={WINE_TYPE.white}>White</MenuItem>
+                        <MenuItem value={WINE_TYPE.rose}>Rosé</MenuItem>
+                        <MenuItem value={WINE_TYPE.sparkling}>
+                          Sparkling
+                        </MenuItem>
+                        <MenuItem value={WINE_TYPE.dessert}>Dessert</MenuItem>
+                      </Select>
+                    </div>
                   </div>
                 </fieldset>
 
@@ -237,21 +269,37 @@ const RecommendationForm = () => {
                     <legend className="form-title-flex" id="origin">
                       Origin
                     </legend>
-                    <DropdownIcon />
-                    <label className="sr-only">Please select</label>
-                    <Field
-                      as="select"
-                      name={WINE_QUERY_PARAMS.countryName}
-                      className="select"
+                    <div
+                      className={
+                        values[WINE_QUERY_PARAMS.countryName] !== ""
+                          ? "select-checked select-half-size"
+                          : "select-half-size"
+                      }
                     >
-                      <option value="">Please select</option>
-                      <option value={COUNTRY_NAME.France}>France</option>
-                      <option value={COUNTRY_NAME.Germany}>Germany</option>
-                      <option value={COUNTRY_NAME.Italy}>Italy</option>
-                      <option value={COUNTRY_NAME.Portugal}>Portugal</option>
-                      <option value={COUNTRY_NAME.Spain}>Spain</option>
-                      <option value={COUNTRY_NAME.Other}>Other</option>
-                    </Field>
+                      <InputLabel className="sr-only" id="select-label-origin">
+                        Please select
+                      </InputLabel>
+                      <Select
+                        variant="outlined"
+                        displayEmpty
+                        labelId="select-label-origin"
+                        value={values[WINE_QUERY_PARAMS.countryName]}
+                        onChange={handleChange}
+                        name={WINE_QUERY_PARAMS.countryName}
+                      >
+                        <MenuItem value="">Please select</MenuItem>
+                        <MenuItem value={COUNTRY_NAME.France}>France</MenuItem>
+                        <MenuItem value={COUNTRY_NAME.Germany}>
+                          Germany
+                        </MenuItem>
+                        <MenuItem value={COUNTRY_NAME.Italy}>Italy</MenuItem>
+                        <MenuItem value={COUNTRY_NAME.Portugal}>
+                          Portugal
+                        </MenuItem>
+                        <MenuItem value={COUNTRY_NAME.Spain}>Spain</MenuItem>
+                        <MenuItem value={COUNTRY_NAME.Other}>Other</MenuItem>
+                      </Select>
+                    </div>
                   </div>
                 </fieldset>
 
