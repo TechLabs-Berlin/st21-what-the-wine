@@ -16,7 +16,7 @@
 }
 
 .filter {
-  @include tag-filter($color: #ededed);
+  @include tag-filter($color: white);
   @include text2-regular($color: #323430);
   margin: 0 10px 5px 0;
 }
@@ -68,6 +68,15 @@
   display: block;
 }
 
+.list-price {
+  @include tag-price-small;
+  @include text2-regular($color: white);
+  // align-self: flex-end;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
 .vegan-icon-container-rl {
   @include vegan-icon-small;
   position: absolute;
@@ -75,25 +84,20 @@
   bottom: 10px;
 }
 
-// .vegan-icon-small {
-//   fill: white;
-// }
-
 .list-description-container {
   width: 100%;
   height: 25%;
   display: flex;
-  padding: 10px 5px 5px 5px;
+  padding: 0.3em 0.5em;
   box-sizing: border-box;
 }
 
 .list-text-container {
   overflow: hidden;
-  white-space: nowrap;
 }
 
 .list-text {
-  margin: 0 0 5px 0;
+  margin: 0;
   @include text2-regular($color: #323430);
 }
 
@@ -102,10 +106,4 @@
   margin: 0px;
   text-decoration: none;
   text-overflow: ellipsis;
-}
-
-.list-price {
-  @include tag-price-small;
-  @include text2-regular($color: white);
-  align-self: flex-end;
 }

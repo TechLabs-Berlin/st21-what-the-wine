@@ -78,7 +78,7 @@ const RecommendationList = () => {
 
       <h1 className="result-title">We recommend</h1>
 
-      {/* considering using a UI-kit for this element */}
+      {/* considering using a UI-kit for this element 
       <div className="sort-container">
         <label>
           sorted by
@@ -88,6 +88,7 @@ const RecommendationList = () => {
           </select>
         </label>
       </div>
+      */}
 
       <ul className="list-container">
         {winesData &&
@@ -99,6 +100,7 @@ const RecommendationList = () => {
                   alt=""
                   className="list-product-img"
                 ></img>
+                <div className="list-price">{item.price_eur}€</div>
 
                 {item.vegan === true && (
                   <div className="vegan-icon-container-rl">
@@ -116,7 +118,6 @@ const RecommendationList = () => {
                     {item.wine_name}
                   </Link>
                 </div>
-                <div className="list-price">{item.price_eur}€</div>
               </div>
             </li>
           ))}
