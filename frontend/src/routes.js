@@ -8,21 +8,24 @@ import RecommendationList from "./components/RecommendationList";
 import AboutUs from "./components/AboutUs";
 import Faq from "./components/Faq";
 import Support from "./components/Support";
+import { StylesProvider } from "@material-ui/core/styles";
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/RecommendationList" component={RecommendationList} />
-        <Route path="/WineDescription/:wine_id" component={WineDescription} />
-        <Route path="/AboutUs" component={AboutUs} />
-        <Route path="/Faq" component={Faq} />
-        <Route path="/Support" component={Support} />
-      </Switch>
-      <Footer />
-    </BrowserRouter>
+    <StylesProvider injectFirst>
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Landing} />
+          <Route path="/RecommendationList" component={RecommendationList} />
+          <Route path="/WineDescription/:wine_id" component={WineDescription} />
+          <Route path="/AboutUs" component={AboutUs} />
+          <Route path="/Faq" component={Faq} />
+          <Route path="/Support" component={Support} />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </StylesProvider>
   );
 };
 
