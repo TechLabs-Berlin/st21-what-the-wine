@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import Rating from "@material-ui/lab/Rating";
-import { StylesProvider } from "@material-ui/core/styles";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { ReactComponent as VeganIcon } from "../assets/vegan.svg";
 import { ReactComponent as ArrowsLeftIcon } from "../assets/arrows_left_green.svg";
@@ -35,7 +34,7 @@ const WineDescription = (props) => {
   const wineObject = singleWineData.singleWine[0];
 
   return (
-    <StylesProvider injectFirst>
+    <>
       <button className="back-link-container" type="button" onClick={goBack}>
         <ArrowsLeftIcon className="back-link-icon" />
         back
@@ -124,7 +123,7 @@ const WineDescription = (props) => {
           </section>
         </div>
       </main>
-    </StylesProvider>
+    </>
   );
 };
 
