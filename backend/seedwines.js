@@ -35,26 +35,33 @@ module.exports = class SeedWines {
 
   static async apiUpdateWine(req, res) {
     //todo: figure out how to iterate through and add new property 'acidic' to wine_profile
-    /*   try {
+    try {
       wines.updateMany(
         {},
-        { $set: { image_url: "https://unsplash.com/photos/tDfILN5dfx4" } }
+        {
+          $set: {
+            image_url:
+              "https://images.unsplash.com/photo-1611571940159-425a28706d6f",
+          },
+        }
       );
+      res.send("sucess");
     } catch (e) {
       console.error(`Unable to update wine: ${e}`);
-    } */
-    try {
+    }
+  }
+  /*   try {
       wines.updateMany(
         {},
         /*  {
           $set: { "flavor_profile.acidic": Math.round(Math.random() * 4 + 1) },
-        } */ {
-          $unset: { "flavor_profile.acidic": 1 },
-        }
-      );
-      res.send("success");
-    } catch (e) {
-      res.send(`Unable to update wine: ${e}`);
-    }
-  }
+        } */ //{
+  ///  $unset: { "flavor_profile.acidic": 1 },
+  //}
+  //);
+  // res.send("success");
+  // } catch (e) {
+  //res.send(`Unable to update wine: ${e}`);
+  //  } */
+  // }
 };

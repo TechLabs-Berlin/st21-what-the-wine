@@ -1,81 +1,56 @@
-//todo: Take out console logs for submissions (clean it up!)
 //todo: figure out HOW to put these functions in the function.js file!
 
 //? ************************************* */
 //* ************Declarations************* */
 //* ************************************* */
 let wines;
-let query = {};
-let singleFilter = {};
-let filterObject = {};
-let filter_ = [];
-let price_type = [];
-let query1 = {};
 
 //* ************* price_type************* */
 //? Price_type is a list of queries that will be queried together to match the mongodb query rules: {$and: [{$or: [{field: "value"}, {field: value}]}, {$or: [{"field": "value"}, {"field": value}]}]}
 //?Specifically for price_eur and profile which both take a conditional statement if multiple parameters are selected.
 //* ************************************** */
-function priceSelectors(filters) {
-  if (filters.price_eur) {
-    if (typeof filters.price_eur === "string") {
-      if (filters.price_eur == "low") {
-        query.price_eur = { $gte: 0, $lt: 20.0 };
-      } else if (filters.price_eur == "med") {
-        query.price_eur = { $gte: 20.0, $lt: 50.0 };
-      } else if (filters.price_eur == "high") {
-        query.price_eur = { $gte: 50, $lt: 75 };
-      } else if (filters.price_eur == "exp") {
-        query.price_eur = { $gte: 75 };
-      }
+function priceSelectors(priceFilter) {
+  let newPriceFilter = [];
+  if (priceFilter) {
+    if (typeof priceFilter === "string") {
+      newPriceFilter = [priceFilter];
     } else {
-      for (let i = 0; i < filters.price_eur.length; i++) {
-        if (filters.price_eur[i] == "low") {
-          singleFilter = { $gte: 0, $lt: 20.0 };
-        } else if (filters.price_eur[i] == "med") {
-          singleFilter = { $gte: 20.0, $lt: 50.0 };
-        } else if (filters.price_eur[i] == "high") {
-          singleFilter = { $gte: 50, $lt: 75 };
-        } else if (filters.price_eur[i] == "exp") {
-          singleFilter = { $gte: 75 };
-        }
-        filterObject = { price_eur: singleFilter };
-        //make it a list to prepare for query structure Mongodb accepts
-        filter_.push(filterObject);
-        console.log("filterObject: ", filterObject);
-        console.log("filter list: ", filter_);
-      }
-      console.log("Before query assignment: ", query);
-      //query = { $or: filter_ };
-      //query.$and = [{ $or: filter_ }];
-
-      query1 = { $or: filter_ };
-      price_type.push(query1);
-      query.$and = price_type;
+      newPriceFilter = [...priceFilter];
     }
-  }
+    const priceQuery = [];
+    for (const price of newPriceFilter) {
+      if (price == "low") {
+        priceQuery.push({ price_eur: { $gte: 0, $lt: 20.0 } });
+      } else if (price == "med") {
+        priceQuery.push({ price_eur: { $gte: 20.0, $lt: 50.0 } });
+      } else if (price == "high") {
+        priceQuery.push({ price_eur: { $gte: 50, $lt: 75 } });
+      } else if (price == "exp") {
+        priceQuery.push({ price_eur: { $gte: 75 } });
+      }
+    }
 
-  filter_ = [];
-  singleFilter = {};
-  return query;
-}
-function foodSelectors(filters) {
-  if ("food_names" in filters) {
-    query.food_names = { $eq: filters["food_names"] };
-
-    return query;
+    return priceQuery;
   }
 }
-function veganSelectors(filters) {
-  if (filters.vegan == "true") {
-    query.vegan = { $eq: true };
-  } else if (filters.vegan == "false") {
-    query.vegan = { $eq: false };
+function foodSelectors(foodFilters) {
+  let foodNames;
+
+  foodNames = { $eq: foodFilters };
+
+  return foodNames;
+}
+function veganSelectors(veganFilters) {
+  let choice;
+  if (veganFilters == "true") {
+    choice = { $eq: true };
+  } else if (veganFilters == "false") {
+    choice = { $eq: false };
   } else {
     console.log("Invalid query");
   }
 
-  return query;
+  return choice;
 }
 //* *******************************
 //* ***Function profileSelectors***
@@ -88,85 +63,67 @@ function veganSelectors(filters) {
 //* *******************************
 //* *******************************
 
-function profileSelectors(filters) {
-  if (filters.profile.includes("dry") && filters.profile.includes("sweet")) {
-    do {
-      for (var i = filters.profile.length - 1; i >= 0; i--) {
-        if (filters.profile[i] === "sweet") {
-          filters.profile.splice(i, 1);
-        }
-      }
-      for (var i = filters.profile.length - 1; i >= 0; i--) {
-        if (filters.profile[i] === "dry") {
-          filters.profile.splice(i, 1);
-        }
-      }
-    } while (
-      filters.profile.includes("dry") ||
-      filters.profile.includes("sweet")
+function profileSelectors(profileFilter) {
+  let newProfileFilter = [];
+  // if just one filter is passed, profileFilter will be a string
+  if (typeof profileFilter === "string") {
+    newProfileFilter = [profileFilter];
+  } else {
+    newProfileFilter = [...profileFilter];
+  }
+
+  if (newProfileFilter.includes("dry") && newProfileFilter.includes("sweet")) {
+    newProfileFilter = newProfileFilter.filter(
+      (profile) => profile !== "sweet" || profile !== "dry"
     );
   }
-  if (typeof filters.profile === "string") {
-    if (filters.profile == "sweet") {
+
+  const profileQuery = [];
+  for (const profile of newProfileFilter) {
+    if (profile == "sweet") {
       //*from docs: to access nested object, dot notation MUST be in quotations
-      query["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
-    } else if (filters.profile == "dry") {
-      query["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
-    } else if (filters.profile == "acidic") {
-      query["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
+      profileQuery.push({ ["flavor_profile.sweet"]: { $gte: 4, $lte: 5 } });
+    } else if (profile == "dry") {
+      profileQuery.push({ ["flavor_profile.sweet"]: { $gte: 1, $lt: 4 } });
+    } else if (profile == "acidic") {
+      profileQuery.push({ ["flavor_profile.bitter"]: { $gte: 3, $lte: 5 } });
     }
-  } else {
-    for (i = 0; i < filters.profile.length; i++) {
-      if (filters.profile[i] == "sweet") {
-        //*from docs: to access nested object, dot notation MUST be in quotations
-        singleFilter["flavor_profile.sweet"] = { $gte: 4, $lte: 5 };
-      } else if (filters.profile[i] == "dry") {
-        singleFilter["flavor_profile.sweet"] = { $gte: 1, $lt: 4 };
-      } else if (filters.profile[i] == "acidic") {
-        singleFilter["flavor_profile.bitter"] = { $gte: 3, $lte: 5 };
-      } else {
-      }
-      filterObject = singleFilter;
-      singleFilter = {};
-      filter_.push(filterObject);
-    }
-    //query.$and = [{ $or: filter_ }];
-    query1 = { $and: filter_ };
-    price_type.push(query1);
-    query1 = {};
-
-    filterObject = {}; //empty again for next query
-    filter_ = [];
   }
-  return query;
+
+  return profileQuery;
 }
 
-function origineSelectors(filters) {
-  if (filters.origin) {
-    query.country_name = { $eq: filters.origin };
+function origineSelectors(originFilter) {
+  let countryName;
+  if (originFilter) {
+    countryName = { $eq: originFilter };
   }
+  return countryName;
 }
 
-function typeSelectors(filters) {
-  if (filters.type == "red") {
+function typeSelectors(typeFilter) {
+  let type;
+  if (typeFilter == "red") {
     //*text cannot work on a specific property. Had to set up an index in atlas for it to work. $Text searches the db grape_names via the index set up in atlas
-    query.$text = {
+    type = {
       $search:
         "Aragonez|Barbera|Blaufränkisch|Cabernet|Carignan|Castelao|Corvina|Dolcetto|Grenache|Malbec|Merlot|Montepulciano|Mourvedre|Nebbiolo|Noir|Pinotage|Primitivo|Shiraz|Shiraz/Syrah|Sangiovese|Tempranillo|Touriga|Trebbiano|Zinfandel|",
     };
-  } else if (filters.type == "white") {
-    query.$text = {
+  } else if (typeFilter == "white") {
+    type = {
       $search:
         "Arneis|Aligoté|Blanc|Boal Branco|Chardonnay|Chenin|Cortese|Furmint|Gris|Malmsey|Marsanne|Muscadelle|Riesling|Roussanne|Sercial|Terrantez|Trebbiano|Verdelho|",
     };
-  } else if (filters.type == "rose") {
-    //!
-    query = { $text: { $search: "Blanc" } };
-  } else if (filters.type == "sparkling") {
+  } else if (typeFilter == "rose") {
+    //! Do not EXIST!
+    type = { $search: "Blanc" };
+  } else if (typeFilter == "sparkling") {
+    //! DO NOT EXIST!
     //!Chardonnay|Pinot Noir|Pinot Meunier
-    query = { $text: { $search: "Blanc" } };
+    type = { $search: "Blanc" };
   }
-  return query;
+
+  return type;
 }
 //? ************************************* */
 //* *********End Declarations************ */
@@ -188,28 +145,38 @@ module.exports = class WinesDAO {
   //* ************Get Wine***************** */
   //* ************************************* */
   static async getWines({ filters = null, page = 0, winesPerPage = 20 } = {}) {
+    let query = {};
     if (filters) {
       if (filters.profile) {
-        profileSelectors(filters);
+        const profile = profileSelectors(filters.profile);
+
+        query.$and = profile;
       }
       if (filters.price_eur) {
-        priceSelectors(filters);
+        const prices = priceSelectors(filters.price_eur);
+        query.$or = prices;
       }
 
       if (filters.type) {
-        typeSelectors(filters);
+        const type = typeSelectors(filters.type);
+
+        query.$text = type;
       }
 
       if (filters.food_names) {
-        foodSelectors(filters);
+        const foodName = foodSelectors(filters.food_names);
+        query.food_names = foodName;
       }
 
       if (filters.vegan) {
-        veganSelectors(filters);
+        const vegan = veganSelectors(filters.vegan);
+
+        query.vegan = vegan;
       }
 
       if (filters.origin) {
-        origineSelectors(filters);
+        const country = origineSelectors(filters.origin);
+        query.country_name = country;
       }
 
       //? for the winetyp/text searches: https://docs.mongodb.com/manual/text-search/
@@ -269,12 +236,11 @@ module.exports = class WinesDAO {
   //* ************Single Wine************** */
   //* ************************************* */
   static async getSingleWine({ filter = null } = {}) {
-    console.log("filter: ", filter);
+    let query = {};
     if (filter) {
       query.wine_id = { $eq: filter.id };
     }
 
-    console.log("query:", query);
     let cursor;
     try {
       cursor = await wines.find(query);
