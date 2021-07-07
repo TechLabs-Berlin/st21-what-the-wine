@@ -78,18 +78,6 @@ const RecommendationList = () => {
 
       <h1 className="result-title">We recommend</h1>
 
-      {/* considering using a UI-kit for this element 
-      <div className="sort-container">
-        <label>
-          sorted by
-          <select name="sort">
-            <option value="price">price</option>
-            <option value="origin">origin</option>
-          </select>
-        </label>
-      </div>
-      */}
-
       <ul className="list-container">
         {winesData &&
           winesData.wines.map((item) => (

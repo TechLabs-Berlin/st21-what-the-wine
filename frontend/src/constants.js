@@ -14,11 +14,11 @@ export const FOOD_PAIRING = {
 };
 
 export const FOOD_NAMES = {
-  pasta: "pasta",
-  pork: "pork",
-  cheese: "cheese",
-  beef: "beef",
-  fish: "fish",
+  pasta: "Pasta",
+  pork: "Pork",
+  cheese: "Cheese",
+  beef: "Beef",
+  fish: "Fish",
 };
 
 export const PRICE = {

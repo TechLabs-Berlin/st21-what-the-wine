@@ -104,7 +104,7 @@ const WineDescription = (props) => {
               <div className="scale-text-right-aligned">less bitter</div>
               <Rating
                 name="bitter"
-                value={wineObject.flavor_profile.dry}
+                value={wineObject.flavor_profile.bitter}
                 icon={<FiberManualRecordIcon fontSize="inherit" />}
                 readOnly
               />
@@ -112,9 +112,11 @@ const WineDescription = (props) => {
             </div>
             <div className="scale-container">
               <div className="scale-text-right-aligned">less acidic</div>
+              {/* here the "dry" value represents the acidity filter,
+              this is due to a bug backend faces with MongoDB */}
               <Rating
                 name="acidic"
-                value={wineObject.flavor_profile.bitter}
+                value={wineObject.flavor_profile.dry}
                 icon={<FiberManualRecordIcon fontSize="inherit" />}
                 readOnly
               />
