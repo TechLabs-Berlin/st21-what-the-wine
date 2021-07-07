@@ -97,7 +97,7 @@ $bold: 700;
 $main-padding: 30px;
 
 // Elements
-@mixin tag-filter($color: #ededed) {
+@mixin tag-filter($color: $light-gray) {
   background-color: $color;
   border-radius: 20px;
   width: fit-content;

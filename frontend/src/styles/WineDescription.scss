@@ -2,13 +2,15 @@
 
 .back-link-container {
   margin: 0 0 1em 2em;
+  border: none;
   display: flex;
   align-items: center;
+  @include text1-italic;
 }
 
-.back-link-text {
-  @include text1-italic($color: $dark-olive);
-  margin-left: 0.5em;
+.back-link-icon {
+  // @include text1-italic;
+  margin-right: 0.5em;
 }
 
 .single-wine-header {
@@ -24,7 +26,7 @@
 }
 
 .single-wine-title-regular {
-  @include h3-regular($color: $black-gray);
+  @include h3-regular;
 }
 
 .single-wine-price {
@@ -78,13 +80,13 @@
 }
 
 .section-title-wd {
-  @include text-bold($color: $black-gray);
+  @include text-bold;
   margin: 0;
 }
 
 .values-wd {
-  @include tag-filter($color: $light-gray);
-  @include text2-regular($color: $black-gray);
+  @include tag-filter;
+  @include text2-regular;
   margin: 0;
 }
 
@@ -97,8 +99,8 @@
 }
 
 .values-list-items-wd {
-  @include tag-filter($color: $light-gray);
-  @include text2-regular($color: $black-gray);
+  @include tag-filter;
+  @include text2-regular;
   margin: 0.5em 0.5em 0 0;
 }
 
@@ -126,7 +128,7 @@
 }
 
 .section-title-right-wd {
-  @include text-bold($color: $black-gray);
+  @include text-bold;
   margin: 0 0 1em 0;
   text-align: center;
 }
@@ -137,7 +139,7 @@
   justify-content: center;
   margin-top: 1.2em;
   width: 100%;
-  @include text2-regular($color: $black-gray);
+  @include text2-regular;
 }
 
 .scale-container > * {

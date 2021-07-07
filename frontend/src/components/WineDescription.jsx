@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import Rating from "@material-ui/lab/Rating";
 import { StylesProvider } from "@material-ui/core/styles";
@@ -11,6 +11,11 @@ import "../styles/WineDescription.scss";
 const WineDescription = (props) => {
   const [singleWineData, setSingleWineData] = useState(null);
   const { wine_id } = useParams();
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -31,10 +36,10 @@ const WineDescription = (props) => {
 
   return (
     <StylesProvider injectFirst>
-      <div className="back-link-container">
-        <ArrowsLeftIcon />
-        <div className="back-link-text">back</div>
-      </div>
+      <button className="back-link-container" type="button" onClick={goBack}>
+        <ArrowsLeftIcon className="back-link-icon" />
+        back
+      </button>
       <main>
         <div className="single-wine-header">
           <div className="single-wine-title-container">

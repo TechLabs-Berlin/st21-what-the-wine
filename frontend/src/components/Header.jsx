@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import Options from "./Options";
 import "../styles/Header.scss";
 import { ReactComponent as OptionsIcon } from "../assets/options.svg";
 import { ReactComponent as ArrowsRightIcon } from "../assets/arrows_right.svg";
