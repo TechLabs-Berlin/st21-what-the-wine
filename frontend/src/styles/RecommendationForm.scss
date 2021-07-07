@@ -42,51 +42,41 @@
   justify-content: space-between;
 }
 
+.radio-food {
+  @include chips-form;
+  width: 48%;
+}
+
+.radio-food-checked {
+  @include chips-form-checked;
+  width: 48%;
+}
+
 .checkbox-price {
-  position: relative;
-  @include tag-filter;
-  padding: 0.4em 1em;
-  @include text1-regular;
-  text-align: center;
-  cursor: pointer;
+  @include chips-form;
 }
 
 .checkbox-price-checked {
-  position: relative;
-  @include tag-filter;
-  padding: 0.4em 1em;
-  @include text1-regular(white);
-  text-align: center;
-  cursor: pointer;
-  background-color: $grape-green;
+  @include chips-form-checked;
+}
+
+.checkbox-flavor {
+  @include chips-form;
+  width: 30%;
+}
+
+.checkbox-flavor-checked {
+  @include chips-form-checked;
+  width: 30%;
 }
 
 .checkbox-price input[type="checkbox"],
 .checkbox-price-checked input[type="checkbox"],
 .checkbox-flavor input[type="checkbox"],
-.checkbox-flavor-checked input[type="checkbox"] {
+.checkbox-flavor-checked input[type="checkbox"],
+.radio-food input[type="radio"],
+.radio-food-checked input[type="radio"] {
   @include hide-checkbox;
-}
-
-.checkbox-flavor {
-  position: relative;
-  @include tag-filter;
-  padding: 0.4em 1em;
-  width: 30%;
-  @include text1-regular;
-  text-align: center;
-  cursor: pointer;
-}
-
-.checkbox-flavor-checked {
-  position: relative;
-  @include tag-filter;
-  padding: 0.4em 1em;
-  width: 30%;
-  @include text1-regular(white);
-  text-align: center;
-  cursor: pointer;
-  background-color: $grape-green;
 }
 
 .button-more-filters {

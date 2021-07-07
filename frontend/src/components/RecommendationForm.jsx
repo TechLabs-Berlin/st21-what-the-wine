@@ -62,26 +62,44 @@ const RecommendationForm = () => {
         <Form className="form-container">
           <fieldset className="form-fieldset">
             <legend className="form-title">I am having wine:</legend>
-            <label>
-              with food
-              <Field
-                type="radio"
-                name={WINE_QUERY_PARAMS.foodPairing}
-                value={FOOD_PAIRING.true}
-                checked={withFood}
-                onClick={handleWithFood}
-              />
-            </label>
-            <label>
-              without food
-              <Field
-                type="radio"
-                name={WINE_QUERY_PARAMS.foodPairing}
-                value={FOOD_PAIRING.false}
-                checked={withoutFood}
-                onClick={handleWithoutFood}
-              />
-            </label>
+            <div className="checkbox-label-container">
+              <label
+                className={
+                  values[WINE_QUERY_PARAMS.foodPairing]?.includes(
+                    FOOD_PAIRING.true
+                  )
+                    ? "radio-food-checked"
+                    : "radio-food"
+                }
+              >
+                with food
+                <Field
+                  type="radio"
+                  name={WINE_QUERY_PARAMS.foodPairing}
+                  value={FOOD_PAIRING.true}
+                  checked={withFood}
+                  onClick={handleWithFood}
+                />
+              </label>
+              <label
+                className={
+                  values[WINE_QUERY_PARAMS.foodPairing]?.includes(
+                    FOOD_PAIRING.false
+                  )
+                    ? "radio-food-checked"
+                    : "radio-food"
+                }
+              >
+                without food
+                <Field
+                  type="radio"
+                  name={WINE_QUERY_PARAMS.foodPairing}
+                  value={FOOD_PAIRING.false}
+                  checked={withoutFood}
+                  onClick={handleWithoutFood}
+                />
+              </label>
+            </div>
 
             {withFood && (
               <div className="form-with-food-container">

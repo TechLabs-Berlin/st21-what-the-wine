@@ -199,3 +199,18 @@ $main-padding: 30px;
   height: 2.6em;
   margin-top: 0.5em;
 }
+
+@mixin chips-form {
+  position: relative;
+  @include tag-filter;
+  padding: 0.4em 1em;
+  @include text1-regular;
+  text-align: center;
+  cursor: pointer;
+}
+
+@mixin chips-form-checked {
+  @include chips-form;
+  @include text1-regular(white);
+  background-color: $grape-green;
+}
