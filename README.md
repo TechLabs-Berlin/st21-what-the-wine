@@ -1,16 +1,5 @@
 <!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** github_username, repo_name, twitter_handle, email, project_title, project_description
-***
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
@@ -73,6 +62,9 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 -->
+What the Wine makes picking the right wine easier. </br>
+Endless selections of wines in the stores can be overwhelming. </br>
+What the wine makes picking out a wine easier and more straight forward. The user gets instant wine recommendations based on filters including wine profile, type of wine, food pairings, country of origin, and more. 
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -80,6 +72,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 To get a local copy up and running follow these simple steps.
 
 ### Installation
+>prerequisites: you must be provided with the .env files for the app to run. Please contact us if needed.  
 
 1. Clone the repo
    ```sh
@@ -118,9 +111,9 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 ### Team members:
 * UX Ebunoluwa Meroyi
 * UX Berenika Godlewska
-* UX Ngoc Anh Doan Thi
-* WD Timea Varju
-* WD Stephanie Mennear
+* UX [Ngoc Anh Doan Thi](https://github.com/ndoanthi)
+* WD [Timea Varju](https://github.com/Moomia)
+* WD [Stephanie Mennear](https://github.com/Ostend)
 
 ### Mentor:
 * Rodolfo Gobbi
