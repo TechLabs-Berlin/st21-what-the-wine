@@ -80,7 +80,7 @@ function profileSelectors(profileFilter) {
     } else if (profile == "dry") {
       profileQuery.push({ ["flavor_profile.sweet"]: { $gte: 1, $lt: 4 } });
     } else if (profile == "acidic") {
-      profileQuery.push({ ["flavor_profile.bitter"]: { $gte: 3, $lte: 5 } });
+      profileQuery.push({ ["flavor_profile.dry"]: { $gte: 3, $lte: 5 } });
     }
   }
 
