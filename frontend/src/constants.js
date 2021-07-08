@@ -1,6 +1,6 @@
 export const WINE_QUERY_PARAMS = {
   foodPairing: "food_pairing",
-  foodName: "food_name",
+  foodName: "food_names",
   price: "price_eur",
   vegan: "vegan",
   wineType: "type",
