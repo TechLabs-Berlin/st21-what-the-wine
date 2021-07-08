@@ -12,11 +12,13 @@ let wines;
 function priceSelectors(priceFilter) {
   let newPriceFilter = [];
   if (priceFilter) {
-    if (typeof priceFilter === "string") {
+    newPriceFilter = priceFilter.split(",");
+
+    /* if (typeof priceFilter === "string") {
       newPriceFilter = [priceFilter];
     } else {
       newPriceFilter = [...priceFilter];
-    }
+    } */
     const priceQuery = [];
     for (const price of newPriceFilter) {
       if (price == "low") {
@@ -65,21 +67,20 @@ function veganSelectors(veganFilters) {
 
 function profileSelectors(profileFilter) {
   let newProfileFilter = [];
-  // if just one filter is passed, profileFilter will be a string
-  if (typeof profileFilter === "string") {
-    newProfileFilter = [profileFilter];
-  } else {
-    newProfileFilter = [...profileFilter];
-  }
+  newProfileFilter = profileFilter.split(",");
+
+  let filteredProfile;
 
   if (newProfileFilter.includes("dry") && newProfileFilter.includes("sweet")) {
-    newProfileFilter = newProfileFilter.filter(
-      (profile) => profile !== "sweet" || profile !== "dry"
+    filteredProfile = newProfileFilter.filter(
+      (profile) => profile !== "sweet" && profile != "dry"
     );
+  } else {
+    filteredProfile = newProfileFilter;
   }
 
   const profileQuery = [];
-  for (const profile of newProfileFilter) {
+  for (const profile of filteredProfile) {
     if (profile == "sweet") {
       //*from docs: to access nested object, dot notation MUST be in quotations
       profileQuery.push({ ["flavor_profile.sweet"]: { $gte: 4, $lte: 5 } });
@@ -149,8 +150,15 @@ module.exports = class WinesDAO {
     if (filters) {
       if (filters.profile) {
         const profile = profileSelectors(filters.profile);
-
-        query.$and = profile;
+        if (profile.length == 0) {
+          query.$and = [
+            {
+              ["flavor_profile.sweet"]: { $gte: 1, $lte: 5 },
+            },
+          ];
+        } else {
+          query.$and = profile;
+        }
       }
       if (filters.price_eur) {
         const prices = priceSelectors(filters.price_eur);
@@ -180,7 +188,7 @@ module.exports = class WinesDAO {
       }
 
       //? for the winetyp/text searches: https://docs.mongodb.com/manual/text-search/
-
+      console.log("QUERY", query);
       let cursor;
       try {
         cursor = await wines.find(query);
