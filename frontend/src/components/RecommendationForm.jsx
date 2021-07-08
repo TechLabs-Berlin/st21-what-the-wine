@@ -124,8 +124,8 @@ const RecommendationForm = () => {
                   name={WINE_QUERY_PARAMS.foodName}
                 >
                   <MenuItem value="">Please specify...</MenuItem>
-                  <MenuItem value={FOOD_NAMES.pasta}>Pasta</MenuItem>
-                  <MenuItem value={FOOD_NAMES.pork}>Pork</MenuItem>
+                  <MenuItem value={FOOD_NAMES.vegetarian}>Vegetarian</MenuItem>
+                  <MenuItem value={FOOD_NAMES.lamb}>Lamb</MenuItem>
                   <MenuItem value={FOOD_NAMES.cheese}>Cheese</MenuItem>
                   <MenuItem value={FOOD_NAMES.beef}>Beef</MenuItem>
                   <MenuItem value={FOOD_NAMES.fish}>Fish</MenuItem>

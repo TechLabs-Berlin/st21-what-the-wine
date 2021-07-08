@@ -14,8 +14,8 @@ export const FOOD_PAIRING = {
 };
 
 export const FOOD_NAMES = {
-  pasta: "Pasta",
-  pork: "Pork",
+  vegetarian: "Vegetarian",
+  lamb: "Lamb",
   cheese: "Cheese",
   beef: "Beef",
   fish: "Fish",
