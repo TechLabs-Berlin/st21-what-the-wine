@@ -1,4 +1,3 @@
-//var greet = require("../backend/sandbox.js");
 const { json } = require("express");
 
 function cleanJson(jsonList) {
@@ -35,5 +34,3 @@ function randomNumber() {
 }
 
 module.exports = cleanJson;
-//module.exports = querySelectors;
-//module.exports = testingFunction;
