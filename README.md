@@ -62,9 +62,9 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 -->
-What the Wine makes picking the right wine easier. </br>
-Endless selections of wines in the stores can be overwhelming. </br>
-What the wine makes picking out a wine easier and more straight forward. The user gets instant wine recommendations based on filters including wine profile, type of wine, food pairings, country of origin, and more. 
+Endless selections of wines in stores can be overwhelming. </br>
+What the Wine makes enables users to pick the the right wine no matter the occasion in an easy and straightforward manner. </br>
+Based on a simple search form with filters such as the type of wine, desired food pairings and preferred price ranges, the user gets instant wine recommendations alongside the most essential information about the wines suggested. 
 
  <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/1.png" alt="landing page" width="175" height="351"> <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/2.png" alt="search form" width="175" height="351"> <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/3.png" alt="results page" width="175" height="351"> <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/4.png" alt="wine page" width="175" height="351">
 
