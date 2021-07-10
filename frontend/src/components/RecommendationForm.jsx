@@ -6,7 +6,6 @@ import {
   FOOD_PAIRING,
   FOOD_NAMES,
   PRICE,
-  VEGAN,
   WINE_TYPE,
   COUNTRY_NAME,
   FLAVOR_PROFILE,
@@ -14,8 +13,6 @@ import {
 import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import { ReactComponent as SearchIcon } from "../assets/search.svg";
-import { ReactComponent as DropdownIcon } from "../assets/dropdown.svg";
 import "../styles/RecommendationForm.scss";
 
 const RecommendationForm = () => {
