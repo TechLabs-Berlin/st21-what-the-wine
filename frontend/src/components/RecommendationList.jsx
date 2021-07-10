@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
 import { WINE_QUERY_PARAMS, PRICE, VEGAN, FLAVOR_PROFILE } from "../constants";
 import { ReactComponent as VeganIcon } from "../assets/vegan.svg";
@@ -17,6 +17,7 @@ const queryParamsToObject = (params) => {
 
 const RecommendationList = () => {
   const [winesData, setWinesData] = useState(null);
+  const redirect = useHistory();
   const navigationLocation = useLocation();
   const filters = queryParamsToObject(navigationLocation.search);
 
@@ -29,6 +30,7 @@ const RecommendationList = () => {
         }
       );
       setWinesData(response.data);
+      console.log(response.data);
     };
     getData();
   }, [navigationLocation.search]);
@@ -81,7 +83,11 @@ const RecommendationList = () => {
       <ul className="list-container">
         {winesData &&
           winesData.wines.map((item) => (
-            <li key={item.wine_id} className="list-items">
+            <li
+              key={item.wine_id}
+              className="list-items"
+              onClick={() => redirect.push(`/WineDescription/${item.wine_id}`)}
+            >
               <div className="list-img-container">
                 <img
                   src={item.image_url}
