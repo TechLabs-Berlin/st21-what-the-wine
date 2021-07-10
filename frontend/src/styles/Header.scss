@@ -1,5 +1,10 @@
 @import "./constants";
 
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+}
+
 // Default view is set for bigger screens:
 // 1. Hide hamburger icon
 // 2. Show navbar
@@ -65,6 +70,7 @@
   }
 
   .nav-sidebar-item {
+    display: block;
     margin-bottom: 30px;
     @include h3-regular($color: #323430);
     text-decoration: none;
