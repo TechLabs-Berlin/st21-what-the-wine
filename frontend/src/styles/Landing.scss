@@ -44,6 +44,7 @@
 }
 
 .main-container {
+  // display: block;
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -52,7 +53,7 @@
 }
 
 .form-img {
-  z-index: 0;
+  z-index: -1;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -71,4 +72,38 @@
 .landing-title-bold {
   @include h2-bold($color: white);
   @include text-shadow;
+}
+
+// small screen
+@media screen and (min-width: 770px) {
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    background: none;
+    width: 100%;
+  }
+
+  .main-content-container {
+    width: 50%;
+    box-sizing: border-box;
+    padding-left: 30px;
+    background-color: $light-gray;
+  }
+
+  .form-img {
+    z-index: 0;
+    position: static;
+    width: 50%;
+    opacity: 1;
+  }
+
+  .landing-title {
+    @include h3-regular($color: black);
+    text-shadow: none;
+  }
+
+  .landing-title-bold {
+    @include h1;
+    text-shadow: none;
+  }
 }

@@ -1,9 +1,14 @@
 @import "./constants";
 
-.nav-list {
+.nav-list-left,
+.nav-list-right {
   list-style-type: none;
   padding: 0;
 }
+
+// .nav-list-item {
+//   display: block;
+// }
 
 // Default view is set for bigger screens:
 // 1. Hide hamburger icon
@@ -25,8 +30,9 @@
   height: 48px;
 }
 
-.nav-container-desktop {
+.nav-list-right {
   display: flex;
+  // flex-direction: row;
 }
 
 .nav-desktop-item {

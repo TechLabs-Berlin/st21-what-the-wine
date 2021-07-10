@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <nav className="header-container">
-      <ul className="nav-list">
+      <ul className="nav-list-left">
         <li>
           <NavLink exact to="/" onClick={closeSidebar}>
             <Logo className="nav-logo" />
@@ -21,18 +21,18 @@ const Header = () => {
         </li>
       </ul>
       <div className="nav-container-desktop">
-        <ul className="nav-list">
-          <li>
+        <ul className="nav-list-right">
+          <li className="nav-list-item">
             <NavLink to="/AboutUs" className="nav-desktop-item">
               About us
             </NavLink>
           </li>
-          <li>
+          <li className="nav-list-item">
             <NavLink to="/Faq" className="nav-desktop-item">
               FAQ
             </NavLink>
           </li>
-          <li>
+          <li className="nav-list-item">
             <NavLink to="/Support" className="nav-desktop-item">
               Support
             </NavLink>

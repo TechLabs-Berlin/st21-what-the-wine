@@ -174,7 +174,6 @@
 }
 
 .switch {
-  // @include hide-select;
   width: 100px;
   height: 42px;
   border-radius: 48px;
@@ -210,4 +209,12 @@
 .switch-checkbox:checked + .switch {
   background-color: $grape-green;
   color: $grape-green;
+}
+
+@media screen and (min-width: 770px) {
+  .form-container {
+    // margin: 0 0 0 96px;
+    max-width: 567px;
+    max-height: 67vh;
+  }
 }
