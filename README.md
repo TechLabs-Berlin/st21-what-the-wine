@@ -113,8 +113,8 @@ The web app is not intended for any commercial, monetary, or data sharing use.
 <!-- MEMBERS -->
 ## Members
 ### Team members:
-* UX Ebunoluwa Meroyi
-* UX Berenika Godlewska
+* UX [Ebunoluwa Meroyi](https://github.com/Ebunmeroyi)
+* UX [Berenika Godlewska](https://github.com/Nikilii)
 * UX [Ngoc Anh Doan Thi](https://github.com/ndoanthi)
 * WD [Timea Varju](https://github.com/Moomia)
 * WD [Stephanie Mennear](https://github.com/Ostend)
