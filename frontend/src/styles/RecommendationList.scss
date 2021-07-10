@@ -71,7 +71,6 @@
 .list-price {
   @include tag-price-small;
   @include text2-regular($color: white);
-  // align-self: flex-end;
   position: absolute;
   top: 10px;
   left: 10px;
