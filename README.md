@@ -66,6 +66,10 @@ What the Wine makes picking the right wine easier. </br>
 Endless selections of wines in the stores can be overwhelming. </br>
 What the wine makes picking out a wine easier and more straight forward. The user gets instant wine recommendations based on filters including wine profile, type of wine, food pairings, country of origin, and more. 
 
+ <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/1.png" alt="landing page" width="175" height="351"> <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/2.png" alt="search form" width="175" height="351"> <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/3.png" alt="results page" width="175" height="351"> <img src="https://github.com/TechLabs-Berlin/st21-what-the-wine/blob/main/user-experience/design/images/4.png" alt="wine page" width="175" height="351">
+
+For the Figma prototype see [here](https://www.figma.com/proto/T3dYjWqUeaRth5BOP8aHE7/What-the-Wine?page-id=0%3A1&node-id=494%3A2&viewport=-13840%2C-46501%2C1.6542714834213257&scaling=scale-down); for the UX files see [here](https://www.figma.com/file/T3dYjWqUeaRth5BOP8aHE7/What-the-Wine?node-id=0%3A1)
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
