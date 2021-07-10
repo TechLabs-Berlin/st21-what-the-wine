@@ -1,5 +1,4 @@
-const cleanJson = require("./functions.js");
-const randomNumber = require("./functions.js");
+const cleanJson = require("../backend/functions/seedWineFunctions.js");
 const axios = require("axios");
 require("dotenv").config();
 let wines;
