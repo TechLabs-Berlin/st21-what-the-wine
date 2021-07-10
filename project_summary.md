@@ -1,0 +1,3 @@
+What The Wine is a responsive web application for choosing the perfect wine fit for the given occasion. Through its simple and clean interface, users can search for different wines in a matter of seconds. With a few filters such as the desired food pairing, preferred price range, and wine type, the search will give users perfectly tailored recommendations currently available on the German market. By providing users only with the most essential information about the recommended options, WTW makes the world of wines easier and more fun to approach for everyone.
+
+WTW is built with MongoDB, ExpressJS, NodeJS, and ReactJS. The team is made up of 2 WD and 3 UX.
