@@ -1,5 +1,6 @@
 @import "./constants";
 
+// landing page hero image and text
 .hero-container {
   position: relative;
   height: calc(100vh - 120px);
@@ -43,8 +44,8 @@
   left: calc(50vw - 62px / 2);
 }
 
+// landing page main content - the form container and bg image
 .main-container {
-  // display: block;
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -74,7 +75,7 @@
   @include text-shadow;
 }
 
-// small screen
+// on small screens
 @media screen and (min-width: 770px) {
   .main-container {
     display: flex;
