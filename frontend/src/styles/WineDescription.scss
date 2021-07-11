@@ -1,5 +1,27 @@
 @import "./constants";
 
+// Customizing the Rating component from Material-UI
+.MuiRating-root {
+  font-size: 1.2em;
+  justify-content: center;
+  color: $burgundy;
+}
+
+.MuiRating-icon {
+  margin: 0 -0.15em;
+}
+
+.MuiRating-iconEmpty {
+  color: $light-gray;
+}
+
+// ON SMALL SCREENS
+
+.main-container-sl {
+  padding: 0;
+}
+
+// back link
 .back-link-container {
   margin: 0 0 1em 2em;
   border: none;
@@ -12,11 +34,13 @@
   margin-right: 0.5em;
 }
 
+// wine header section: title and price
 .single-wine-header {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   padding: 0 2em 1.5em 2em;
   box-sizing: border-box;
-  // height: 135px;
 }
 
 .single-wine-title-bold {
@@ -35,6 +59,11 @@
   align-self: flex-end;
 }
 
+// product image
+.img-container-desktop {
+  position: static;
+}
+
 .product-img-container {
   margin: 0 auto 1.5em auto;
   width: 85vw;
@@ -50,6 +79,7 @@
   display: block;
 }
 
+// vegan icon styling
 .vegan-icon-container-wd {
   @include vegan-icon-big;
   position: absolute;
@@ -62,8 +92,10 @@
   height: 34px;
 }
 
+// wine description
 .wine-description-container {
   background-color: white;
+  width: 100%;
   margin: 1em 1em;
   border-radius: 20px;
   padding: 1em;
@@ -154,18 +186,94 @@
   margin-left: 0.5em;
 }
 
-// Customizing the Rating component from Material-UI
+// ON BIGGER SCREENS
+@media screen and (min-width: 770px) {
+  .main-container-sl {
+    box-sizing: border-box;
+    width: 45vw;
+    margin-left: 48%;
+  }
 
-.MuiRating-root {
-  font-size: 1.2em;
-  justify-content: center;
-  color: $burgundy;
-}
+  .img-container-desktop {
+    position: absolute;
+    left: 60px;
+    top: 170px;
+  }
 
-.MuiRating-icon {
-  margin: 0 -0.15em;
-}
+  .product-img-container {
+    margin: 0;
+    width: 43%;
+    height: 70vh;
+    position: relative;
+  }
 
-.MuiRating-iconEmpty {
-  color: $light-gray;
+  .single-wine-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .single-wine-title-bold {
+    @include h2-bold;
+    margin: 0;
+  }
+
+  .single-wine-title-regular {
+    @include h2-regular($color: $black-gray);
+  }
+
+  .single-wine-price {
+    @include tag-price-big;
+    padding: 0.3em 0.5em;
+    @include h3-regular($color: white);
+    color: white;
+    align-self: flex-end;
+  }
+
+  .wine-description-container {
+    border-radius: 16px;
+    margin: 1em 0;
+    padding: 1em 0 1em 1em;
+  }
+
+  .wine-description-column-left {
+    padding-right: 1em;
+  }
+
+  .section-title-wd {
+    @include text1-bold;
+  }
+
+  .values-wd,
+  .values-list-items-wd {
+    @include text1-regular;
+  }
+
+  .section-title-right-wd {
+    @include text1-bold;
+    margin: 0;
+  }
+
+  .scale-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.2em;
+    width: 100%;
+    @include text1-regular;
+  }
+
+  .vegan-icon-container-wd {
+    width: 89px;
+    height: 89px;
+    left: 22px;
+    bottom: 20px;
+  }
+
+  .vegan-icon-wd {
+    width: 43px;
+    height: 43px;
+  }
 }

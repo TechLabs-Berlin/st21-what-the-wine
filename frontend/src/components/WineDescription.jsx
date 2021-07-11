@@ -39,7 +39,7 @@ const WineDescription = (props) => {
         <ArrowsLeftIcon className="back-link-icon" />
         back
       </button>
-      <main>
+      <main className="main-container-sl">
         <div className="single-wine-header">
           <div className="single-wine-title-container">
             <h1 className="single-wine-title-bold">
@@ -53,14 +53,20 @@ const WineDescription = (props) => {
           <div className="single-wine-price">{wineObject.price_eur}€</div>
         </div>
 
-        <figure className="product-img-container">
-          <img className="product-img" src={wineObject.image_url} alt=""></img>
-          {wineObject.vegan === true && (
-            <div className="vegan-icon-container-wd">
-              <VeganIcon className="vegan-icon-wd" />
-            </div>
-          )}
-        </figure>
+        <div className="img-container-desktop">
+          <figure className="product-img-container">
+            <img
+              className="product-img"
+              src={wineObject.image_url}
+              alt=""
+            ></img>
+            {wineObject.vegan === true && (
+              <div className="vegan-icon-container-wd">
+                <VeganIcon className="vegan-icon-wd" />
+              </div>
+            )}
+          </figure>
+        </div>
 
         <div className="wine-description-container">
           <div className="wine-description-column-left">
