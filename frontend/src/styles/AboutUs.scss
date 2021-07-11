@@ -1,0 +1,39 @@
+@import "./constants";
+
+// SMALL SCREENS
+
+.main-container-au {
+  padding: 32px 23px 20px 23px;
+}
+
+.title-au {
+  @include h2-bold;
+  margin: 0;
+}
+
+.subtitle-au {
+  @include h3-regular;
+  margin: 0;
+}
+
+.paragraph-container-au {
+  margin-top: 32px;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 20px 17px;
+}
+
+.paragraphs-au {
+  margin: 0 0 1em 0;
+  @include text1-regular;
+}
+
+.text-bold-au {
+  @include text-bold;
+}
+
+.divider-horizontal-au {
+  @include divider-horizontal;
+  margin: 28px 0;
+}
