@@ -22,7 +22,6 @@ const WineDescription = (props) => {
         `${process.env.REACT_APP_API_ENDPOINT_GET_WINES}/single/${wine_id}`
       );
       setSingleWineData(response.data);
-      console.log(response.data);
     };
     getData();
   }, [wine_id]);
@@ -72,7 +71,7 @@ const WineDescription = (props) => {
           <div className="wine-description-column-left">
             <section className="section-small-wd">
               <h2 className="section-title-wd">Type</h2>
-              <p className="values-wd">Red</p>
+              <p className="values-wd">{wineObject.wine_type}</p>
             </section>
 
             <section className="section-small-wd">
