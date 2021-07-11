@@ -16,9 +16,9 @@ export const FOOD_PAIRING = {
 export const FOOD_NAMES = {
   vegetarian: "Vegetarian",
   lamb: "Lamb",
-  cheese: "Cheese",
+  pasta: "Pasta",
   beef: "Beef",
-  fish: "Fish",
+  pork: "Pork",
 };
 
 export const PRICE = {
@@ -36,9 +36,6 @@ export const VEGAN = {
 export const WINE_TYPE = {
   red: "red",
   white: "white",
-  rose: "rose",
-  sparkling: "sparkling",
-  dessert: "dessert",
 };
 
 export const COUNTRY_NAME = {

@@ -1,5 +1,6 @@
 @import "./constants";
 
+// landing page hero image and text
 .hero-container {
   position: relative;
   height: calc(100vh - 120px);
@@ -43,8 +44,8 @@
   left: calc(50vw - 62px / 2);
 }
 
+// landing page main content - the form container and bg image
 .main-container {
-  // display: block;
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -53,8 +54,10 @@
 }
 
 .form-img {
-  z-index: -1;
+  z-index: 0;
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   opacity: 0.8;
@@ -74,7 +77,7 @@
   @include text-shadow;
 }
 
-// small screen
+// ON BIG SCREENS
 @media screen and (min-width: 770px) {
   .main-container {
     display: flex;

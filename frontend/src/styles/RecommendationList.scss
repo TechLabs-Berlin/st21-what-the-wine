@@ -1,5 +1,11 @@
 @import "./constants";
 
+// DEFAULT SMALL SCREENS
+.main-container-rl {
+  display: block;
+  margin-top: 33px;
+}
+
 .filter-section-container {
   margin: 0px;
   padding: 0 30px;
@@ -7,7 +13,7 @@
 
 .filter-section-title {
   margin: 0 0 10px 0;
-  @include text1-regular($color: #323430);
+  @include text1-regular($color: $black-gray);
 }
 
 .filters-container {
@@ -17,7 +23,7 @@
 
 .filter {
   @include tag-filter($color: white);
-  @include text2-regular($color: #323430);
+  @include text2-regular($color: $black-gray);
   margin: 0 10px 5px 0;
 }
 
@@ -29,11 +35,6 @@
   @include h3-bold;
   margin: 0 0 28px 0;
   text-align: center;
-}
-
-.sort-container {
-  text-align: end;
-  margin-right: 30px;
 }
 
 .list-container {
@@ -83,6 +84,11 @@
   bottom: 10px;
 }
 
+.vegan-icon-rl {
+  width: 18px;
+  height: 18px;
+}
+
 .list-description-container {
   width: 100%;
   height: 25%;
@@ -95,14 +101,75 @@
   overflow: hidden;
 }
 
-.list-text {
+.list-text-regular {
   margin: 0;
-  @include text2-regular($color: #323430);
+  @include text2-regular($color: $black-gray);
 }
 
 .list-text-bold {
   @include text2-bold;
   margin: 0px;
-  text-decoration: none;
-  text-overflow: ellipsis;
+}
+
+// MEDIA QUERY FOR BIG SCREENS
+@media screen and (min-width: 770px) {
+  .main-container-rl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-section-title {
+    @include text1-bold;
+  }
+
+  .divider-horizontal {
+    @include divider-horizontal($width: 340px);
+  }
+
+  .result-title {
+    @include h1;
+    margin-bottom: 90px;
+  }
+
+  .list-items {
+    height: 457px;
+    width: 274px;
+    margin-bottom: 30px;
+  }
+
+  .list-price {
+    @include tag-price-small;
+    @include text1-regular($color: white);
+    top: 20px;
+    left: 20px;
+  }
+
+  .vegan-icon-container-rl {
+    @include vegan-icon-big;
+    left: 20px;
+  }
+
+  .vegan-icon-rl {
+    width: 33px;
+    height: 33px;
+  }
+
+  .list-description-container {
+    padding: 1em;
+  }
+
+  .list-text-regular {
+    @include text1-regular($color: $black-gray);
+  }
+
+  .list-text-bold {
+    @include text1-bold;
+  }
 }

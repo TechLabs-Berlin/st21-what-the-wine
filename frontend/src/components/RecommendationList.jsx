@@ -36,7 +36,7 @@ const RecommendationList = () => {
   }, [navigationLocation.search]);
 
   return (
-    <main>
+    <main className="main-container-rl">
       <figure className="filter-section-container">
         <p className="filter-section-title">Your search filters:</p>
         <div className="filters-container">
@@ -66,13 +66,13 @@ const RecommendationList = () => {
           )}
           {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
             FLAVOR_PROFILE.dry
-          ) && <p className="filter">rather dry</p>}
+          ) && <p className="filter">dry</p>}
           {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
             FLAVOR_PROFILE.sweet
-          ) && <p className="filter">rather sweet</p>}
+          ) && <p className="filter">sweet</p>}
           {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
             FLAVOR_PROFILE.acidic
-          ) && <p className="filter">rather acidic</p>}
+          ) && <p className="filter">acidic</p>}
         </div>
       </figure>
 
@@ -104,13 +104,8 @@ const RecommendationList = () => {
               </div>
               <div className="list-description-container">
                 <div className="list-text-container">
-                  <p className="list-text">{item.winery_name}</p>
-                  <Link
-                    to={`/WineDescription/${item.wine_id}`}
-                    className="list-text-bold"
-                  >
-                    {item.wine_name}
-                  </Link>
+                  <p className="list-text-regular">{item.winery_name}</p>
+                  <p className="list-text-bold">{item.wine_name}</p>
                 </div>
               </div>
             </li>

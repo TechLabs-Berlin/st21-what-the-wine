@@ -73,12 +73,12 @@
   .nav-sidebar-item {
     display: block;
     margin-bottom: 30px;
-    @include h3-regular($color: #323430);
+    @include h3-regular($color: $black-gray);
     text-decoration: none;
   }
 
   .nav-sidebar-text {
-    @include h2-bold($color: #7b1f22);
-    margin: 0px 0px 30px 0px;
+    @include h2-bold($color: $burgundy);
+    margin: 0 0 30px 0;
   }
 }
