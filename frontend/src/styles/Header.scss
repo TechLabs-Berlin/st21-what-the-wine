@@ -1,5 +1,6 @@
 @import "./constants";
 
+.nav-list,
 .nav-list-left,
 .nav-list-right {
   list-style-type: none;
@@ -38,6 +39,10 @@
 }
 
 .icon-container {
+  display: none;
+}
+
+.nav-container-sidebar {
   display: none;
 }
 
