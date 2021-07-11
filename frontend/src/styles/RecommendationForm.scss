@@ -211,9 +211,27 @@
   color: $grape-green;
 }
 
+// scrollbar customization
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $light-gray;
+  border-radius: 20px;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $dark-gray;
+}
+
 @media screen and (min-width: 770px) {
   .form-container {
-    // margin: 0 0 0 96px;
     max-width: 567px;
     max-height: 67vh;
   }
