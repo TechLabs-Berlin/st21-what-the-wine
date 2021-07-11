@@ -66,13 +66,13 @@ const RecommendationList = () => {
           )}
           {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
             FLAVOR_PROFILE.dry
-          ) && <p className="filter">rather dry</p>}
+          ) && <p className="filter">dry</p>}
           {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
             FLAVOR_PROFILE.sweet
-          ) && <p className="filter">rather sweet</p>}
+          ) && <p className="filter">sweet</p>}
           {filters[WINE_QUERY_PARAMS.flavorProfile]?.includes(
             FLAVOR_PROFILE.acidic
-          ) && <p className="filter">rather acidic</p>}
+          ) && <p className="filter">acidic</p>}
         </div>
       </figure>
 

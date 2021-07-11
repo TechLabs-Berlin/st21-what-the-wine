@@ -123,9 +123,9 @@ const RecommendationForm = () => {
                   <MenuItem value="">Please specify...</MenuItem>
                   <MenuItem value={FOOD_NAMES.vegetarian}>Vegetarian</MenuItem>
                   <MenuItem value={FOOD_NAMES.lamb}>Lamb</MenuItem>
-                  <MenuItem value={FOOD_NAMES.cheese}>Cheese</MenuItem>
+                  <MenuItem value={FOOD_NAMES.pasta}>Pasta</MenuItem>
                   <MenuItem value={FOOD_NAMES.beef}>Beef</MenuItem>
-                  <MenuItem value={FOOD_NAMES.fish}>Fish</MenuItem>
+                  <MenuItem value={FOOD_NAMES.pork}>Pork</MenuItem>
                 </Select>
               </div>
             )}
@@ -251,11 +251,6 @@ const RecommendationForm = () => {
                         <MenuItem value="">Please select</MenuItem>
                         <MenuItem value={WINE_TYPE.red}>Red</MenuItem>
                         <MenuItem value={WINE_TYPE.white}>White</MenuItem>
-                        <MenuItem value={WINE_TYPE.rose}>Rosé</MenuItem>
-                        <MenuItem value={WINE_TYPE.sparkling}>
-                          Sparkling
-                        </MenuItem>
-                        <MenuItem value={WINE_TYPE.dessert}>Dessert</MenuItem>
                       </Select>
                     </div>
                   </div>
