@@ -10,7 +10,7 @@ In the project phase of our course at Techlabs, we had to select a project idea 
 
 **The Problem**
 
-We started the project by brainstorming on pain points for most people when buying wines and decided the next step was to gather information from people that consume wine regularly (User research).
+We started the project by brainstorming on pain points for most people when buying wines and decided that the next step was to gather insights from people that consume wine regularly. This led to a survey we conducted as part of the user research phase.
 
 ![image1](https://user-images.githubusercontent.com/60686512/125177303-ff765f80-e1da-11eb-8b82-43abb2263dd9.png)
 
@@ -33,7 +33,7 @@ After the analysis, we brainstormed on ideas to solve these problems, developed 
 
 > **Challenges**
 
-During the project, many members of the team left at different stages of the project. In a team of eight, five members left the project, leaving just three members from the UX track to continue with the project. We became demotivated and considered quitting too, especially after the leader of the team who had been coordinating the project excellently, left as well. We contacted the Techlabs Administrators about the problem and fortunately for us, we received two new members who were willing to join the project. At first, it was tough continuing the project midway with new members and establishing communication with them, we lost momentum and feared we might not be able to meet up with the timeline. However, we were able to come together as a team and pick up from where we left off. The new team members who were on the web development track worked efficiently to ensure that we did not lag in meeting the timelines.
+During the project, many members of the team left at different stages of the project. In a team of eight, five members left the project, leaving just three members from the UX track to continue with the project. We became demotivated and considered quitting too, especially after the leader of the team who had been coordinating the project excellently, left as well. We contacted the Techlabs Administrators about the problem and fortunately for us, we received two new members who were willing to join the project. At first, it was tough continuing the project midway with new members and establishing communication with them, we lost momentum and feared we might not be able to meet up with the timeline. However, we were able to come together as a team and pick up from where we left off. Both Timea and Steph from the web development track were great additions to the team, pushed us forward and worked efficiently to ensure that we did not lag in meeting the timelines.
 
 **Our little wins**
 
@@ -94,10 +94,16 @@ It was a great, although very stiff learning curve for me. If I had more prior k
 
 Over the course of the first week of joining, the UX team caught us up on the MVP. The UX team had comprehensive diagrams, wireframes, and options for the MVP. It was challenge to fully understand how the app would align to the UX designs, a theme that carried throughout the project phase, caused by several reasons. As we lost more team members to the team, specifically the data scientists, Timea and I had to refractor our architecture to meet the needs to the UX designs. In addition, the time constraint we were working against became more visible and our final decision was to cut some features from the MVP.
 
-Although it was challenging, it was neither impossible nor unachievable. What we had as an advantage was our thoroughness in communication and motivation. Throughout the four weeks, not only did Timea and I work closely together, through pair programming sessions, meeting updates, and brainstorming meetings, but Ngoc Anh Doan Thi from the UX team was extremely responsive to working with us, answering our questions, and brainstorming to modify the MVP whenever Timea and I realized whatever feature at the time was not possible.
+Although it was challenging, it was neither impossible nor unachievable. What we had as an advantage was our thoroughness in communication and motivation. Throughout the four weeks, not only did Timea and I work closely together, through pair programming sessions, meeting updates, and brainstorming meetings, but Ngoc from the UX team was extremely responsive to working with us, answering our questions, and brainstorming to modify the MVP whenever Timea and I realized whatever feature at the time was not possible.
 
 Finally, I would be remiss if I did not mention our team mentor Rodolfo, who was as involved with the project as we were. Rodolfo was not only a mentor, but a teacher to us. He reviewed every one of our pull requests, giving us a more deep and thorough insight into the theory and practice of JavaScript, and in general, programming. He participated in meetings and offered his time to guide Timea and I through pair programming sessions.
 
 ### Technical journey
 
 Joining the team mid project phase, part of my onboarding was to understand the current state of the code. After understanding the code that was there, a skeleton for backend, instead of refracturing, I decided to rewrite it. At first, I did want to keep the code written by the former backend developer, but I quickly discovered that in order to incorporate the tech stack we decided on, it would be better to start from scratch.
+
+---
+
+## Final thoughts
+
+We've had a quite exciting project journey to look back on. Despite the many (and also sudden) challenges we experienced and even though we weren't able to bring all of our ideas to life, we are super happy with what we achieved within this short time and with the skills we picked up along the way! We certainly were all impressed with what we were capable of creating, which has truely inspired and motivated us to keep exploring in the world of tech. All in all, it was a great experience to learn and grow together as a team and to be part of the TechLabs community! 
