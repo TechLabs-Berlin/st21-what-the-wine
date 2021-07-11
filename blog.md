@@ -139,6 +139,11 @@ In order to match the MVP, needed to be added to each wine item is:
 
 ![wineItem](https://user-images.githubusercontent.com/60686512/125202039-2764d200-e272-11eb-8f59-6bd5c5a71f81.png)
 
+Learning MongoDB query syntax was a steep learning curve and may have been one of my biggest challenges in the project. 
+
+##### Final thoughts
+I am very happy with the MVP that we all put together in just four weeks. With consitent communication, motivated team members, and a wonderful mentor, we have not only made an MVP, but an exceptional learning experience with TechLabs. 
+
 ---
 
 ## Final thoughts
