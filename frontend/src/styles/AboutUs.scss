@@ -1,9 +1,15 @@
 @import "./constants";
 
 // SMALL SCREENS
-
 .main-container-au {
   padding: 32px 23px 20px 23px;
+  box-sizing: border-box;
+  width: 100vw;
+  height: calc(100vh - 120px);
+}
+
+.bg-img-au {
+  display: none;
 }
 
 .title-au {
@@ -22,6 +28,7 @@
   box-sizing: border-box;
   border-radius: 16px;
   padding: 20px 17px;
+  width: 100%;
 }
 
 .paragraphs-au {
@@ -36,4 +43,33 @@
 .divider-horizontal-au {
   @include divider-horizontal;
   margin: 28px 0;
+}
+
+// BIG SCREENS
+@media screen and (min-width: 770px) {
+  .main-container-au {
+    padding-left: 120px;
+    position: relative;
+  }
+
+  .bg-img-au {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .title-au {
+    @include h1;
+    margin: 0;
+  }
+
+  .paragraph-container-au {
+    padding: 53px 46px;
+    width: 70%;
+  }
 }

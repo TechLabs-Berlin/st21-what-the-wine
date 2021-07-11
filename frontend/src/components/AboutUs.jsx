@@ -4,6 +4,10 @@ import "../styles/AboutUs.scss";
 const AboutUs = () => {
   return (
     <main className="main-container-au">
+      <img
+        src="https://images.unsplash.com/photo-1567072629554-20e689de2400?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1868&q=80"
+        className="bg-img-au"
+      ></img>
       <h1 className="title-au">About Us</h1>
       <h2 className="subtitle-au">Perfect wine for every occasion</h2>
       <div className="paragraph-container-au">
