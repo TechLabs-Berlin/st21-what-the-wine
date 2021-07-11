@@ -1,5 +1,6 @@
 @import "./constants";
 
+// FORM CONTAINER
 .form-container {
   z-index: 2;
   position: relative;
@@ -10,6 +11,10 @@
   border-radius: 16px;
   max-height: 62vh;
   overflow-y: scroll;
+}
+
+.form-more-filters-container {
+  margin-top: 24px;
 }
 
 .form-fieldset {
@@ -24,29 +29,47 @@
   align-items: center;
 }
 
+// FORM TEXT
 .form-title {
   @include text-bold;
   margin-bottom: 0.5em;
 }
 
+// hide label tags in a way that it is still readable for screen readers
+.sr-only {
+  @include sr-only;
+}
+
+// rules for the titles where the input field should be in the same line
+// as the title (vegan, wine type, origin)
 .form-title-flex {
   @include text-bold;
   width: 50%;
 }
 
+// rules for the select inputs where they should be in the same line
+// as their label/title (wine type, origin)
 .select-half-size {
   width: 50%;
 }
 
-.form-more-filters-container {
-  margin-top: 24px;
-}
-
+// INPUT FIELDS
 .checkbox-label-container {
   display: flex;
   justify-content: space-between;
 }
 
+// hide the default look on every checkbox and radio inputs
+.checkbox-price input[type="checkbox"],
+.checkbox-price-checked input[type="checkbox"],
+.checkbox-flavor input[type="checkbox"],
+.checkbox-flavor-checked input[type="checkbox"],
+.radio-food input[type="radio"],
+.radio-food-checked input[type="radio"] {
+  @include hide-checkbox;
+}
+
+// with or without food
 .radio-food {
   @include chips-form;
   width: 48%;
@@ -61,8 +84,66 @@
   margin-top: 10px;
 }
 
-// customization of Material-UI select inputs
+// price
+.checkbox-price {
+  @include chips-form;
+}
 
+.checkbox-price-checked {
+  @include chips-form-checked;
+}
+
+// flavour profile
+.checkbox-flavor {
+  @include chips-form;
+  width: 30%;
+}
+
+.checkbox-flavor-checked {
+  @include chips-form-checked;
+  width: 30%;
+}
+
+// vegan filter
+.switch {
+  width: 100px;
+  height: 42px;
+  border-radius: 48px;
+  background-color: $light-gray;
+  color: $light-gray;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.switch-checkbox {
+  @include hide-checkbox;
+}
+
+.switch::after {
+  content: "";
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 5px;
+  left: 6px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.2s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.switch-checkbox:checked + .switch::after {
+  left: 63px;
+}
+
+.switch-checkbox:checked + .switch {
+  background-color: $grape-green;
+  color: $grape-green;
+}
+
+// Material-UI select inputs (food names, wine type, origin)
 .MuiOutlinedInput-root {
   border-radius: 20px;
 }
@@ -130,35 +211,7 @@
   color: white;
 }
 
-// end of Material-UI
-
-.checkbox-price {
-  @include chips-form;
-}
-
-.checkbox-price-checked {
-  @include chips-form-checked;
-}
-
-.checkbox-flavor {
-  @include chips-form;
-  width: 30%;
-}
-
-.checkbox-flavor-checked {
-  @include chips-form-checked;
-  width: 30%;
-}
-
-.checkbox-price input[type="checkbox"],
-.checkbox-price-checked input[type="checkbox"],
-.checkbox-flavor input[type="checkbox"],
-.checkbox-flavor-checked input[type="checkbox"],
-.radio-food input[type="radio"],
-.radio-food-checked input[type="radio"] {
-  @include hide-checkbox;
-}
-
+// BUTTONS
 .button-more-filters {
   @include button-form;
   @include text-bold($burgundy);
@@ -169,49 +222,7 @@
   @include text-bold(white);
 }
 
-.sr-only {
-  @include sr-only;
-}
-
-.switch {
-  width: 100px;
-  height: 42px;
-  border-radius: 48px;
-  background-color: $light-gray;
-  color: $light-gray;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-}
-
-.switch-checkbox {
-  @include hide-checkbox;
-}
-
-.switch::after {
-  content: "";
-  width: 32px;
-  height: 32px;
-  position: absolute;
-  top: 5px;
-  left: 6px;
-  border-radius: 50%;
-  background-color: white;
-  transition: all 0.2s;
-  cursor: pointer;
-  z-index: 1;
-}
-
-.switch-checkbox:checked + .switch::after {
-  left: 63px;
-}
-
-.switch-checkbox:checked + .switch {
-  background-color: $grape-green;
-  color: $grape-green;
-}
-
-// scrollbar customization
+// SCROLLBAR
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -230,6 +241,7 @@
   background-color: $dark-gray;
 }
 
+// MEDIA QUERY FOR BIG SCREENS
 @media screen and (min-width: 770px) {
   .form-container {
     max-width: 567px;
