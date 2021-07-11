@@ -76,14 +76,6 @@ In the end for some of these elements I added Material-UI components, that I cus
 
 It was a great, although very stiff learning curve for me. If I had more prior knowledge or experience, I could have discussed this with the UX team, could have asked them to reconsider these components. But this is why we are here, to gain all of these experiences.
 
-### Post-MVP?
-
-In this short amount of time I was able to finish the MVP pages, both mobile and desktop version: the landing page with the form, the result page and the single wine details page. On top of that, one more subpage from the post-MVP version of the prototype made it to the finish line: the About Us page.
-
-| Finished landing page, desktop                                                                                            | Finished About Us page, desktop                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| ![desktop_landing](https://user-images.githubusercontent.com/68846287/125202284-35672280-e273-11eb-8299-2e3fe7305de9.png) | ![desktop_about-us](https://user-images.githubusercontent.com/68846287/125202068-482d2780-e272-11eb-8461-607f2aa0f423.png) |
-
 ### Tech stack
 
 - ReactJS (Create React App + React Router)
@@ -143,7 +135,7 @@ In order to match the MVP, needed to be added to each wine item is:
 - each wine item needs a `flavor_profile`, randomized: `flavor_profile` is an object with three keys: `bitter`, `sweet`, `dry`. Each key has a randomized number from 1-5.
 - each wine item needs a `wine_type` property:
   - wine_type searches each wine item by grape-> depending on the grapes, it will assign a `red` or `white` value.
-- In addition, the `food_names` for each wine item are parsed into a list
+- In addition, the `food_names` for each wine item are then parsed into a list
 
 ![wineItem](https://user-images.githubusercontent.com/60686512/125202039-2764d200-e272-11eb-8f59-6bd5c5a71f81.png)
 
