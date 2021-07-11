@@ -70,11 +70,19 @@ If one insists on semantic tags and proper accessible usage, certain customizati
 For a reference, the form consists of 7 input fields and 2 buttons, and even though they look consistent and similar - almost every one of them has slightly different style or behaviour, meaning I couldn't just create one component to repeat it 7 times.
 In the end for some of these elements I added Material-UI components, that I customized some more to match the prototype look.
 
+### Post-MVP?
+
+In this short amount of time I was able to finish the MVP pages, both mobile and desktop version: the landing page with the form, the result page and the single wine details page. On top of that, one more subpage from the post-MVP version of the prototype made it to the finish line: the About Us page.
+
 | The form                                                                                                                   | More filters                                                                                                               |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | ![mobile-finished1](https://user-images.githubusercontent.com/68846287/125176137-6e4ebb00-e1d1-11eb-97fa-43eba3f27784.png) | ![mobile-finished2](https://user-images.githubusercontent.com/68846287/125176140-7149ab80-e1d1-11eb-9d39-98b5c84f2679.png) |
 
 It was a great, although very stiff learning curve for me. If I had more prior knowledge or experience, I could have discussed this with the UX team, could have asked them to reconsider these components. But this is why we are here, to gain all of these experiences.
+
+| Finished landing page, desktop                                                                                            | Finished About Us page, desktop                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| ![desktop_landing](https://user-images.githubusercontent.com/68846287/125202284-35672280-e273-11eb-8299-2e3fe7305de9.png) | ![desktop_about-us](https://user-images.githubusercontent.com/68846287/125202068-482d2780-e272-11eb-8461-607f2aa0f423.png) |
 
 ### Tech stack
 
