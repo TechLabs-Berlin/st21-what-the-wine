@@ -43,7 +43,8 @@ During the project, many members of the team left at different stages of the pro
 ---
 
 ## Frontend
-
+**by [Timea Varju](https://github.com/Moomia)** </br>
+</br>
 I joined the team right before the mid-term presentation, which means I got only 4 weeks to deliver a working application. The previous frontend developer had started to build the app in Create React App, and the markup for a few components was already written. I didn't want to remove everything that she had wrote previously, instead I decided to refactor the code, because as it turned out it didn't match the design wireframe. I also noticed that the wireframe is of a mobile application, not web. After discussing the situation with the UX team, we decided to go for a web application that is designed mainly for small screens - for people on the go.
 
 ### Semantic tags and web accessibility
@@ -87,7 +88,7 @@ It was a great, although very stiff learning curve for me. If I had more prior k
 ---
 
 ## Backend
-
+**by [Stephanie Mennear](https://github.com/Ostend)**
 ### Diving into express and MongoDB
 
 'Diving in' is quite representative of my exposure to What the Wine. I unconventionally joined the team with only four weeks left to the deadline and my frontend teammate, Timea, joined one week before I had. Prior to us joining, What the Wine had been left with no web developers.
