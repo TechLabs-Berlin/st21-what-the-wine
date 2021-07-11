@@ -102,8 +102,45 @@ Finally, I would be remiss if I did not mention our team mentor Rodolfo, who was
 
 Joining the team mid project phase, part of my onboarding was to understand the current state of the code. After understanding the code that was there, a skeleton for backend, instead of refracturing, I decided to rewrite it. At first, I did want to keep the code written by the former backend developer, but I quickly discovered that in order to incorporate the tech stack we decided on, it would be better to start from scratch.
 
+**Problems and solutions**:
+One concern I had was the structure of the express app. I decided to add a Data Access Object file to make it more readable and separate patterns. In our first version of the MVP, the goal was to have both a Users database and Wines database. The DAO file would make it easier to separate accessing the database between the Wines and Users collections.
+
+```shell
+
+├── api
+├── dao
+├── functions
+├── img
+├── index.js
+├── node_modules
+├── package-lock.json
+├── package.json
+├── seedwines.js
+└── server.js
+
+```
+
+- The api folder holds all the routes and controllers.
+- the dao folder accesses the database
+- functions holds specific functions that relate to the DAO directory. It also contains functions for simulating wine data.
+- `index.js` will start the server by accessing the `server.js` file
+- `seedwines.js` populates the DB with the collection of wines provided from the DS team.
+
+### Simulating data
+
+Why add value-pair keys to the wine items in the DB?
+In order to match the MVP, needed to be added to each wine item is:
+
+- each wine item needs a `vegan` option- represented as a Boolean
+- each wine item needs a `flavor_profile`, randomized: `flavor_profile` is an object with three keys: `bitter`, `sweet`, `dry`. Each key has a randomized number from 1-5.
+- each wine item needs a `wine_type` property:
+  - wine_type searches each wine item by grape-> depending on the grapes, it will assign a `red` or `white` value.
+- In addition, the `food_names` for each wine item are parsed into a list
+
+![wineItem](https://user-images.githubusercontent.com/60686512/125202039-2764d200-e272-11eb-8f59-6bd5c5a71f81.png)
+
 ---
 
 ## Final thoughts
 
-We've had a quite exciting project journey to look back on. Despite the many (and also sudden) challenges we experienced and even though we weren't able to bring all of our ideas to life, we are super happy with what we achieved within this short time and with the skills we picked up along the way! We certainly were all impressed with what we were capable of creating, which has truely inspired and motivated us to keep exploring in the world of tech. All in all, it was a great experience to learn and grow together as a team and to be part of the TechLabs community! 
+We've had a quite exciting project journey to look back on. Despite the many (and also sudden) challenges we experienced and even though we weren't able to bring all of our ideas to life, we are super happy with what we achieved within this short time and with the skills we picked up along the way! We certainly were all impressed with what we were capable of creating, which has truely inspired and motivated us to keep exploring in the world of tech. All in all, it was a great experience to learn and grow together as a team and to be part of the TechLabs community!
