@@ -13,32 +13,12 @@ const Header = () => {
 
   return (
     <nav className="header-container">
-      <ul className="nav-list-left">
-        <li>
-          <NavLink exact to="/" onClick={closeSidebar}>
-            <Logo className="nav-logo" />
-          </NavLink>
-        </li>
-      </ul>
-      <div className="nav-container-desktop">
-        <ul className="nav-list-right">
-          <li className="nav-list-item">
-            <NavLink to="/AboutUs" className="nav-desktop-item">
-              About us
-            </NavLink>
-          </li>
-          <li className="nav-list-item">
-            <NavLink to="/Faq" className="nav-desktop-item">
-              FAQ
-            </NavLink>
-          </li>
-          <li className="nav-list-item">
-            <NavLink to="/Support" className="nav-desktop-item">
-              Support
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+      <NavLink exact to="/" onClick={closeSidebar}>
+        <Logo className="nav-logo" />
+      </NavLink>
+      <NavLink to="/AboutUs" className="nav-desktop-item">
+        About us
+      </NavLink>
       <div className="icon-container" onClick={onToggleOptions}>
         <OptionsIcon className={options ? "icon-hidden" : "nav-options"} />
         <ArrowsRightIcon className={options ? "nav-options" : "icon-hidden"} />
@@ -46,35 +26,13 @@ const Header = () => {
       {options && (
         <div className="nav-container-sidebar">
           <p className="nav-sidebar-text">Hello!</p>
-          <ul className="nav-list">
-            <li>
-              <NavLink
-                to="/AboutUs"
-                className="nav-sidebar-item"
-                onClick={closeSidebar}
-              >
-                About us
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Faq"
-                className="nav-sidebar-item"
-                onClick={closeSidebar}
-              >
-                FAQ
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Support"
-                className="nav-sidebar-item"
-                onClick={closeSidebar}
-              >
-                Support
-              </NavLink>
-            </li>
-          </ul>
+          <NavLink
+            to="/AboutUs"
+            className="nav-sidebar-item"
+            onClick={closeSidebar}
+          >
+            About us
+          </NavLink>
         </div>
       )}
     </nav>

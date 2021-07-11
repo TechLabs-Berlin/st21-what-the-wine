@@ -1,12 +1,5 @@
 @import "./constants";
 
-.nav-list,
-.nav-list-left,
-.nav-list-right {
-  list-style-type: none;
-  padding: 0;
-}
-
 // Default view is set for bigger screens:
 // 1. Hide hamburger icon
 // 2. Show navbar
@@ -27,15 +20,15 @@
   height: 48px;
 }
 
-.nav-list-right {
-  display: flex;
-}
-
 .nav-desktop-item {
   @include text1-bold;
   text-decoration: none;
   cursor: pointer;
   margin-right: 40px;
+}
+
+.nav-desktop-item:hover {
+  color: $burgundy;
 }
 
 .icon-container {
@@ -59,8 +52,12 @@
     display: none;
   }
 
-  .nav-container-desktop {
+  .nav-desktop-item {
     display: none;
+  }
+
+  .nav-options {
+    cursor: pointer;
   }
 
   .nav-container-sidebar {
