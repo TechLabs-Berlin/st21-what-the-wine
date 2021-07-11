@@ -5,7 +5,7 @@
   padding: 32px 23px 20px 23px;
   box-sizing: border-box;
   width: 100vw;
-  height: calc(100vh - 120px);
+  height: 100%;
 }
 
 .bg-img-au {
@@ -23,7 +23,7 @@
 }
 
 .paragraph-container-au {
-  margin-top: 32px;
+  margin: 32px 0;
   background-color: white;
   box-sizing: border-box;
   border-radius: 16px;
@@ -50,6 +50,7 @@
   .main-container-au {
     padding-left: 120px;
     position: relative;
+    height: calc(100vh - 120px);
   }
 
   .bg-img-au {
